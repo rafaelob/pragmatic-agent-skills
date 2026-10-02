@@ -1,0 +1,36 @@
+# Template — multi-stage Node service (Corepack + pnpm)
+# Requires BuildKit (default with `docker build` / `docker compose build`).
+FROM node:24-slim AS builder
+
+WORKDIR /app
+
+# Enable Corepack for pnpm
+RUN corepack enable
+
+# Copy package manifests first for better caching
+COPY package.json pnpm-lock.yaml ./
+# Cache mount persists the pnpm store across builds; only re-resolves on lockfile changes.
+RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
+    pnpm install --frozen-lockfile
+
+# Copy the rest
+COPY . .
+RUN pnpm build
+
+# Runtime image (non-root)
+FROM node:24-slim AS runtime
+WORKDIR /app
+RUN useradd -m -u 10001 appuser
+# A fresh stage has no pnpm. Install the version pinned in package.json (`packageManager`,
+# or `devEngines.packageManager`) HERE, at build time, into a COREPACK_HOME the app user
+# owns, so `pnpm start` never downloads a package manager when the container starts.
+# Without a pin the build fails.
+ENV COREPACK_HOME=/opt/corepack
+COPY package.json ./
+RUN corepack enable && corepack install && chown -R appuser:appuser /opt/corepack
+ENV COREPACK_ENABLE_NETWORK=0
+USER appuser
+
+COPY --from=builder --chown=appuser:appuser /app /app
+EXPOSE 3000
+CMD ["pnpm", "start"]

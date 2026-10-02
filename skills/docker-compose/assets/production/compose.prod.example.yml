@@ -1,0 +1,37 @@
+# Example: production-oriented Compose patterns (compose.prod.example.yml)
+# Copy and adapt; validate against your deployment environment.
+services:
+  app:
+    image: your-registry/your-app:1.0.0
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget -qO- http://localhost:8080/healthz || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    # Resource limits — Compose V2 standalone honors deploy.resources.limits as
+    # container limits (Swarm-only keys like replicas still require Swarm).
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+          pids: 256
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+    # Top-level pids_limit also caps process count on the standalone runtime;
+    # keep it consistent with deploy.resources.limits.pids.
+    pids_limit: 256
+    stop_grace_period: 30s
+    ports:
+      - "8080:8080"

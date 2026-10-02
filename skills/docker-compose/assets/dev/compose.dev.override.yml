@@ -1,0 +1,19 @@
+# Example: dev-only overrides (compose.dev.override.yml)
+# Copy and adapt to your stack.
+services:
+  app:
+    # Common patterns:
+    # - Bind-mount source for live reload
+    # - Keep dependency directories in a named volume (optional)
+    volumes:
+      - ./:/workspace:cached
+    environment:
+      - LOG_LEVEL=debug
+    ports:
+      - "127.0.0.1:3000:3000"
+    # Example healthcheck (adjust to your app)
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget -qO- http://localhost:3000/healthz || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 10

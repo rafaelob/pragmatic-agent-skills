@@ -1,0 +1,32 @@
+# Template — .dockerignore (keep builds fast and deterministic)
+.git
+**/.git
+**/.DS_Store
+
+# Node
+node_modules
+**/node_modules
+dist
+build
+.next
+out
+
+# Python
+.venv
+venv
+__pycache__
+*.pyc
+
+# Tests and coverage
+coverage
+**/coverage
+playwright-report
+test-results
+
+# Editor/OS
+.vscode
+.idea
+
+# Secrets (do not bake into images)
+.env
+.env.*
