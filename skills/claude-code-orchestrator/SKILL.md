@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: 2.9.1
+  version: 2.10.0
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -105,7 +105,14 @@ brief therefore carries the whole mission, one or two lines per field:
 For an independent review the brief says "report findings; don't fix": a
 reviewer who edits the change is no longer independent. Put long material first
 and the instruction last. Require the child to delete its own scratch before it
-reports, keeping deliverables and evidence.
+reports, keeping deliverables and evidence; give it a scratch subfolder named
+for it, so it never clears a sibling's.
+
+**The parent owns the index.** Children share your checkout, so the brief lists
+the files each child may edit and says it never stages, commits, merges,
+stashes, restores or removes through git: you integrate. A child that ran
+`git rm` left a staged deletion that blocked its parent's merge (measured
+2026-10-04).
 
 **Brief in a file when it pays.** This is a working practice, not a vendor rule. A
 short brief goes inline. A long or reused brief goes in a file, and the prompt
@@ -146,7 +153,8 @@ A dispatch closes only when the child's work is IN your tree and nothing of the
 child's is left outside it. The child ran under your identity, so its scratch,
 branch and tree are yours to dispose of, with the cleanup tooling you use for
 your own work (the repository's declared tooling, else plain git), and only what
-the child created. For a fan-out of
+the child created. Before integrating, check that `git status` and
+`git diff --cached` show only what the child was allowed to touch. For a fan-out of
 two or more children, consolidate the checked reports into one table: child,
 outcome, evidence, acceptance decision and reason. An unsupported claim is not
 accepted, and a pending verification stays explicit.

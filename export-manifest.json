@@ -3,7 +3,7 @@
   "files": {
     "NOTICE": "29feae3d6fab388367b61e925ceb109ec2044e02eb095ba0796404905d7da9d9",
     "README.md": "8a47b48665d7eb06393795382471e56a14a78ab8d64617bf6cf8ba18a6485658",
-    "skills/claude-code-orchestrator/SKILL.md": "dd0f1f9e8afc65b0ae43e18fde0a43e6abaa3a0fd44f5b0b80e5c0e180e6fa7b",
+    "skills/claude-code-orchestrator/SKILL.md": "05f1b645523a615175a14b55f9d1f04ce0266eb611d5e2df1510ddd8177ff4c3",
     "skills/code-review/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
     "skills/code-review/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
     "skills/code-review/SKILL.md": "a56fe4ea68609956f46f628b5a781f1fb605ad03dab12a81bf0f4c9fbdefd58f",
@@ -61,10 +61,10 @@
     "skills/testing-e2e-playwright/SKILL.md": "8285417df7df14f51b3457f04facc18db6b03cef63cd097d3a0d65b4b5e3387c",
     "skills/testing-e2e-playwright/references/DOC_LINKS.md": "e01550edef496d94569fae54df0dc30b2833fdea3572f03da3c05d1d083c6723",
     "skills/testing-e2e-playwright/references/PLAYWRIGHT_PATTERNS.md": "0a5d10827f9d5cedb554dbfc94c6e45949e4af827c32f800cffe81ad573c296a",
-    "skills/windows-shell-interop/SKILL.md": "aecb464670a7f64a9a2d9b4432fe44446d77d4fe27949eb0bb70181cf7c5f1bf",
+    "skills/windows-shell-interop/SKILL.md": "8b2af6671c3cf569241f4b2054bef0f5b43daeae6e6161aa03a2c7ea5b5a7d37",
     "skills/windows-shell-interop/references/encoding_fix_ladder.md": "50068dec18cd95891fb1ca474337365e5a7ab86b5633025ed33a2649399ec737",
     "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "cee2a3df165e13499b0503c0669c275121a1a0545a4a09835155e78e50b1cbfa",
-    "skills/worktree-lifecycle/SKILL.md": "baff61fafef447eab6a5ddb5f8078dc5185181a3f7c0c75cef5ea1113c9fe999",
+    "skills/worktree-lifecycle/SKILL.md": "1b3fe731cfa2251b5e6a7c118e7f9c93279b41efd3b78e5699fa3ed77793884d",
     "skills/xp-agile-delivery/SKILL.md": "15bda15bb66d9ce68932c938a63fd94ff83c9f94599ea2f124a92ba73309ab35",
     "skills/xp-agile-delivery/assets/slice-note.md": "4a34e70c255cbe96551691d65a774c6a2456c748ca867ff2a8eac25cbc7c51fb",
     "skills/xp-agile-delivery/references/XP_AGILE_GUIDE.md": "958b436f8e9de3d54da909524009e3bcfce2165a17af0f419215e4813e8882c1",
@@ -99,5 +99,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "9c6b93185f18fb8dcf65e7942f334af5b6b421f9"
+  "source_commit": "7660cbebaed3add131676d6fc3ce58a96757ddbd"
 }

@@ -6,7 +6,7 @@ compatibility: Any coding agent on a git repository. Uses the worktree and clean
   repository declares (AGENTS.md or README); without any, plain git.
 metadata:
   author: coding-agent
-  version: 1.3.2
+  version: 1.4.0
   category: ci-cd
   subcategory: build-pipelines
   vendor: universal
@@ -36,7 +36,7 @@ Run fast affected checks within the working slice, then commit through the proje
 
 Do not create a worktree, dependency environment and service stack per micro-task. Do not build a new lifecycle daemon or lock registry. If git or native tooling refuses, investigate the specific owner/state conflict rather than bypassing it.
 
-After integration or explicit abandonment, remove only resources whose ownership and preservation are established: commit what is yours, `git worktree remove <path>` without `--force`, then `git branch -d <branch>`. Age or absence of a visible process is not deletion authority. Stop after the requested lifecycle transition is complete and its readback is confirmed, not after a cleanup sweep across the machine.
+After integration or explicit abandonment, remove only resources whose ownership and preservation are established: commit what is yours, `git worktree remove <path>` without `--force`, then `git branch -d <branch>`. A tree that holds a junction or symlink (a linked `node_modules`, a shared venv) goes through the repository's reaping verb, which unlinks links first: a raw `git worktree remove` can descend through a junction and delete its target. Age or absence of a visible process is not deletion authority. Stop after the requested lifecycle transition is complete and its readback is confirmed, not after a cleanup sweep across the machine.
 
 ## Hard rules
 - Never remove, move or reset a tree another writer owns, or whose owner you cannot establish.
@@ -48,6 +48,8 @@ When the integration itself conflicts, use a merge-conflict skill if one is inst
 
 ## Price the tree before you open it
 A linked worktree shares the object store and costs the checkout alone. A CLONE costs the checkout plus a full copy of `.git` — and a runtime's `isolation` flag may write a clone while calling it a worktree, so read what it produced rather than what it is named. Measure `.git`, multiply by the number of trees you are about to open, and compare against free disk: five children on a repository with a 13 GB `.git` wrote 81 GB of standalone clones and took the disk from 20 GB free to 1.9 GB (measured 2026-09-18). When the product does not fit, serialize the writes in one tree instead — do not open them and plan to clean up after, because a full disk fails writes silently, including the commit that would have preserved the work.
+
+Creating a tree also costs time: minutes in a large repository on Windows (about 4 min for 21k files, measured 2026-10-04). Reuse your own clean tree before opening another. Run the creation in the background with a deadline above its measured duration and never kill it midway: a half-created tree is left locked. If it was interrupted, confirm the original process has stopped, then rerun the same command of the repository's tooling instead of repairing the tree by hand.
 
 ## When a second tree is justified at all
 Never open one for a task that merely feels big. Close it the ordinary way: commit, remove unforced, delete the merged branch. A repository's census or reaping tool is for the tree that will NOT come out clean, not the first thing to reach for.
