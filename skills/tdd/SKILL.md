@@ -1,7 +1,7 @@
 ---
 name: tdd
 description: "Use when about to write code for a feature or bugfix and no failing test exists yet. Red-green-refactor. Layers -> layered-testing-executor. Untested -> legacy-code-change; unknown cause -> diagnosing-bugs."
-license: MIT
+license: Apache-2.0
 metadata:
   tags:
   - tdd
@@ -11,7 +11,7 @@ metadata:
   - mocking
   - tracer-bullet
   - pytest
-  version: 1.5.2
+  version: "1.5.3"
   author: coding-agent
   category: code-quality
   subcategory: quality-validation

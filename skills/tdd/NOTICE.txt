@@ -1,0 +1,10 @@
+NOTICE
+
+This skill (`tdd`) is adapted from the `tdd` skill of Matt Pocock
+(https://github.com/mattpocock/skills, path `skills/engineering/tdd/SKILL.md`), licensed under
+the MIT License, `Copyright (c) 2026 Matt Pocock`. The upstream license is kept verbatim in
+LICENSE-mattpocock-skills.txt. Baseline commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
+(2026-08-21).
+
+Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
+(LICENSE in this directory).

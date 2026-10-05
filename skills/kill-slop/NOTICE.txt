@@ -1,0 +1,10 @@
+NOTICE
+
+This skill (`kill-slop`) is adapted from the `kill-slop` skill of Imran Gadzhiev (iCodeCraft)
+(https://github.com/iCodeCraft/anti-slop, path `skills/kill-slop/SKILL.md`), licensed under the
+MIT License, `Copyright (c) 2026 Imran Gadzhiev`. The upstream license is kept verbatim in
+LICENSE-icodecraft-anti-slop.txt. Baseline commit: c50856a01bcc2e9332e9a13f730629622855c91c
+(2026-08-27).
+
+Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
+(LICENSE in this directory).

@@ -35,8 +35,9 @@ in its `SKILL.md` frontmatter.
 
 ## Credits
 
-Skills adapted from other projects keep the original license in their folder
-(`skills/<name>/LICENSE*`), and `NOTICE` credits the authors and the ideas we borrowed.
+Skills adapted from other projects ship our Apache-2.0 license for our modifications
+(`skills/<name>/LICENSE`) plus the original license (`skills/<name>/LICENSE-<owner>-<repo>.txt`),
+and `NOTICE` credits the authors and the ideas we borrowed.
 
 ## Generated files
 

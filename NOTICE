@@ -1,9 +1,10 @@
 Pragmatic Agent Skills
 Copyright 2026 Rafael Bittencourt
 
-Skills adapted from other projects keep the original license, shipped as a LICENSE file inside
-the skill's folder, and credit the original authors below. Each entry also states that the skill
-was modified from the original.
+Skills adapted from other projects keep the original license, shipped verbatim as its own
+LICENSE-<owner>-<repo>.txt file inside the skill's folder, and credit the original authors below.
+Our modifications are licensed under Apache-2.0 (the skill's LICENSE file); each entry also states
+that the skill was modified from the original.
 
 Adapted upstreams:
 
@@ -12,40 +13,40 @@ Adapted upstreams:
   Author: Matt Pocock
   Skill license: Apache-2.0
   Upstream license: MIT (skills/code-review/LICENSE-mattpocock-skills.txt)
-  Modified from the original for this repository.
+  Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
   License file: skills/code-review/LICENSE, skills/code-review/LICENSE-mattpocock-skills.txt
 - codebase-design
   Upstream: https://github.com/mattpocock/skills
   Author: Matt Pocock
-  Skill license: MIT
-  Upstream license: MIT (skills/codebase-design/LICENSE.txt)
+  Skill license: Apache-2.0
+  Upstream license: MIT (skills/codebase-design/LICENSE-mattpocock-skills.txt)
   Baseline commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
-  Modified from the original for this repository.
-  License file: skills/codebase-design/LICENSE.txt
+  Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
+  License file: skills/codebase-design/LICENSE, skills/codebase-design/LICENSE-mattpocock-skills.txt
 - diagnosing-bugs
   Upstream: https://github.com/mattpocock/skills
   Author: Matt Pocock
-  Skill license: MIT
-  Upstream license: MIT (skills/diagnosing-bugs/LICENSE.txt)
+  Skill license: Apache-2.0
+  Upstream license: MIT (skills/diagnosing-bugs/LICENSE-mattpocock-skills.txt)
   Baseline commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
-  Modified from the original for this repository.
-  License file: skills/diagnosing-bugs/LICENSE.txt
+  Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
+  License file: skills/diagnosing-bugs/LICENSE, skills/diagnosing-bugs/LICENSE-mattpocock-skills.txt
 - kill-slop
   Upstream: https://github.com/iCodeCraft/anti-slop
   Author: Imran Gadzhiev (iCodeCraft)
-  Skill license: MIT
-  Upstream license: MIT (skills/kill-slop/LICENSE.txt)
+  Skill license: Apache-2.0
+  Upstream license: MIT (skills/kill-slop/LICENSE-icodecraft-anti-slop.txt)
   Baseline commit: c50856a01bcc2e9332e9a13f730629622855c91c
-  Modified from the original for this repository.
-  License file: skills/kill-slop/LICENSE.txt
+  Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
+  License file: skills/kill-slop/LICENSE, skills/kill-slop/LICENSE-icodecraft-anti-slop.txt
 - tdd
   Upstream: https://github.com/mattpocock/skills
   Author: Matt Pocock
-  Skill license: MIT
-  Upstream license: MIT (skills/tdd/LICENSE.txt)
+  Skill license: Apache-2.0
+  Upstream license: MIT (skills/tdd/LICENSE-mattpocock-skills.txt)
   Baseline commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
-  Modified from the original for this repository.
-  License file: skills/tdd/LICENSE.txt
+  Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
+  License file: skills/tdd/LICENSE, skills/tdd/LICENSE-mattpocock-skills.txt
 
 Ideas credited (no text copied):
 

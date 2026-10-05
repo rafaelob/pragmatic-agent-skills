@@ -1,7 +1,7 @@
 ---
 name: diagnosing-bugs
 description: "Use to reproduce a bug from evidence, or a failing test whose code may be wrong, and isolate one cause before changing code. Not proving a seam is wired -> layered-testing-executor."
-license: MIT
+license: Apache-2.0
 metadata:
   tags:
   - debugging
@@ -11,7 +11,7 @@ metadata:
   - regression
   - code-quality
   - user_level:intermediate
-  version: 1.5.2
+  version: "1.5.3"
   author: coding-agent
   category: code-quality
   subcategory: analysis

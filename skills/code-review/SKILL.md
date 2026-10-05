@@ -14,7 +14,7 @@ metadata:
   - architecture-review
   - commit-hygiene
   - user_level:advanced
-  version: 2.4.4
+  version: "2.4.5"
   author: rafael
   category: code-quality
   subcategory: quality-validation

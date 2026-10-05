@@ -1,0 +1,12 @@
+NOTICE
+
+This skill (`code-review`) is house text with one partial graft: from the `code-review` skill
+of Matt Pocock (https://github.com/mattpocock/skills, path
+`skills/engineering/code-review/SKILL.md`, read at commit c0d6901 on 2026-08-06) it keeps the
+Spec vs Standards finding tags and the Fowler smell baseline in
+`references/CODE_REVIEW_CHECKLIST.md`. That upstream is licensed under the MIT License,
+`Copyright (c) 2026 Matt Pocock`; its license is kept verbatim in
+LICENSE-mattpocock-skills.txt.
+
+Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
+(LICENSE in this directory).

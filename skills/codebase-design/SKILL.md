@@ -1,7 +1,7 @@
 ---
 name: codebase-design
 description: "Use when designing or improving a module's interface (deep modules, small interfaces, clean seams) or finding and assessing shallow modules worth deleting, inlining or deepening. Moves -> refactoring-catalog."
-license: MIT
+license: Apache-2.0
 metadata:
   tags:
   - domain-expertise
@@ -12,7 +12,7 @@ metadata:
   - seam
   - testability
   - interface-design
-  version: 1.4.2
+  version: "1.4.3"
   author: coding-agent
   category: domain-expertise
   subcategory: frameworks

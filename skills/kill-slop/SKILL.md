@@ -1,11 +1,11 @@
 ---
 name: kill-slop
 description: "Use when code or a diff has unneeded files, dependencies, abstractions (factory of factory) or dead code. Strip them; keep the behavior. Not a PR review -> code-review. Not renames or moves -> legacy-code-change."
-license: MIT
+license: Apache-2.0
 compatibility: Python 3.13+ and git. Windows-safe checker is scripts/check_diff.py.
 metadata:
   author: coding-agent
-  version: "1.5.2"
+  version: "1.5.3"
   category: code-quality
   subcategory: quality-validation
   vendor: universal
