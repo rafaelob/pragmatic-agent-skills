@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Codex CLI with [features.multi_agent] and <home>/agents/*.toml
 metadata:
   author: rafael
-  version: 3.3.2
+  version: 3.3.3
   category: ai-agents
   subcategory: orchestration
   vendor: openai-codex
@@ -54,7 +54,7 @@ eligible role, brief it, and reconcile its delivery.
 - **What a role costs** — the tier pinned in its card.
 - **Concurrency** — read this home's `config.toml` live. The official key,
   `[agents] max_concurrent_threads_per_session`, counts spawned children only
-  (the primary thread is excluded; unset means Codex chooses the default).
+  (your own session is not counted; unset means Codex chooses the default).
   Some installs also expose a session-wide key (for example
   `[features.multi_agent_v2] max_concurrent_threads_per_session`) that counts
   the lead too. When both are set, each is enforced on its own: the children

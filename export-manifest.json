@@ -14,7 +14,7 @@
     "skills/codebase-design/SKILL.md": "cf28605017ec8b1d69aee8514dee9f3925bc49050601a8dc93bd8b00cc48cfde",
     "skills/codebase-design/references/deepening.md": "d719a0d3f9661c0eab8894164258964577c7532ed28f414baa6ab7f1c7cfd19f",
     "skills/codebase-design/references/design-it-twice.md": "e31c27e841f5313c11417ae48fb8cbc9cf852350fd314f74396d5d2d4eee2d03",
-    "skills/codex-subagent-routing/SKILL.md": "764100161c0439c93ec7f402b05741a7f6e3dd7853dd124177fc30ce422a965a",
+    "skills/codex-subagent-routing/SKILL.md": "d197303530604b939a698f904282caa1a06179bf56d80ea5e4a03638590dd1d3",
     "skills/codex-subagent-routing/references/codex-agents-config.md": "1eb6b7733c85b03216a8d57ec6c1b224faf2093839218ce6f45acd74291ef4fb",
     "skills/diagnosing-bugs/LICENSE.txt": "be13706e7e3cba1ddc15e41f98cd7ce7f1a94534cc761dd3ebae7ad746e0895f",
     "skills/diagnosing-bugs/SKILL.md": "db14adacecc854dff955750a7019236d4d08bb19bf8da201eb50d4c421b59466",
@@ -98,5 +98,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "be3f31f0e50e5890ed90ab2ee955bfab9d251ad1"
+  "source_commit": "ef3381ac20b02182a149b67a970f43d4210497ff"
 }
