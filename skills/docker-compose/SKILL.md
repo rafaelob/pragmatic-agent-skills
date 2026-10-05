@@ -4,7 +4,7 @@ description: "Use when a change must run against the repo's own Compose project 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 2.4.1
+  version: 2.4.2
   category: infrastructure
   subcategory: cloud-ops
   vendor: universal
@@ -39,13 +39,11 @@ metadata:
 Read the canonical Compose files, wrappers, project identity, profiles, env-file order and runner. Files may live outside the root; absence of a root file does not prove no Compose workflow exists.
 
 ## Verify the code actually running
-Check the image, mount or watch synchronization relevant to the test. A green run on an old copied source tree is not evidence for the new diff. Use the supported isolated runner where required. Health checks demonstrate their specific readiness contract, not that a feature works.
+Check the image, mount or watch synchronization relevant to the test. A green run on an old copied source tree is not evidence for the new diff. Health checks demonstrate their readiness contract, not that a feature works. For configuration edits, validate the effective selected configuration without exposing secrets. Reuse valid results instead of launching a parallel stack per reviewer.
 
-For configuration edits, validate the effective selected configuration without exposing secrets. For a changed service boundary, run the appropriate integration. For local pure logic, follow the existing fast test path. Reuse valid results instead of launching a new parallel stack for each reviewer.
+Honor machine resource admission and locks. Orphan removal is not taking the whole stack down, and none of this implies a Docker install, daemon change or global prune.
 
-Honor machine resource admission and locks. Cleanup needs an authorized target — orphan removal is not the same as taking the whole stack down — and none of this implies a Docker install, daemon change or global prune. Stop when the requested workflow or service behavior is verified and release gates are satisfied.
-
-Start from `assets/docker-compose.base.yml` when the project has no stack yet. For a setting that lives outside the stack (an env var, port or flag), keep one versioned home for it and record what changed, why and how to roll it back; when the failure is the Windows shell around Docker rather than Docker, use `windows-shell-interop`.
+Start from `assets/docker-compose.base.yml` when the project has no stack yet. A setting outside the stack (env var, port, flag) keeps one versioned home with what, why and rollback recorded; when the failure is the Windows shell around Docker, use `windows-shell-interop`.
 
 ## Reference files
 Read `references/buildkit-multistage-cache.md` when hardening a Dockerfile with multi-stage builds and BuildKit cache mounts. Read `references/dev/DOCKER_COMPOSE_DEV_WINDOWS.md` when the dev loop runs through Docker Desktop's WSL2 backend on Windows. Read `references/production/COMPOSE_HARDENING_CHECKLIST.md` before shipping a production Compose stack. Read `references/freshness-sources.md` when a Compose, BuildKit or base-image fact in this skill needs a current primary source.

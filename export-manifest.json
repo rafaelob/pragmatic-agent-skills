@@ -20,8 +20,7 @@
     "skills/diagnosing-bugs/SKILL.md": "db14adacecc854dff955750a7019236d4d08bb19bf8da201eb50d4c421b59466",
     "skills/diagnosing-bugs/references/LOOP_TAXONOMY.md": "839a78d69b61fc3091366326364ceb4d711c02684241332ca8bc61fa9a7fab5b",
     "skills/diagnosing-bugs/scripts/hitl_loop_template.py": "31be8e1d1c4640728b240812a40c2b4d5a0b67c4ccc9406045eb2c1edc418b1c",
-    "skills/docker-compose/SKILL.md": "65b144f0c6fad74b84721c024debc3411196809817b7eba96bde3e66a501ab5c",
-    "skills/docker-compose/assets/.dockerignore": "8c554fee216c800c8ff7dc54cb242e0163c77c8532b520f18906b3efe5e98f4a",
+    "skills/docker-compose/SKILL.md": "b43c014136b21b2476148a84c47ce4b9c5972df477094701ee8f842d0e27e1be",
     "skills/docker-compose/assets/Dockerfile.node": "abf1413e36dcf036ef5ed486ff3c630a1020ecc6ce622d3988da8337595cc306",
     "skills/docker-compose/assets/Dockerfile.python": "0ca9a8839f5fc578511a7c5b1c2c781a03ffac16fcb3c7dbd4de07807719776d",
     "skills/docker-compose/assets/dev/compose.dev.override.yml": "799db1780152bf4253e5d3837e2d198e9d5395093192b3b230837dabfcc9e3d0",
@@ -41,7 +40,7 @@
     "skills/layered-testing-executor/SKILL.md": "56d1a6edcf6dc9f46a282e246d23514919b59bdad254e8e66bc18991517ea45b",
     "skills/layered-testing-executor/assets/evidence-note.md": "93759f9d4219c4646b123eddc96c0115228d1d1aa1959ca3e09fd8cbeebcc294",
     "skills/layered-testing-executor/references/test-selection.md": "27aa6d1d38e6fde78819e5d4957cb44a2c1ec111680ed755bd8e143ac4c593af",
-    "skills/legacy-code-change/SKILL.md": "4c41bc8568b9308eb98ff03de02e5678b46ab02f0a1be702fdb6880d50370664",
+    "skills/legacy-code-change/SKILL.md": "e571e7a53fa3a9f6dad81752d1cc92c3589100a88ed328813e560bef893dc0c1",
     "skills/pragmatic-engineering/SKILL.md": "a775dbe785f0fab63d58ff4e6bae2b26eb514526d25bd7b6c0ba5af71744e5ce",
     "skills/refactoring-catalog/SKILL.md": "43dbfa7cd98168efb9d439d5456bd80114d3ae5a92371186c0485a4e5cc641d0",
     "skills/refactoring-catalog/references/AUTOMATED_REFACTORING_TOOLS.md": "1e356ddb9c95196b3ceddcd462b87b1e5d3670fd5b4f6576b5eb644d8ce5cffa",
@@ -99,5 +98,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "7660cbebaed3add131676d6fc3ce58a96757ddbd"
+  "source_commit": "be3f31f0e50e5890ed90ab2ee955bfab9d251ad1"
 }

@@ -4,7 +4,7 @@ description: "Use when changing code with no trusted tests (characterize, cut th
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 1.0.8
+  version: 1.0.9
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -27,19 +27,7 @@ metadata:
 
 # Legacy Code Change
 
-> Legacy code is code without tests you trust. The problem is never that it is
-> old — it is that you cannot change it and know whether you broke something.
->
-> The instinct is to clean it up first. That inverts the order: you would be
-> refactoring without a net, judging correctness against what you *think* it
-> does. Pin the behavior first, then change it.
-
-## Scope
-
-- A bug fix or small feature lands inside a module with no tests, or tests nobody trusts.
-- You need to change one behavior in a function that does six things.
-- Touching the code feels risky and nobody can say exactly what it currently does.
-- A rewrite has been proposed and the behavior it must preserve was never written down.
+Legacy code is code without tests you trust. Cleaning it up first would refactor without a net, judging correctness against what you *think* it does: pin the behavior first, then change it.
 
 ## Workflow
 
@@ -87,42 +75,28 @@ Exercise the changed path against real collaborators at least once; a test-doubl
 unproven. Remove temporary harnesses, debugging, dead toggles and redundant characterization tests; keep
 tests that pin undecided behavior.
 
-Size the seam and the new-behavior test to the change being made, not to the whole legacy module. Once
-the change's own checks pass, remove the scaffolding and stop — widen coverage again only when a new
-change, a failure, or an unresolved concern gives a reason to, not as routine re-checking of what is
-already green.
+Size the seam and the new-behavior test to the change, not to the whole legacy module. Once its checks pass, remove the scaffolding and stop; widen coverage again only when a new change, a failure or an unresolved concern gives a reason, not as routine re-checking of what is already green.
 
 ### 5. Refactor green-to-green; keep the final diff clean
 
-Refactor with `refactoring-catalog` for named moves. Run tests after each one. Keep behavior-preserving
-structure changes separable from behavior changes and reviewable apart. Use separate commits when
-they help a bisect tell them apart or let a reviewer read the risky one alone; a tiny change needs no
-fixed split.
+Refactor with `refactoring-catalog` for named moves, tests after each. Keep behavior-preserving structure changes separable from behavior changes; separate commits when they help a bisect or let a reviewer read the risky one alone.
 
 ## Gotchas
 
-- Do not clean up before the net exists.
-- Control nondeterminism before pinning behavior.
+- Control nondeterminism (clock, randomness, ordering) before pinning behavior.
 - Do not fix unrelated bugs while characterizing.
-- Cover the change and blast radius, not the entire module.
 
 ## Validation checklist
 
-- [ ] The changed behavior and reachable blast radius are characterized.
-- [ ] Quirks and nondeterminism are explicit.
+- [ ] The changed behavior and reachable blast radius are characterized; quirks and nondeterminism are explicit.
 - [ ] The seam is structural and the new-behavior test was observed red before the fix.
 - [ ] Real collaborators were exercised, or the boundary is explicitly BLOCKED.
 - [ ] Temporary scaffolding is removed and intentional pins have reasons.
 
-
 ## Cross-references
 
-- `tdd` — the red-green loop this borrows; there the behavior is new, here it already exists.
-- `refactoring-catalog` — named moves for step 5, once the net is in place.
-- Replacing the system instead of changing it: when that is the answer, plan the replacement as its own incremental migration (strangler-style cutover, parity checks), not as a stretched version of this workflow.
-- `diagnosing-bugs` — when the defect's cause is unknown; diagnose first, then change safely.
-- `codebase-design` — seam and module vocabulary used throughout.
-- Where these tests sit in the overall layering: decide from the project's own test layers, preferring the narrowest layer that proves the behavior; `layered-testing-executor` picks the layers for a change.
+- `tdd`: the red-green loop this borrows (there the behavior is new, here it exists). `diagnosing-bugs`: unknown cause, diagnose first. `codebase-design`: seam and module vocabulary. `layered-testing-executor`: which layers the change owes (decide from the project's own test layers, preferring the narrowest layer that proves the behavior).
+- Replacing the system instead of changing it is its own incremental migration (strangler-style cutover, parity checks), not a stretched version of this workflow.
 
 ## Attribution
 
