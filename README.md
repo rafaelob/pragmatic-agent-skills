@@ -1,17 +1,27 @@
 # Pragmatic agent skills
 
-A small, hand-picked set of agent skills in the open Agent Skills format: one folder per skill
-under `skills/`, each with a `SKILL.md`.
+A curated collection of coding-agent workflows in the open [Agent Skills format](https://agentskills.io/home).
+Each folder under `skills/` contains a `SKILL.md` and any supporting resources.
+
+## Getting started
+
+Read [Getting started](GETTING_STARTED.md) for installation guidance, task examples and revision
+tracking. Choose the skills relevant to your work and install each complete folder, including
+its supporting files and license notices.
+
+The workflows cover diagnosis, implementation, review, testing and engineering decisions.
+Runtime-specific orchestration skills require the named agent runtime and its subagent tools;
+installing a skill does not provide those tools or grant permission to use them.
 
 ## Skills
 
-- [`claude-code-orchestrator`](skills/claude-code-orchestrator/SKILL.md): Use when delegating on Claude Code: pick the subagent type, brief the mission, stop/resume/reconcile a child. Also 'delegar', 'rodar em paralelo', 'qual agente uso'. Slicing -> xp-agile-delivery. Not peers or other CLIs.
+- [`claude-code-orchestrator`](skills/claude-code-orchestrator/SKILL.md): Use when delegating on Claude Code: select a subagent role, brief the task, and start, stop, resume or reconcile a child. Not for peer sessions or other CLIs. Slicing -> xp-agile-delivery.
 - [`code-review`](skills/code-review/SKILL.md): Use when asked to review a diff, PR or uncommitted change for correctness, regressions and unneeded complexity. Not OWASP/authz -> security-review. Not deleting extras -> kill-slop.
 - [`codebase-design`](skills/codebase-design/SKILL.md): Use when designing or improving a module's interface (deep modules, small interfaces, clean seams) or finding and assessing shallow modules worth deleting, inlining or deepening. Moves -> refactoring-catalog.
 - [`codex-subagent-routing`](skills/codex-subagent-routing/SKILL.md): Use when delegating on Codex: select an eligible role, brief it as the mission (goal, scope, constraints, acceptance, delivery) and reconcile the delivery. Not for peer sessions or other CLIs.
 - [`diagnosing-bugs`](skills/diagnosing-bugs/SKILL.md): Use to reproduce a bug from evidence, or a failing test whose code may be wrong, and isolate one cause before changing code. Not proving a seam is wired -> layered-testing-executor.
-- [`docker-compose`](skills/docker-compose/SKILL.md): Use when a change must run against the repo's own Compose project (service won't start, ports, volumes). Reuse compose -p <project>. Test picks -> layered-testing-executor.
-- [`exhaustive-repo-cleanup-audit`](skills/exhaustive-repo-cleanup-audit/SKILL.md): Use when asked to clean up a repo ("limpar o repo", "remove the junk") or what it can delete ("o que dá pra apagar"): audits every file, deletes proven junk only on an action request. Dead code -> kill-slop.
+- [`docker-compose`](skills/docker-compose/SKILL.md): Use when a change must run against the repo's own Compose project (service won't start, ports, volumes). Reuse `docker compose -p <project>`. Test selection -> layered-testing-executor.
+- [`exhaustive-repo-cleanup-audit`](skills/exhaustive-repo-cleanup-audit/SKILL.md): Use when asked to audit or clean up a repository, or identify files safe to delete. Audit every file; delete proven junk only when removal is requested. Dead code -> kill-slop.
 - [`gemini-cli-orchestrator`](skills/gemini-cli-orchestrator/SKILL.md): Use when delegating on Antigravity (Gemini family): read the dispatch schema, pick the child by task and complexity, brief it as the mission, verify returned work. Not the separate Gemini CLI.
 - [`grok-build-orchestrator`](skills/grok-build-orchestrator/SKILL.md): Use when delegating on Grok Build via spawn_subagent: pick the child by task type and complexity from the live schema and brief it as the mission. Not peer sessions or other CLIs.
 - [`kill-slop`](skills/kill-slop/SKILL.md): Use when code or a diff has unneeded files, dependencies, abstractions (factory of factory) or dead code. Strip them; keep the behavior. Not a PR review -> code-review. Not renames or moves -> legacy-code-change.
@@ -38,6 +48,11 @@ in its `SKILL.md` frontmatter.
 Skills adapted from other projects ship our Apache-2.0 license for our modifications
 (`skills/<name>/LICENSE`) plus the original license (`skills/<name>/LICENSE-<owner>-<repo>.txt`),
 and `NOTICE` credits the authors and the ideas we borrowed.
+
+## Contributing
+
+See [Contributing](CONTRIBUTING.md) for bug reports, focused improvements and contributor credits.
+Changes to generated content must be applied to its source before the next export.
 
 ## Generated files
 

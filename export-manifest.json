@@ -2,8 +2,8 @@
   "exporter_version": "1",
   "files": {
     "NOTICE": "859de754a30988d4111dbe3b0c1490c93a862a52c79cd9a20ec4f2c429c40934",
-    "README.md": "5804a5913d5fa0d23026ccb07d8458312d34e87283edb88cecad55154cc76ba3",
-    "skills/claude-code-orchestrator/SKILL.md": "05f1b645523a615175a14b55f9d1f04ce0266eb611d5e2df1510ddd8177ff4c3",
+    "README.md": "c973aef99c19e391e8ba11e471a88dd5229854b8f7a7834f26b00467f30ab9f1",
+    "skills/claude-code-orchestrator/SKILL.md": "67912db0b71cfcd88c4eac6519c30bd736a389fe980bdab5d055016d938af16e",
     "skills/code-review/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/code-review/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
     "skills/code-review/NOTICE.txt": "f9fc44a874aaea252ab4cfe91bfc725a020899f3a8149836c4cb42d2cb759baa",
@@ -25,7 +25,7 @@
     "skills/diagnosing-bugs/SKILL.md": "9eca927385e09cd58d334d16df8957b8d152f421656cd1173f9d22e35feadf9d",
     "skills/diagnosing-bugs/references/LOOP_TAXONOMY.md": "839a78d69b61fc3091366326364ceb4d711c02684241332ca8bc61fa9a7fab5b",
     "skills/diagnosing-bugs/scripts/hitl_loop_template.py": "31be8e1d1c4640728b240812a40c2b4d5a0b67c4ccc9406045eb2c1edc418b1c",
-    "skills/docker-compose/SKILL.md": "b43c014136b21b2476148a84c47ce4b9c5972df477094701ee8f842d0e27e1be",
+    "skills/docker-compose/SKILL.md": "820bced2483b296c817e56c0bd9c1bb84e82c1ce1e53750e086620e2ba2ab237",
     "skills/docker-compose/assets/Dockerfile.node": "abf1413e36dcf036ef5ed486ff3c630a1020ecc6ce622d3988da8337595cc306",
     "skills/docker-compose/assets/Dockerfile.python": "0ca9a8839f5fc578511a7c5b1c2c781a03ffac16fcb3c7dbd4de07807719776d",
     "skills/docker-compose/assets/dev/compose.dev.override.yml": "799db1780152bf4253e5d3837e2d198e9d5395093192b3b230837dabfcc9e3d0",
@@ -35,7 +35,7 @@
     "skills/docker-compose/references/dev/DOCKER_COMPOSE_DEV_WINDOWS.md": "9edea8ecc8ac1e25fed8272a8d4dcbb20607377ff6b5a9e529760afd6ba095d4",
     "skills/docker-compose/references/freshness-sources.md": "019a1efd927fc83bf84a3a513d9fc10247cb6b26d9edfcc72d827fcde03a03c1",
     "skills/docker-compose/references/production/COMPOSE_HARDENING_CHECKLIST.md": "05f82482f27d83b0942d9b437a71bcd3980fca7cfc4ea2db991a3fc2176a112c",
-    "skills/exhaustive-repo-cleanup-audit/SKILL.md": "4a043662774a1d4473be00a86044a22e12541ad04eef31d6705c654f4e02c5e8",
+    "skills/exhaustive-repo-cleanup-audit/SKILL.md": "04bed405342f38394e35df8f8260a91e4e9c837b053e2eae0247850d44ee0e5d",
     "skills/gemini-cli-orchestrator/SKILL.md": "beb1fa89b4415213343e017d184168c686168b013aebea298b8b5a5a3ee53130",
     "skills/grok-build-orchestrator/SKILL.md": "3da6e1a4816b0b0858583ece29e94be74cd682bacea628337c566d72ed61daa1",
     "skills/kill-slop/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
@@ -79,10 +79,12 @@
     "skills/xp-agile-delivery/references/xp-choices.md": "382fe431bf87c50d1e6994c5307bc159cf7b37254a29a427313f193434b90a32"
   },
   "public_description_replacements": [
+    "claude-code-orchestrator",
     "docker-compose",
+    "exhaustive-repo-cleanup-audit",
     "testing-e2e-playwright"
   ],
-  "selection_sha256": "f2e42b00e5f18873df1a29322c75d9aa707bbb796362dc929c5cbbfffc075a29",
+  "selection_sha256": "151fe42d13c699a25bc0238410c158801fafd31a67697667203c10e32b0444c2",
   "skills": [
     "claude-code-orchestrator",
     "code-review",
@@ -107,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "299984ed8145feeac5c2661703e32c51ea8e0312"
+  "source_commit": "0dbf7195810e2adb68a5937390dcd10eca6b3ba5"
 }

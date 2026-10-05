@@ -1,6 +1,6 @@
 ---
 name: exhaustive-repo-cleanup-audit
-description: "Use when asked to clean up a repo (\"limpar o repo\", \"remove the junk\") or what it can delete (\"o que dá pra apagar\"): audits every file, deletes proven junk only on an action request. Dead code -> kill-slop."
+description: "Use when asked to audit or clean up a repository, or identify files safe to delete. Audit every file; delete proven junk only when removal is requested. Dead code -> kill-slop."
 license: Apache-2.0
 metadata:
   tags:

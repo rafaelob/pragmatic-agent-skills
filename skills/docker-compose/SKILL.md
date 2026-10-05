@@ -1,6 +1,6 @@
 ---
 name: docker-compose
-description: "Use when a change must run against the repo's own Compose project (service won't start, ports, volumes). Reuse compose -p <project>. Test picks -> layered-testing-executor."
+description: "Use when a change must run against the repo's own Compose project (service won't start, ports, volumes). Reuse `docker compose -p <project>`. Test selection -> layered-testing-executor."
 license: Apache-2.0
 metadata:
   author: coding-agent

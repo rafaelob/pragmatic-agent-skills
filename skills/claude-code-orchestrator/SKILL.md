@@ -1,6 +1,6 @@
 ---
 name: claude-code-orchestrator
-description: "Use when delegating on Claude Code: pick the subagent type, brief the mission, stop/resume/reconcile a child. Also 'delegar', 'rodar em paralelo', 'qual agente uso'. Slicing -> xp-agile-delivery. Not peers or other CLIs."
+description: "Use when delegating on Claude Code: select a subagent role, brief the task, and start, stop, resume or reconcile a child. Not for peer sessions or other CLIs. Slicing -> xp-agile-delivery."
 license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
