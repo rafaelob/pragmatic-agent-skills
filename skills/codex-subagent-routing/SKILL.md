@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Codex CLI with [features.multi_agent] and <home>/agents/*.toml
 metadata:
   author: rafael
-  version: 3.3.3
+  version: "3.3.4"
   category: ai-agents
   subcategory: orchestration
   vendor: openai-codex

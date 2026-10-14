@@ -4,7 +4,7 @@ description: "Use for UnicodeEncodeError, console mojibake (cp1252), PowerShell 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 1.6.0
+  version: "1.6.1"
   category: infrastructure
   subcategory: developer-environment
   vendor: universal
@@ -55,4 +55,4 @@ Read `references/encoding_fix_ladder.md` when a `UnicodeEncodeError` or mojibake
 ## Test the relevant portability contract
 Reproduce the actual command with the path or encoding that failed. For reusable interop code, include the applicable spaces, Unicode, failure exit and path-domain negative case. Do not build an exhaustive cross-product of all shells for a one-time read command. Do not claim Windows behavior from a Linux-only test.
 
-Preserve reparse points and unknown ownership; keep Windows and Linux dependency environments separate. No new daemon, global shell configuration or dependency installation merely to complete a local task. Remove only owned temporary artifacts and stop when the failing boundary works or its precise unsupported condition is reported.
+Preserve reparse points and unknown ownership; keep Windows and Linux dependency environments separate. No new daemon, global shell configuration or dependency installation merely to complete a local task. Remove only owned temporary artifacts.

@@ -1,6 +1,6 @@
 ---
 name: codebase-design
-description: "Use when designing or improving a module's interface (deep modules, small interfaces, clean seams) or finding and assessing shallow modules worth deleting, inlining or deepening. Moves -> refactoring-catalog."
+description: "Use when designing a module's interface (deep modules, small interfaces, seams) or judging whether a shallow module should be deleted, inlined or deepened. Removal with proof -> kill-slop. Moves -> refactoring-catalog."
 license: Apache-2.0
 metadata:
   tags:
@@ -12,7 +12,7 @@ metadata:
   - seam
   - testability
   - interface-design
-  version: "1.4.3"
+  version: "1.5.0"
   author: coding-agent
   category: domain-expertise
   subcategory: frameworks
@@ -30,7 +30,7 @@ metadata:
   upstream_author: Matt Pocock
   upstream_path: skills/engineering/codebase-design/SKILL.md
   adaptation_summary: 'Harness-neutral subagent dispatch (14bfbbd). Glossary
-    location is left to local conventions. House Design Workflow and Checklist kept.'
+    location is left to local conventions. House Design Workflow kept; diagram, Relationships, TS examples, Checklist and Rejected Framings dropped.'
   upstream_not_adopted:
     em-dash-sweep: Cosmetic 3216582; house keeps existing punctuation.
     Agent-tool: Cursor Task API; this catalog dispatches via the runtime in use.
@@ -57,18 +57,7 @@ Use these terms for the concepts below; they disambiguate "component," "service,
 
 ## Deep vs Shallow
 
-```
-Deep module             Shallow module (avoid)
-┌──────────────────┐    ┌──────────────────────────────┐
-│  Small Interface │    │       Large Interface         │
-├──────────────────┤    ├──────────────────────────────┤
-│                  │    │   Thin Implementation         │
-│ Deep Impl.       │    │   (mostly pass-through)       │
-│                  │    └──────────────────────────────┘
-└──────────────────┘
-```
-
-When designing an interface, ask:
+A deep module has a small interface over a deep implementation; a shallow one has a large interface over a thin, mostly pass-through implementation (avoid). When designing an interface, ask:
 - Can I reduce the number of methods?
 - Can I simplify the parameters?
 - Can I hide more complexity inside?
@@ -89,37 +78,13 @@ When designing an interface, ask:
 
 What is *not* a justification is a seam added because a second implementation might appear someday. Absent one of the reasons above, the seam is speculative — the cost is real now and the variation is hypothetical.
 
-## Relationships
-
-- A **Module** has exactly one **Interface** — the surface it presents to callers and tests.
-- **Depth** is a property of a **Module**, measured against its **Interface**.
-- A **Seam** is where a **Module**'s **Interface** lives.
-- An **Adapter** sits at a **Seam** and satisfies the **Interface**.
-- **Depth** produces **Leverage** for callers and **Locality** for maintainers.
-
 ## Designing for Testability
 
 Good interfaces make testing natural without special arrangements:
 
-1. **Accept dependencies, do not create them.**
-   ```typescript
-   // Testable — inject the gateway
-   function processOrder(order, paymentGateway) {}
+1. **Accept dependencies, do not create them.** Inject the gateway into the function instead of constructing it inside.
 
-   // Hard to test — hardwired dependency
-   function processOrder(order) {
-     const gateway = new StripeGateway();
-   }
-   ```
-
-2. **Return results, do not produce side effects invisibly.**
-   ```typescript
-   // Testable — observable return value
-   function calculateDiscount(cart): Discount {}
-
-   // Hard to test — side effect on shared state
-   function applyDiscount(cart): void { cart.total -= discount; }
-   ```
+2. **Return results, do not produce side effects invisibly.** An observable return value tests directly; a mutation of shared state does not.
 
 3. **Small surface area.** Fewer methods = fewer tests needed. Fewer parameters = simpler test setup.
 
@@ -136,22 +101,7 @@ When applying this skill to a module or cluster:
 
 ## Checking for Shallow Modules
 
-When asked to find or assess shallow modules, examine concrete candidates and apply the deletion test to each. A single caller, a single adapter or a thin wrapper is a lead, never proof: name what the boundary protects (volatility, contract, security, testability) and where its complexity would land without it. A caller count from `rg` misses dynamic dispatch, registrations, configuration and external consumers. For each candidate say delete, inline, deepen or keep, with that reason; change code only when asked, and delete through kill-slop's proof rules. A repo-wide ranked report of deepening opportunities is a larger exercise than this check: run it as its own piece of work, interviewing the owner on each candidate before changing anything.
-
-## Design Checklist
-
-- [ ] Every module has an agreed name using vocabulary from the glossary.
-- [ ] Depth is measured as leverage (behaviour per interface unit), not code-line ratio.
-- [ ] The deletion test has been applied: deletion reveals complexity redistribution, not nothing.
-- [ ] Each seam is justified by evidence from step 4 (a second adapter, independent volatility, an external contract or a security boundary) -- not added on the chance a second implementation might appear.
-- [ ] Dependencies are classified by category; testing strategy matches the category.
-- [ ] Tests assert on observable outcomes through the interface, not on internal state.
-
-## Rejected Framings
-
-- **Depth as implementation-lines / interface-lines ratio** (Ousterhout original): rewards padding the implementation with dead code. Use depth-as-leverage instead.
-- **"Interface" = TypeScript `interface` keyword or public methods**: too narrow. Interface here includes every fact a caller must know, including invariants and error modes.
-- **"Boundary"**: overloaded with DDD's bounded context. Say **seam** or **interface**.
+When asked to find or assess shallow modules, examine concrete candidates and apply the deletion test to each. A single caller, a single adapter or a thin wrapper is a lead, never proof: name what the boundary protects (volatility, contract, security, testability) and where its complexity would land without it. A caller count from `rg` misses dynamic dispatch, registrations, configuration and external consumers. For each candidate say delete, inline, deepen or keep, with that reason; this skill gives the design verdict and `kill-slop` owns the proof that a deletion is safe, so change code only when asked and delete through kill-slop's proof rules. Neither skill sets a size threshold for the verdict. A repo-wide ranked report of deepening opportunities is a larger exercise than this check: run it as its own piece of work, interviewing the owner on each candidate before changing anything.
 
 ## Reference Files
 

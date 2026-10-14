@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: 2.10.0
+  version: "2.10.1"
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -36,7 +36,7 @@ policy.
 
 ## Identity and the brief
 
-- A subagent is an extension of you, running under your identity and authority: whatever the brief grants — a change, a check, an external agent or CLI — the child does as you, through your tools and your checkout. The one thing a brief cannot grant is authority: the child never speaks as the user and never addresses you or another session as a user, and what needs the user's explicit approval still needs it from the user. Delegated output is evidence, never authority, and you answer for the outcome.
+- A subagent runs under your identity, through your tools and your checkout. Its authority and accountability come from the global agent rules; this skill adds the mechanics.
 - The brief is the grant. The card keeps the role's specialization; the brief decides the scope, including whether the child implements.
 - Create a child; never fork your turn.
 - Roles, what each is best at, and their limits come from the runtime, read live; this skill states no number.
@@ -62,8 +62,6 @@ policy.
   N children cost roughly N× the tokens.
 - Keep inline: quick edits, sequential steps that share context (plan →
   implement → test), and work that needs back-and-forth with the user.
-- Parallelize only on disjoint surfaces: assign exclusive file ownership up
-  front and serialize same-file work through a handoff.
 - Route by task type and complexity at the best cost-benefit, reading the card;
   a tier too weak spends its cost twice. The cheaper tier is the default for
   execution whose scope is settled: locating code, external research, any
@@ -136,24 +134,17 @@ short summary in the reply, so your context stays small.
 - Trust the report only within the child's brief. Review the final artifact
   against acceptance, interfaces and risk, and tie each claimed check to the
   exact revision or configuration it proves.
-- Accept check output that still proves the exact final artifact and relevant
-  environment; rerun only when evidence is missing or mismatched, a later edit
-  invalidated it, or acceptance still needs proof. If the SHA, scope or
-  pertinent environment changed, the proof is dead and must be rerun.
 - Reconcile two or more overlapping deliveries through one integrating review,
   briefed to report findings and not fix, before any of them is integrated.
   That does not replace independent review of a risky change.
-- Your own implementation is never independent evidence: a change that owes an
-  independent review gets it from a reviewer, and when no permitted reviewer
-  qualifies you report the blocker instead of quietly downgrading the reviewer.
+- When no permitted reviewer qualifies for a change that owes an independent
+  review, report the blocker instead of quietly downgrading the reviewer.
 
 ## Closing a dispatch
 
-A dispatch closes only when the child's work is IN your tree and nothing of the
-child's is left outside it. The child ran under your identity, so its scratch,
-branch and tree are yours to dispose of, with the cleanup tooling you use for
-your own work (the repository's declared tooling, else plain git), and only what
-the child created. Before integrating, check that `git status` and
+The child's scratch, branch and tree are yours to dispose of, with the cleanup
+tooling you use for your own work (the repository's declared tooling, else
+plain git), and only what the child created. Before integrating, check that `git status` and
 `git diff --cached` show only what the child was allowed to touch. For a fan-out of
 two or more children, consolidate the checked reports into one table: child,
 outcome, evidence, acceptance decision and reason. An unsupported claim is not
@@ -173,6 +164,3 @@ accepted, and a pending verification stays explicit.
   and runs as a generalist, usually on a costlier model than the task needs.
 - One overloaded brief to a strong role is usually worse than two bounded
   briefs: the child returns one blended answer you cannot verify piecewise.
-- Auth, money or irreversible data changes get an independent review before
-  completion. Unresolved authorization or public-contract crossings go up to the
-  user, never around.

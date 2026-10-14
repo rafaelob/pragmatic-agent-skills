@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Grok Build TUI with spawn_subagent
 metadata:
   author: rafael
-  version: 1.4.0
+  version: "1.4.1"
   category: ai-agents
   subcategory: orchestration
   vendor: grok

@@ -1,10 +1,10 @@
 ---
 name: test-audit
-description: "Use when adding/changing a test or auditing/pruning low-value, implementation-coupled or duplicate tests. Not red-green -> tdd. Not layer choice -> layered-testing-executor. Untested code to change -> legacy-code-change."
+description: "Use when a test's value is in doubt or to audit and prune low-value, implementation-coupled or duplicate tests already in the suite. Writing a new test -> tdd. Layer choice -> layered-testing-executor."
 license: Apache-2.0
 metadata:
   author: rafael
-  version: 1.1.2
+  version: "1.2.0"
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -14,37 +14,23 @@ metadata:
   output_format: markdown
   modality: text
   freshness: 2026-09
-  short-description: Gate a new test before it lands; prune low-value tests with evidence
+  short-description: Audit and prune low-value tests with evidence
   tags:
   - testing
   - test-audit
   - test-pruning
   - change-detector
-  - authoring-gate
   - mocking
   - duplicate-tests
 ---
 
 # A test is a cost until it earns its place
 
-Two modes, one value bar. The **gate** judges each test at write time. The **audit** hunts existing tests that restate the code, duplicate stronger proof, couple to implementation, or keep test-only production seams alive. Optimize for confidence per line maintained, never for a deletion count.
-
-## Authoring gate
-
-Answer all four before adding or changing a test. A missing answer means: do not add it yet.
-
-1. **Contract.** Which observable behavior, invariant or independent contract does it protect?
-2. **Regression.** Which credible change to the code makes it fail?
-3. **Owner.** Why does existing coverage not already catch that? A contract has one primary owner, at the strongest boundary that can see it. A second layer needs its own risk that the owner cannot reach, such as a transport or lifecycle failure. Extend a table or shared fixture instead of adding a near-copy.
-4. **Seam.** Does it need production code (an export, flag, wrapper or injection hook) that no production caller needs? If so, test at the real boundary instead.
-
-Then check the [junk patterns](#junk-patterns). A match fails the gate unless the [retention bar](#retention-bar) names the contract the test guards on its own. A test that breaks under a refactor that preserves behavior asserts implementation: rewrite it at the owning boundary before it lands.
-
-**Bug regression rule.** The test must fail on the pre-fix code, for the reason the bug exists, and pass after the fix. One that never failed proves the mock, not the fix. When the pre-fix failure cannot be reproduced (the old environment is gone, or the failure is nondeterministic), say so as a weaker-evidence limit instead of claiming a red that was never observed. One regression at the owner boundary covers the bug; do not replay it at every layer it crosses.
+This skill owns the pruning of tests that already exist: hunt the ones that restate the code, duplicate stronger proof, couple to implementation, or keep test-only production seams alive. Writing a new test, with its gate and bug-regression rule, belongs to `tdd`. Optimize for confidence per line maintained, never for a deletion count.
 
 ## Junk patterns
 
-The gate rejects a new test that matches one; an audit hunts existing ones.
+An audit hunts existing tests that match one; `tdd`'s gate refuses a new test that matches one, and reads this list as the single authority.
 
 - probes with no assertion, written to touch lines;
 - a value compared with itself, or a copier that mirrors its own input;
@@ -64,7 +50,7 @@ The gate rejects a new test that matches one; an audit hunts existing ones.
 
 ## Value bar
 
-A test pays for its upkeep by protecting behavior, a credible regression or an independent contract. In an audit, a test that must change for a behavior-preserving reorganization is suspect, not automatically deletable; the gate still refuses new ones like it.
+A test pays for its upkeep by protecting behavior, a credible regression or an independent contract. In an audit, a test that must change for a behavior-preserving reorganization is suspect, not automatically deletable; `tdd`'s gate still refuses new ones like it.
 
 Before judging a candidate, read the repo's instruction files, then the whole test and its production owner: entry point, callers, callees, sibling implementations, overlapping tests and the history of why it exists. When the test claims behavior of a dependency, read the dependency's source or types.
 
@@ -97,22 +83,18 @@ Fill every field before deleting a candidate; a missing field means it is not re
 
 One coherent owner-boundary batch. Delete test-only exports, globals, wrappers and dead production paths instead of keeping aliases. Move a retained regression to its canonical owner; fold repeated package or dependency assertions into one generic contract. Prefer net-negative production LOC. Never add a replacement test that restates the same implementation, and never delete uncertain candidates to raise a count.
 
-## Campaign
+## Execution and handoff
 
 To prune one subsystem's whole test surface (every test file a module or component owns), do it as one batch: discover across the whole surface first, fill the evidence fields per candidate, make one edit batch, validate once, hand off once. Keep the plan in the report or PR text, not in a side file. A surface too big for one session is split into coherent batches, never stretched.
 
-## Validation
-
-Do not edit while a test run is in flight in the same checkout.
+Do not edit while a test run is in flight in the same checkout. Validate:
 
 1. Run the smallest owner tests and their siblings with the repo's own runner: the delta only.
 2. If you removed a source grep or manifest check, run the script or dry-run that owns the real contract.
 3. Run the repo's formatter on the touched files, then `git diff --check`.
 4. Read `git diff --numstat` and report production LOC separately from test and test-support LOC.
 
-Never run a full suite as part of this skill; that happens only when the user asks. When only a full suite could prove a deletion, name that gap and ask instead of deleting on hope.
-
-## Handoff
+Hand off:
 
 - root cause and the junk categories removed;
 - production simplifications unlocked;

@@ -34,7 +34,7 @@ Turn a broad cleanup request into a coverage-backed audit. Only an ACTION reques
 
 ### Direction of the wiring proof
 
-This skill proves that NOTHING uses a file, so it can go. `layered-testing-executor` proves that SOMETHING reaches a new surface, so a change can be called delivered. Pick by direction: cleaning an existing tree is here; judging whether a fresh diff is reachable is there. A no-caller finding here is a reason to delete, never evidence that a feature is wired, and a passing seam matrix there says nothing about whether an old file is still needed.
+No caller here ≠ wired; wiring proof → `layered-testing-executor`.
 
 ## Workflow
 
@@ -67,7 +67,7 @@ Proof before removing, all four:
 Removal:
 
 - Untracked: delete it by name, one literal path at a time, never a glob or a recursive sweep.
-- Tracked: `git rm` by literal path, then run the build or check that could reference the file (not the full suite); commit by explicit path through the commit tooling the repository declares (plain `git commit -- <paths>` if none), the message listing each file with its proof.
+- Tracked: `git rm` by literal path, then run the build or check that could reference the file; commit by explicit path through the commit tooling the repository declares (plain `git commit -- <paths>` if none), the message listing each file with its proof.
 - No backup, quarantine, `archive/` or `old/` folder: for tracked files git is the archive.
 - Anything that misses one proof is reported, never deleted.
 
@@ -113,4 +113,4 @@ Read the repository's AGENTS.md or README for paths it declares as live state, c
 
 ## Validation
 
-Before finishing: `git show --stat <removal commit>` lists exactly the tracked removals reported, the build or check that could reference each file ran green on it (not the full suite), and each untracked deletion is reported with its class. A question changed nothing. Check the report has both the coverage and judgment layers, and that no secret material was printed.
+Before finishing: `git show --stat <removal commit>` lists exactly the tracked removals reported, the build or check that could reference each file ran green on it, and each untracked deletion is reported with its class. A question changed nothing. Check the report has both the coverage and judgment layers, and that no secret material was printed.

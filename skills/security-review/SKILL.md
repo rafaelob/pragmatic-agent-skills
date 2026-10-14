@@ -30,4 +30,4 @@ Prefer the relevant existing negative test plus its permitted control. Exercise 
 
 Use scanners already approved for the target and interpret findings. Read `references/SAST_DAST_TOOLING_GUIDE.md` when choosing or interpreting a SAST/DAST/SCA tool. Do not run live scans, destructive inputs or external data egress merely because credentials exist. Do not raise security thresholds, remove negative cases or mark unavailable checks passed for speed.
 
-Report exploit path, consequence, evidence and scope. Distinguish a confirmed defect from untested exposure. Reuse valid test evidence and retest the corrected boundary; no mandatory repeated full audit. Stop when the scoped review is complete, with any unresolved material security risk explicitly blocking the claim it affects.
+Report exploit path, consequence, evidence and scope. Distinguish a confirmed defect from untested exposure. Retest the corrected boundary. Any unresolved material security risk explicitly blocks the claim it affects.

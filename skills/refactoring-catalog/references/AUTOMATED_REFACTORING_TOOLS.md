@@ -135,13 +135,13 @@ jobs:
   python-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@<full-sha>  # current major v6; pin to full SHA
+      - uses: actions/checkout@<full-sha>  # current major v7 (v7.0.1, GitHub releases 2026-10-12); pin to full SHA
       - uses: astral-sh/ruff-action@<full-sha>  # pin third-party actions to full SHA
         with: { args: "check --diff" }
   java-rewrite:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@<full-sha>  # current major v6; pin to full SHA
+      - uses: actions/checkout@<full-sha>  # current major v7 (v7.0.1, GitHub releases 2026-10-12); pin to full SHA
       - uses: actions/setup-java@<full-sha>  # pin to full SHA
         with: { distribution: temurin, java-version: 21 }
       - run: ./gradlew rewriteDryRun

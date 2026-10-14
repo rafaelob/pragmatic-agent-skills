@@ -1,10 +1,10 @@
 ---
 name: legacy-code-change
-description: "Use when changing code with no trusted tests (characterize, cut the smallest seam, red then green). Trusted tests -> refactoring-catalog. New code -> tdd. Unknown cause -> diagnosing-bugs."
+description: "Use to change code that has no trusted tests, whether a fix, a feature or a refactor request: characterize, cut the smallest seam, red then green. Trusted tests, structure only -> refactoring-catalog. New code -> tdd."
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 1.0.9
+  version: "1.1.1"
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -28,6 +28,8 @@ metadata:
 # Legacy Code Change
 
 Legacy code is code without tests you trust. Cleaning it up first would refactor without a net, judging correctness against what you *think* it does: pin the behavior first, then change it.
+
+This skill starts from missing trust in the tests, whatever the change is: a fix, a feature or a restructuring request on untested code all begin here. Once the behavior is pinned, a structure-only change continues in `refactoring-catalog`. With trusted tests already in place, a structure-only request goes straight to `refactoring-catalog` and a behavior change to `tdd`. When the cause of a failure is unknown, use `diagnosing-bugs` first.
 
 ## Workflow
 
@@ -75,8 +77,7 @@ Exercise the changed path against real collaborators at least once; a test-doubl
 unproven. Remove temporary harnesses, debugging, dead toggles and redundant characterization tests; keep
 tests that pin undecided behavior.
 
-Size the seam and the new-behavior test to the change, not to the whole legacy module. Once its checks pass, remove the scaffolding and stop; widen coverage again only when a new change, a failure or an unresolved concern gives a reason, not as routine re-checking of what is already green.
-
+Size the seam and the new-behavior test to the change, not to the whole legacy module.
 ### 5. Refactor green-to-green; keep the final diff clean
 
 Refactor with `refactoring-catalog` for named moves, tests after each. Keep behavior-preserving structure changes separable from behavior changes; separate commits when they help a bisect or let a reviewer read the risky one alone.

@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Antigravity (Gemini family) with invoke_subagent
 metadata:
   author: rafael
-  version: 1.3.1
+  version: "1.3.2"
   category: ai-agents
   subcategory: orchestration
   vendor: gemini-cli

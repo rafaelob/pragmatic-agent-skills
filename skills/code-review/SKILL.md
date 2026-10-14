@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: "Use when asked to review a diff, PR or uncommitted change for correctness, regressions and unneeded complexity. Not OWASP/authz -> security-review. Not deleting extras -> kill-slop."
+description: "Use when asked to review a diff, PR or uncommitted change for correctness and regressions. Not OWASP/authz -> security-review. Not deleting extras -> kill-slop."
 license: Apache-2.0
 metadata:
   tags:
@@ -43,9 +43,9 @@ For a finding, explain the location, plausible input or call path, incorrect res
 ## Review tests for information
 Ask what failure each new test detects, whether it exercises production behavior, and whether its expected result is independent. Flag brittle snapshots, mock-only assertions, exact incidental wording, duplicate layers and unchanged trivial wrappers when they add no distinct protection. Do not demand another test merely because a file changed or a percentage dropped; preserve any genuinely required threshold until its owner changes it.
 
-Request a targeted additional check only for a concrete uncovered risk. Reuse valid evidence from the implementer after checking candidate, configuration and scope. Evidence from a different environment cannot prove that environment's integration. No automatic full rerun, new test framework or expanded audit.
+Request a targeted additional check only for a concrete uncovered risk. Evidence from a different environment cannot prove that environment's integration.
 
-Report the material findings and limits. A read-only review does not authorize edits, CI changes or remote scans. Approve or finish the review once the requested scope is assessed; repeat only for a changed candidate, answered blocker or newly discovered risk. A review report is not a replacement for the project's release decision.
+Report the material findings and limits. A read-only review does not authorize edits, CI changes or remote scans. A review report is not a replacement for the project's release decision.
 
 See [an optional finding example](assets/finding-example.md) when a substantive defect needs a structured explanation. Read `references/CODE_REVIEW_CHECKLIST.md` for an optional Fowler smell baseline, consulted only when the change at hand suggests one.
 

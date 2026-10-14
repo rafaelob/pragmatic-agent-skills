@@ -1,11 +1,11 @@
 ---
 name: kill-slop
-description: "Use when code or a diff has unneeded files, dependencies, abstractions (factory of factory) or dead code. Strip them; keep the behavior. Not a PR review -> code-review. Not renames or moves -> legacy-code-change."
+description: "Use to remove unneeded files, dependencies, abstractions or dead code from code or a diff, with proof; keep behavior. Module shape -> codebase-design. Trade-off -> pragmatic-engineering. PR review -> code-review."
 license: Apache-2.0
 compatibility: Python 3.13+ and git. Windows-safe checker is scripts/check_diff.py.
 metadata:
   author: coding-agent
-  version: "1.5.3"
+  version: "1.6.0"
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -40,19 +40,6 @@ metadata:
 
 Force a minimal, merge-ready diff. Prefer the smallest change that fully solves the stated task.
 
-## Hard rules
-
-- NEVER create a file unless the task clearly needs it or a navigability split below applies
-- NEVER refactor unrelated code "while you're here"
-- NEVER add comments that restate what the code already says
-- NEVER expand scope beyond the user's request
-- NEVER invent TODOs, stubs, or "for later" scaffolding
-- NEVER search or list outside the workspace root unless the user explicitly asks; outside it, read only a file the governing rules name by path
-- NEVER invent Clean Architecture / SOLID folder trees unless the repo already uses that layout
-- MUST match existing project patterns before inventing new ones
-- MUST prefer editing an existing file over adding a new one
-- MUST delete dead code you introduce; do not leave unused imports/vars
-
 ## Dead-code finders
 
 Run the finders on the diff's files; go repo-wide only on an explicit "remove dead code" request. Delete only code proven dead: no hit from `git grep -n --untracked` (or `rg -F --hidden --no-ignore-vcs -g '!.git'`) across the repo, config, `.github/`, entrypoints and registrations, and the tests stay green after the deletion. A finder nominates; it never authorizes "delete everything flagged."
@@ -63,6 +50,12 @@ Run the finders on the diff's files; go repo-wide only on an explicit "remove de
 - Check before deleting: dynamic dispatch/reflection (`getattr`, registries, plugin entry points), CLI/HTTP route registration, pytest fixtures/conftest, `__all__`/public re-exports, framework hooks/templates/serialization/ORM fields, and any installed or vendored payload that a generator or installer owns.
 - Delete in small commits, each carrying the finder output plus the tests as evidence.
 - Removing a path takes what only it used: its flags, modes, aliases, fallbacks, state, permissions and config. Verify the surviving flow, including what the deleted path assumed about navigation, permissions or persisted data.
+
+## Boundary with `codebase-design`
+
+This skill answers one question about code that exists: is this unneeded, and can I prove it? It removes what is proven unneeded and leaves the design alone. `codebase-design` answers a different one: what shape should a module's interface and seams have, and should a shallow module be deleted, inlined or deepened? That is a design judgment, made by the deletion test and the evidence for a seam, never by a size threshold.
+
+Hand off both ways. When this skill meets a wrapper or layer whose value is a design question, ask `codebase-design` for the verdict; when `codebase-design` decides a module goes, the deletion comes back here and needs this skill's proof (finder output, repo-wide search, tests green).
 
 ## User intent wins
 
@@ -76,7 +69,7 @@ Do not override an explicit ask in the name of kill-slop. If the ask is ambiguou
 
 **Split only when ALL of these hold:**
 
-1. **Pain now** — the file is already hard to navigate (roughly 300–400 lines, or mixed unrelated concerns) **and** your change would make it worse
+1. **Pain now** — the file is already hard to navigate or mixes unrelated concerns **and** your change would make it worse
 2. **One unit** — you are extracting a single cohesive piece with a clear name
 3. **Local fit** — the new file follows an existing nearby pattern. If there is no pattern, colocate beside the caller
 
@@ -94,13 +87,6 @@ The bundled checker is optional diagnosis, never a gate. Read `scripts/check_dif
 python -X utf8 <path-to-this-skill>/scripts/check_diff.py
 python -X utf8 <path-to-this-skill>/scripts/check_diff.py --base HEAD
 ```
-
-## Style
-
-- Prefer boring, readable code over cleverness
-- Handle real error paths the task needs; skip speculative ones
-- Names should explain intent; if you need a comment, rename instead
-- Tests: one per regression you can name, at the layer that owns it; a bug fix gets its nearest failing test first even where nothing was tested. No test that merely mirrors the implementation
 
 ## Output
 

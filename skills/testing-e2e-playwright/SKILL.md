@@ -4,7 +4,7 @@ description: "Use when writing, fixing or de-flaking a Playwright/e2e browser te
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 1.3.1
+  version: 1.3.2
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -33,6 +33,6 @@ Drive roles, labels and meaningful user interactions rather than incidental DOM 
 ## Keep signals reliable
 Use existing waiting/assertion primitives and sanitized failure traces. A retry that succeeds after failure is flaky evidence, not an unqualified first-run PASS. Investigate fixture isolation, timing and system behavior before raising retries or timeouts. Quarantine only with an explicit gap, owner and correction path; it does not restore the protected claim by itself.
 
-A changed global component, browser-specific defect or required matrix can justify broader runs. Otherwise choose relevant journeys and required gates. Do not rerun unchanged successful suites for reassurance. Zero collected tests, old assets or unavailable required dependencies prove nothing about the journey. Stop when the intended browser behavior is evidenced without unexplained flakiness affecting the claim.
+A changed global component, browser-specific defect or required matrix can justify broader runs. Otherwise choose relevant journeys and required gates. Zero collected tests, old assets or unavailable required dependencies prove nothing about the journey.
 
 The pre-delivery pass over a changed screen (real browser, every state, accessibility, the real backend) is a separate done-gate: run it before calling the UI done, and do not stretch a test to stand in for it. When a cheaper layer can hold the same rule, use `layered-testing-executor`.

@@ -1,12 +1,12 @@
 ---
 name: worktree-lifecycle
-description: "Use when a second concurrent writer needs an isolated tree, or a git worktree needs census, ownership check or disposal. One owner per tree. Not merge conflicts. Whole-repo cleanup -> exhaustive-repo-cleanup-audit."
+description: "Use when a second concurrent writer needs an isolated tree, or a git worktree needs census, ownership check or disposal. One owner per tree. Not merge conflicts. Whole-repo cleanup is out of scope."
 license: MIT
 compatibility: Any coding agent on a git repository. Uses the worktree and cleanup tooling the
   repository declares (AGENTS.md or README); without any, plain git.
 metadata:
   author: coding-agent
-  version: 1.4.0
+  version: "1.4.2"
   category: ci-cd
   subcategory: build-pipelines
   vendor: universal
@@ -32,17 +32,12 @@ Read the project's concurrency policy (its AGENTS.md or README) and run `git wor
 Confirm owner, branch, base and intended write scope. A directory without a current owner is not disposable. Preserve unknown ownership and pending staged/unstaged work. Do not edit trunk and a slice concurrently as if they were the same workspace.
 
 ## Integrate with appropriate evidence
-Run fast affected checks within the working slice, then commit through the project's declared commit path (plain `git commit` of explicit paths if none). A merge that changes relevant behavior can invalidate local results; an unrelated new read does not. Do not repeat a check that the same approved evidence already covers.
-
+Run fast affected checks within the working slice, then commit through the project's declared commit path (plain `git commit` of explicit paths if none).
 Do not create a worktree, dependency environment and service stack per micro-task. Do not build a new lifecycle daemon or lock registry. If git or native tooling refuses, investigate the specific owner/state conflict rather than bypassing it.
 
 After integration or explicit abandonment, remove only resources whose ownership and preservation are established: commit what is yours, `git worktree remove <path>` without `--force`, then `git branch -d <branch>`. A tree that holds a junction or symlink (a linked `node_modules`, a shared venv) goes through the repository's reaping verb, which unlinks links first: a raw `git worktree remove` can descend through a junction and delete its target. Age or absence of a visible process is not deletion authority. Stop after the requested lifecycle transition is complete and its readback is confirmed, not after a cleanup sweep across the machine.
 
-## Hard rules
-- Never remove, move or reset a tree another writer owns, or whose owner you cannot establish.
-- Never force: no `worktree remove --force`, `branch -D`, `reset --hard`, `clean -fd`, `checkout -- <path>`, `restore` or `stash` on a shared tree. Git refuses an unmerged branch or a dirty tree on purpose.
-- Never discard uncommitted work; commit or preserve it first.
-- With no supported tool for a leftover, delete it file by file, naming each path. If a guard refuses a command, do not bypass it (env var, flag, wrapper): use the supported path, or ask the user for explicit approval of that exact deletion. Approval never lifts a guard, and never hand a refused command to the user to paste and run.
+**Hard rule:** never remove, move or reset a tree you do not own, never discard uncommitted work, and never force (`worktree remove --force`, `branch -D`, `reset --hard`, `clean -fd`, `checkout -- <path>`, `restore`, `stash` on a shared tree): git refuses an unmerged branch or a dirty tree on purpose. A junction or symlink inside a tree is unlinked by the reaping verb, as above. With no supported tool for a leftover, delete it file by file naming each path, and never bypass a guard that refuses.
 
 When the integration itself conflicts, use a merge-conflict skill if one is installed.
 

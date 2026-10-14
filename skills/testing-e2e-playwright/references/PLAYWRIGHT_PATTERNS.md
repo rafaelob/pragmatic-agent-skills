@@ -113,8 +113,8 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v<CURRENT_VERSION>-noble  # pin to your project's Playwright version
     steps:
-      - uses: actions/checkout@<full-sha>  # current major v6; pin to full SHA
-      - uses: actions/setup-node@<full-sha>  # current major v6; pin to full SHA
+      - uses: actions/checkout@<full-sha>  # current major v7 (v7.0.1, GitHub releases 2026-10-12); pin to full SHA
+      - uses: actions/setup-node@<full-sha>  # current major v7 (v7.1.0, GitHub releases 2026-10-12); pin to full SHA
         with:
           node-version-file: '.node-version'  # commit a line verified as Active/Maintenance LTS
       - run: npm ci
@@ -160,7 +160,7 @@ import AxeBuilder from '@axe-core/playwright';
 test('page meets WCAG 2.1 AA', async ({ page }) => {
   await page.goto('/dashboard');
   const results = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa'])
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])  // wcag2a/wcag2aa alone cover only WCAG 2.0 (https://playwright.dev/docs/accessibility-testing, 2026-10-12)
     .exclude('.third-party-widget')  // known third-party violations
     .analyze();
   expect(results.violations).toEqual([]);
@@ -172,7 +172,7 @@ test('page meets WCAG 2.1 AA', async ({ page }) => {
 // Shared fixture
 async function checkAccessibility(page: Page) {
   const { violations } = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa'])
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
     .analyze();
   expect(violations).toEqual([]);
 }
