@@ -4,7 +4,7 @@ description: "Use when a design trade-off needs a choice: simplest thing, revers
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 1.0.0
+  version: 1.1.0
   category: domain-expertise
   subcategory: frameworks
   vendor: universal
@@ -53,6 +53,19 @@ Stop exploring once a step settles the choice, but always price the undo (step 2
 | Refactor early and often | Restructure in small behaviour-preserving steps with tests green, apart from feature changes. Real duplication and unclear intent earn it; taste alone does not. |
 | Estimates | Give a range with its assumptions and what would move it; re-estimate as the code teaches you. Performance claims are timed, not assumed. |
 
+## Naming and language
+
+- **English throughout the code:** identifiers, comments, docstrings, test names, and logs and errors meant for developers. User-facing copy follows the product's locale.
+- **The ecosystem's convention, enforced by the project's linter:**
+  - Python (PEP 8): `snake_case` for functions, variables and modules; `PascalCase` for classes; `UPPER_SNAKE_CASE` for constants.
+  - JS/TS: `camelCase` for variables and functions; `PascalCase` for classes, types and components; `UPPER_SNAKE_CASE` for module constants.
+  - Go: `MixedCaps`, with an exported name starting with a capital.
+  - Rust: `snake_case` / `PascalCase`.
+  - SQL: `snake_case`.
+  - File names follow the framework's convention.
+- **Names state intent:** verbs for functions (`load_invoice`), nouns for values, `is_`/`has_` for booleans, units in the name (`timeout_s`), and no abbreviations beyond the domain's own.
+- **Code already written in another language:** new and touched code is English. Do not bulk-rename untouched code.
+
 ## "Is this over-engineered?"
 
 Ask each question; a bad answer means cut, defer or reuse.
@@ -78,7 +91,7 @@ An extra found in a diff is stripped with `kill-slop`, keeping the behaviour.
 ## What this is not
 
 - Not a process: no ceremony, planning documents or gates of its own.
-- Not a style guide: it never overrides the repository's conventions or the user's explicit instructions.
+- Not a style guide beyond naming and language: it never overrides the repository's conventions or the user's explicit instructions.
 - Not a licence to skip tests or safety checks in the name of "simple".
 - Not a rule against abstraction: a seam that already pays for itself stays.
 - Not a substitute for the book: it records decisions, not the book's arguments or examples.

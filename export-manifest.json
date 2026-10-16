@@ -48,7 +48,7 @@
     "skills/layered-testing-executor/assets/evidence-note.md": "93759f9d4219c4646b123eddc96c0115228d1d1aa1959ca3e09fd8cbeebcc294",
     "skills/layered-testing-executor/references/test-selection.md": "27aa6d1d38e6fde78819e5d4957cb44a2c1ec111680ed755bd8e143ac4c593af",
     "skills/legacy-code-change/SKILL.md": "6f4d17b349107baef79688479c74f7360c6386a657b69d5105bf933e0bd4e56c",
-    "skills/pragmatic-engineering/SKILL.md": "f814150587a59034eedf8c1f0e65e62daf08e6c90bb1bf3e752f4ce8fd82eb32",
+    "skills/pragmatic-engineering/SKILL.md": "fdf5451d1b34bcbf6cf41fa4ed725c03a91c1c6bb3ce6a046af7f01eea54f846",
     "skills/refactoring-catalog/SKILL.md": "3c51b74d70e944133e4fd51c96e67a284b90d60bef3281cba95b6d269d432e01",
     "skills/refactoring-catalog/references/AUTOMATED_REFACTORING_TOOLS.md": "d07ff0e8ad77f298193a2defc3002d81109aeae8ced78fbf1045116fcd831ccf",
     "skills/refactoring-catalog/references/REFACTORING_MOVES_REFERENCE.md": "7301e3072f5f358a9b3468871683428ece5fc1911c71a73d3245e003730b9416",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "3bd11c173fe62cbe98d7fce08aa24494b032696a"
+  "source_commit": "5e85fb335c7f33a5af7763af1f0edb2cfd17d316"
 }
