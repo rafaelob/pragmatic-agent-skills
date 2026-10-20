@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: "2.10.1"
+  version: "2.10.3"
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -134,6 +134,7 @@ short summary in the reply, so your context stays small.
 - Trust the report only within the child's brief. Review the final artifact
   against acceptance, interfaces and risk, and tie each claimed check to the
   exact revision or configuration it proves.
+- Verify a subagent's effective model from the runtime's request log, never from the model's self-report (agy `pro` resolved to a forbidden model while claiming another, 2026-10-16).
 - Reconcile two or more overlapping deliveries through one integrating review,
   briefed to report findings and not fix, before any of them is integrated.
   That does not replace independent review of a risky change.
@@ -152,8 +153,8 @@ accepted, and a pending verification stays explicit.
 
 - A child that needed a tree of its own is a defect to report, not a tree to
   keep. Subagents share your checkout by design; a full clone per child pays the
-  repository's whole history each time (measured 2026-09-18: three live
-  children of one repo, 16.4 GB each, 12.9 GB of it duplicated `.git`).
+  repository's whole history each time; measure `.git` times the number of
+  children against free disk before any child gets a clone.
 
 ## Gotchas
 

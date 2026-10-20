@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Grok Build TUI with spawn_subagent
 metadata:
   author: rafael
-  version: "1.4.1"
+  version: "1.4.2"
   category: ai-agents
   subcategory: orchestration
   vendor: grok
@@ -48,7 +48,7 @@ Source for this table: github.com/xai-org/grok-build docs, subagents and config 
 | Concurrency | `[subagents]` in config: `max_concurrent` (the docs state no default), `limit_behavior` (`queue` or `fail` when full), `max_depth`. Read the values live |
 | `resume_from` | Continues a prior child with its transcript, tool state and model: every resume re-reads that history at your cost |
 | Child output | The runtime's bounded wait or snapshot on a child. Do not poll in a loop |
-| `isolation: worktree` | Optional Grok sandbox so child edits stay off the parent tree until you merge. **It writes a full CLONE, not a linked worktree**: each child copies the whole `.git` instead of sharing the object store, so N children cost N × the repo's `.git`. Measured 2026-09-18: five children on a repo with a 13 GB `.git` wrote 81 GB of `creation_mode=standalone` checkouts. Read `.git` and multiply before passing the flag. A second writer needing its own checkout takes a linked git worktree (`git worktree add`), never this flag |
+| `isolation: worktree` | Optional Grok sandbox so child edits stay off the parent tree until you merge. **It writes a full CLONE, not a linked worktree**: each child copies the whole `.git` instead of sharing the object store, so N children cost N × the repo's `.git`. Read the `.git` size and multiply by the number of children before passing the flag. A second writer needing its own checkout takes a linked git worktree (`git worktree add`), never this flag |
 | Child identity | None of its own, and an identity variable inherited from the parent's environment is not one. Whatever the brief grants it does as you |
 
 ## When to delegate

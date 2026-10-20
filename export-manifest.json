@@ -3,7 +3,7 @@
   "files": {
     "NOTICE": "859de754a30988d4111dbe3b0c1490c93a862a52c79cd9a20ec4f2c429c40934",
     "README.md": "f040f7521351505f5362a49f4a32d25281322093222828985ec8051d493a7cab",
-    "skills/claude-code-orchestrator/SKILL.md": "bb9ca906b10221710dda1e742765e96d260429d7d36a6f825e7754947b4f9864",
+    "skills/claude-code-orchestrator/SKILL.md": "0a6d37c8cc6d319a8234f55a59433bf14dfcf795f1b9a3b98f24f69b6c009944",
     "skills/code-review/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/code-review/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
     "skills/code-review/NOTICE.txt": "f9fc44a874aaea252ab4cfe91bfc725a020899f3a8149836c4cb42d2cb759baa",
@@ -37,7 +37,7 @@
     "skills/docker-compose/references/production/COMPOSE_HARDENING_CHECKLIST.md": "05f82482f27d83b0942d9b437a71bcd3980fca7cfc4ea2db991a3fc2176a112c",
     "skills/exhaustive-repo-cleanup-audit/SKILL.md": "306d7d1136c0ff11e474998433dae267e5eb93bcc64ee394ec63e2ce70e4d9fa",
     "skills/gemini-cli-orchestrator/SKILL.md": "680351abf5b3d6c702d116eff8d571874d6f7524d4c14281271d7d837530cb9f",
-    "skills/grok-build-orchestrator/SKILL.md": "96376b9192d7025c18dce41d100cb2b928611d281b0d98bb449d412d45fd480d",
+    "skills/grok-build-orchestrator/SKILL.md": "edf5613ce839980ac1276d296cb46fb27dc0a9f21cd6c9af251c48a3259bc40c",
     "skills/kill-slop/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/kill-slop/LICENSE-icodecraft-anti-slop.txt": "317f16d49c7571f1c3b77736ba51a55339142bbc564efd67f7bd3eefc367d6e3",
     "skills/kill-slop/NOTICE.txt": "ca00314f004555b9533f027bfecf1b181549fbc8d763754a1afe2dfe45224cbb",
@@ -72,7 +72,7 @@
     "skills/windows-shell-interop/SKILL.md": "9d1b6f3926dd0639266ab789440907e0de0e3e24b7615987fa1d02e7a8d8516e",
     "skills/windows-shell-interop/references/encoding_fix_ladder.md": "50068dec18cd95891fb1ca474337365e5a7ab86b5633025ed33a2649399ec737",
     "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "cee2a3df165e13499b0503c0669c275121a1a0545a4a09835155e78e50b1cbfa",
-    "skills/worktree-lifecycle/SKILL.md": "a54a4c2a650ba89c56a30c1b570a9626abb160e0f4cc8475f3e364299d2dd0f1",
+    "skills/worktree-lifecycle/SKILL.md": "455dccd4cb81ace91716fe669ee516e317881747af5a69e50a4aa3fa524219cd",
     "skills/xp-agile-delivery/SKILL.md": "6304db6d09eea2165557e34f46383fbb08238feb30539b920b413e7199906c10",
     "skills/xp-agile-delivery/assets/slice-note.md": "4a34e70c255cbe96551691d65a774c6a2456c748ca867ff2a8eac25cbc7c51fb",
     "skills/xp-agile-delivery/references/XP_AGILE_GUIDE.md": "958b436f8e9de3d54da909524009e3bcfce2165a17af0f419215e4813e8882c1",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "5e85fb335c7f33a5af7763af1f0edb2cfd17d316"
+  "source_commit": "5d19cabbf26db6145dc493f2d4dea45920a3e6bd"
 }
