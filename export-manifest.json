@@ -3,7 +3,7 @@
   "files": {
     "NOTICE": "859de754a30988d4111dbe3b0c1490c93a862a52c79cd9a20ec4f2c429c40934",
     "README.md": "f040f7521351505f5362a49f4a32d25281322093222828985ec8051d493a7cab",
-    "skills/claude-code-orchestrator/SKILL.md": "0a6d37c8cc6d319a8234f55a59433bf14dfcf795f1b9a3b98f24f69b6c009944",
+    "skills/claude-code-orchestrator/SKILL.md": "f912b2116c7baa3dbd13fc50adc1bc8b904bca010ab6614b871e595320bab31f",
     "skills/code-review/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/code-review/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
     "skills/code-review/NOTICE.txt": "f9fc44a874aaea252ab4cfe91bfc725a020899f3a8149836c4cb42d2cb759baa",
@@ -17,7 +17,7 @@
     "skills/codebase-design/SKILL.md": "9c4a1950b03f6ab57ea1d2baa6c5688b70b2f033922f32bd18189983802a45c5",
     "skills/codebase-design/references/deepening.md": "d719a0d3f9661c0eab8894164258964577c7532ed28f414baa6ab7f1c7cfd19f",
     "skills/codebase-design/references/design-it-twice.md": "e31c27e841f5313c11417ae48fb8cbc9cf852350fd314f74396d5d2d4eee2d03",
-    "skills/codex-subagent-routing/SKILL.md": "8da440ab5314dd068779fb58354594fde7a691e4001786cc97a302bbe3475969",
+    "skills/codex-subagent-routing/SKILL.md": "9446c9c413d698bcbe25107358eaf6b66c757eb517eb3753a3f3fc974bead38a",
     "skills/codex-subagent-routing/references/codex-agents-config.md": "1eb6b7733c85b03216a8d57ec6c1b224faf2093839218ce6f45acd74291ef4fb",
     "skills/diagnosing-bugs/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/diagnosing-bugs/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
@@ -36,14 +36,14 @@
     "skills/docker-compose/references/freshness-sources.md": "019a1efd927fc83bf84a3a513d9fc10247cb6b26d9edfcc72d827fcde03a03c1",
     "skills/docker-compose/references/production/COMPOSE_HARDENING_CHECKLIST.md": "05f82482f27d83b0942d9b437a71bcd3980fca7cfc4ea2db991a3fc2176a112c",
     "skills/exhaustive-repo-cleanup-audit/SKILL.md": "306d7d1136c0ff11e474998433dae267e5eb93bcc64ee394ec63e2ce70e4d9fa",
-    "skills/gemini-cli-orchestrator/SKILL.md": "680351abf5b3d6c702d116eff8d571874d6f7524d4c14281271d7d837530cb9f",
-    "skills/grok-build-orchestrator/SKILL.md": "edf5613ce839980ac1276d296cb46fb27dc0a9f21cd6c9af251c48a3259bc40c",
+    "skills/gemini-cli-orchestrator/SKILL.md": "babffff56c0cefd7c0e4594982e0c4d58d820342fe0b0d6b2d04dcc2b970029d",
+    "skills/grok-build-orchestrator/SKILL.md": "fa32bf72bf7152968ff90d3adf5968810242f72e9ce2dd7e82be19fe67871308",
     "skills/kill-slop/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/kill-slop/LICENSE-icodecraft-anti-slop.txt": "317f16d49c7571f1c3b77736ba51a55339142bbc564efd67f7bd3eefc367d6e3",
     "skills/kill-slop/NOTICE.txt": "ca00314f004555b9533f027bfecf1b181549fbc8d763754a1afe2dfe45224cbb",
     "skills/kill-slop/SKILL.md": "bca5f988e6b25304a9e0c14dd9be92597fa5a7ee7d37fffefd89aa5e89eca7a5",
     "skills/kill-slop/scripts/check_diff.py": "1a8e8c917dec164a97d4a5190a26a2d51942c9bc33ab28a8e5b3da652a840afc",
-    "skills/kimi-cli-orchestrator/SKILL.md": "f4cb9175fec5fa07398534546fd5f7caefbb1266018ee1a0439a4698db859f5b",
+    "skills/kimi-cli-orchestrator/SKILL.md": "ccf17073d6e0cabb491bc8ce8e22ca101c1ce6b924a2a4db2e57f5634353c784",
     "skills/layered-testing-executor/SKILL.md": "8e2ded2bb99cdf6f6cde3484ec7164147e984dafe1f0b7ed77709f3743e33de8",
     "skills/layered-testing-executor/assets/evidence-note.md": "93759f9d4219c4646b123eddc96c0115228d1d1aa1959ca3e09fd8cbeebcc294",
     "skills/layered-testing-executor/references/test-selection.md": "27aa6d1d38e6fde78819e5d4957cb44a2c1ec111680ed755bd8e143ac4c593af",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "5d19cabbf26db6145dc493f2d4dea45920a3e6bd"
+  "source_commit": "a5b6cb0ddd6221834451cc9f5552aee7b922c61b"
 }

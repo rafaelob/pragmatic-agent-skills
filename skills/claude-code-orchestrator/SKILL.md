@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: "2.10.3"
+  version: "2.10.4"
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -57,9 +57,13 @@ policy.
 
 ## When to delegate
 
-- Delegate independent, bounded work worth its brief: a verbose search, a
-  self-contained change, a check whose output would flood your context.
-  N children cost roughly N× the tokens.
+- Look for parallelism at every plan and phase change: split independent
+  investigations, implementations, tests and reviews into children with
+  disjoint ownership when each gains speed, coverage or quality worth its brief
+  and review, up to the concurrency limit only for work that is actually
+  independent — never by routine, never as a quota. Good candidates: a verbose
+  search, a self-contained change, a check whose output would flood your
+  context. N children cost roughly N× the tokens.
 - Keep inline: quick edits, sequential steps that share context (plan →
   implement → test), and work that needs back-and-forth with the user.
 - Route by task type and complexity at the best cost-benefit, reading the card;
@@ -97,7 +101,7 @@ brief therefore carries the whole mission, one or two lines per field:
   measure, locate. "Look at" and "suggest" return advice, not an artifact.
 - **Scope** — what it may read, create or change, and what it must leave alone.
 - **Constraints** — what not to do, safety limits, the checks to run.
-- **Acceptance** — the observable result that means done.
+- **Acceptance** — the observable result that means done, and the check that proves it (test, log, script).
 - **Delivery** — what to return, in what shape and how long.
 
 For an independent review the brief says "report findings; don't fix": a

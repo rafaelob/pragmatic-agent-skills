@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Antigravity (Gemini family) with invoke_subagent
 metadata:
   author: rafael
-  version: "1.3.2"
+  version: "1.3.3"
   category: ai-agents
   subcategory: orchestration
   vendor: gemini-cli
@@ -56,8 +56,7 @@ This skill keeps the identifier `gemini-cli-orchestrator`. The body is Antigravi
 | Child identity | None of its own; whatever the brief grants it does as you |
 
 ## When to delegate
-- Delegate independent, bounded work worth its brief; N children cost roughly N× the tokens. Keep simple, sequential or interactive work yourself.
-- Parallelize only on disjoint surfaces: children editing the same code at once conflict.
+- Look for parallelism at every plan and phase change: split independent investigations, implementations, tests and reviews into children with disjoint ownership when each gains speed, coverage or quality worth its brief and review, up to the concurrency limit only for work that is actually independent — never by routine, never as a quota. N children cost roughly N× the tokens, and children editing the same code at once conflict. Keep simple, sequential or interactive work yourself.
 - Pick the child the runtime lists by task type and complexity, at the best cost-benefit; a tier too weak pays twice. The most expensive tier is the exception: only after the default tier demonstrably failed, with that attempt named in the brief. Use a clone of yourself only when no listed specialist fits.
 
 ## The brief is the mission
@@ -65,7 +64,7 @@ One or two lines per field:
 - **Goal** — the concrete outcome, with one action verb.
 - **Scope** — what it may read, create or change, and what it must leave alone.
 - **Constraints** — what not to do, safety limits, the checks to run.
-- **Acceptance** — the observable result that means done.
+- **Acceptance** — the observable result that means done, and the check that proves it (test, log, script).
 - **Delivery** — what to return, in what shape and how long.
 
 For an independent review the brief says "report findings; don't fix": a reviewer who edits the change is no longer independent.

@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Grok Build TUI with spawn_subagent
 metadata:
   author: rafael
-  version: "1.4.2"
+  version: "1.4.3"
   category: ai-agents
   subcategory: orchestration
   vendor: grok
@@ -52,8 +52,7 @@ Source for this table: github.com/xai-org/grok-build docs, subagents and config 
 | Child identity | None of its own, and an identity variable inherited from the parent's environment is not one. Whatever the brief grants it does as you |
 
 ## When to delegate
-- Delegate independent, bounded work worth its brief; N children cost roughly N× the tokens. Keep simple work, work that needs tight back-and-forth with the user, and work whose setup costs more than the parallelism saves.
-- Spawn in parallel only for disjoint surfaces. Overlap serializes.
+- Look for parallelism at every plan and phase change: split independent investigations, implementations, tests and reviews into children with disjoint ownership when each gains speed, coverage or quality worth its brief and review, up to the concurrency limit only for work that is actually independent — never by routine, never as a quota. N children cost roughly N× the tokens, and overlap serializes. Keep simple work, work that needs tight back-and-forth with the user, and work whose setup costs more than the parallelism saves.
 - Pick the role the live schema lists by task type and complexity, at the best cost-benefit; a tier too weak pays twice. The most expensive tier is the exception: only after the default tier demonstrably failed, with that attempt named in the brief.
 
 ## The brief is the mission
@@ -61,7 +60,7 @@ One or two lines per field:
 - **Goal** — the concrete outcome, with one action verb.
 - **Scope** — what it may read, create or change, and what it must leave alone.
 - **Constraints** — what not to do, safety limits, the checks to run.
-- **Acceptance** — the observable result that means done.
+- **Acceptance** — the observable result that means done, and the check that proves it (test, log, script).
 - **Delivery** — what to return, in what shape and how long.
 
 For an independent review the brief says "report findings; don't fix": a reviewer who edits the change is no longer independent.

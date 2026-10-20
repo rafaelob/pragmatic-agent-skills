@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Codex CLI with [features.multi_agent] and <home>/agents/*.toml
 metadata:
   author: rafael
-  version: "3.3.4"
+  version: "3.3.5"
   category: ai-agents
   subcategory: orchestration
   vendor: openai-codex
@@ -66,14 +66,17 @@ eligible role, brief it, and reconcile its delivery.
 
 ## When to delegate
 
+- Look for parallelism at every plan and phase change: split independent
+  investigations, implementations, tests and reviews into children with
+  disjoint ownership when each gains speed, coverage or quality worth its brief
+  and review, up to the concurrency limit only for work that is actually
+  independent — never by routine, never as a quota. Children spend more tokens
+  than one agent doing the same run (subagents docs): N children cost roughly
+  N× the tokens. Keep simple, sequential or interactive work, and anything
+  sharing one small surface, with the lead.
 - Before spawning, apply the main-agent delegation policy in AGENTS.md to the
   active home's role cards. If no eligible role fits, do the work yourself where
   permitted or report the unmet requirement.
-- Delegate independent, bounded work worth its brief. Children spend more
-  tokens than one agent doing the same run (subagents docs): N children cost
-  roughly N× the tokens. Keep simple, sequential or interactive work, and
-  anything sharing one small surface, with the lead.
-- Parallelize only on disjoint surfaces, with exclusive file ownership.
 - Route by task type and complexity at the best cost-benefit, reading the card;
   a role too weak spends its cost twice. Escalate on demonstrated coupling or
   contradictory evidence, never on size or file count. Several roles can share
@@ -92,7 +95,7 @@ One or two lines per field:
 - **Goal** — the concrete outcome, with one action verb.
 - **Scope** — what it may read, create or change, and what it must leave alone.
 - **Constraints** — what not to do, safety limits, the checks to run.
-- **Acceptance** — the observable result that means done.
+- **Acceptance** — the observable result that means done, and the check that proves it (test, log, script).
 - **Delivery** — what to return, in what shape and how long.
 
 For an independent review the brief says "report findings; don't fix": a
