@@ -4,7 +4,7 @@ description: "Use when a story moves from ready to in-progress, or a mission nee
 license: Apache-2.0
 metadata:
   author: rafael
-  version: "1.6.4"
+  version: "1.6.6"
   category: process-automation
   subcategory: sop-workflows
   tags:
@@ -34,7 +34,7 @@ Read the request, current acceptance and work authority. Express the next slice 
 Resolve nonblocking uncertainty during the task instead of requiring another discovery document. Trade-off or over-engineering doubt -> `pragmatic-engineering`.
 
 ## Slice into the tracker item, never into a plan file
-When the mission is larger than one slice, cut it before writing code: name the real entry point and observable result of each slice, and keep a learning spike, an implemented slice and the full requested outcome as three distinct states. The map is the repo's one declared tracker item (the project's tracker), with native blocked sub-issues when the tracker supports them — never a local plan file, PRD, risk register, test ledger or sprint folder, unless the user explicitly asks for a plan or PRD, in which case that document is the deliverable. Update it when learning changes the next decision, not after every keystroke. A clear low-risk edit needs a short execution sequence, not a plan at all.
+When the mission is larger than one slice, cut it before writing code: name the real entry point and observable result of each slice, and keep a learning spike, an implemented slice and the full requested outcome as three distinct states. The map is the repo's one declared tracker item, with native blocked sub-issues when the tracker supports them (operating rules §5); a local plan file or PRD exists only when the user explicitly asks for one, and then it is the deliverable. Update it when learning changes the next decision, not after every keystroke. A clear low-risk edit needs a short execution sequence, not a plan at all.
 
 ## Build, test and integrate
 Drive new behavior through `tdd`. Prefer extending an existing meaningful test over creating an overlapping suite. Which layers to run belongs to `layered-testing-executor`.

@@ -105,7 +105,7 @@ networks:
 services:
   proxy:
     networks: [frontend, backend]
-    ports: ["443:443"]
+    ports: ["443:443"]  # public exposure: needs the USER's order (§8)
   api:
     networks: [backend]
   postgres:

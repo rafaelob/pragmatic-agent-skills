@@ -13,7 +13,7 @@ metadata:
   - junk-files
   - filesystem-inventory
   - user_level:intermediate
-  version: "1.5.1"
+  version: "1.5.2"
   author: coding-agent
   category: code-quality
   subcategory: quality-validation
@@ -103,7 +103,7 @@ Nominate only, with `kill-slop`'s finders and false-positive checks; deleting co
 - Never infer "junk" or "dead" from age, size or name alone; require the proofs above.
 - A live worktree moves: report count mismatches between passes.
 - If validation cannot run, say so and keep the audit open.
-- A work-tracking folder or file (`sprints/`, `TODO.md`) is retired only when the repository's own instructions (AGENTS.md, README or contributing doc) explicitly say so; otherwise leave it. When retired: a reported finding in an audit-only request; on an action request, move any live items into the tracker item the project declares, then delete it like any other proven junk once it is empty.
+- A work-tracking folder or file (`sprints/`, `TODO.md`) is retired by global section 5: on a touched path or in a cleanup task, move live items into the tracker and delete the file in the same commit (git keeps it); in read-only work, or off the touched path, report it.
 
 ## Stop Lines Declared by the Repo (never removal targets)
 

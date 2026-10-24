@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: "2.10.4"
+  version: "2.10.7"
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -31,12 +31,12 @@ metadata:
 # Claude Code Orchestrator
 
 How to use this runtime's subagents well: when to delegate, how to brief, how
-to run a child and what to check before believing what comes back. It owns no
-policy.
+to run a child and what to check before believing what comes back. It owns
+routing mechanics; authority and accountability are in the operating rules (§7).
 
 ## Identity and the brief
 
-- A subagent runs under your identity, through your tools and your checkout. Its authority and accountability come from the global agent rules; this skill adds the mechanics.
+- A subagent is an extension of you, running under your identity, through your tools and your checkout. The one thing a brief cannot grant is authority; accountability comes from the global agent rules, and this skill adds the mechanics.
 - The brief is the grant. The card keeps the role's specialization; the brief decides the scope, including whether the child implements.
 - Create a child; never fork your turn.
 - Roles, what each is best at, and their limits come from the runtime, read live; this skill states no number.
@@ -108,7 +108,9 @@ For an independent review the brief says "report findings; don't fix": a
 reviewer who edits the change is no longer independent. Put long material first
 and the instruction last. Require the child to delete its own scratch before it
 reports, keeping deliverables and evidence; give it a scratch subfolder named
-for it, so it never clears a sibling's.
+for it, so it never clears a sibling's. Where the project declares a scratch root and its disposal verb, use them.
+
+A child that starts a server, browser or other process records each PID it starts and stops exactly those PIDs, never by image name or command-line pattern: on a shared machine a pattern kill hits peers' runs.
 
 **The parent owns the index.** Children share your checkout, so the brief lists
 the files each child may edit and says it never stages, commits, merges,
@@ -138,12 +140,15 @@ short summary in the reply, so your context stays small.
 - Trust the report only within the child's brief. Review the final artifact
   against acceptance, interfaces and risk, and tie each claimed check to the
   exact revision or configuration it proves.
-- Verify a subagent's effective model from the runtime's request log, never from the model's self-report (agy `pro` resolved to a forbidden model while claiming another, 2026-10-16).
+- Verify a subagent's effective model from the runtime's request log, never from the model's self-report.
 - Reconcile two or more overlapping deliveries through one integrating review,
   briefed to report findings and not fix, before any of them is integrated.
   That does not replace independent review of a risky change.
 - When no permitted reviewer qualifies for a change that owes an independent
   review, report the blocker instead of quietly downgrading the reviewer.
+- After two BLOCK rounds from the reviewer on the same slice, swap the author
+  for a stronger role instead of running a third identical round. Count only
+  rejections: a resumption after an interruption is not a round.
 
 ## Closing a dispatch
 

@@ -57,41 +57,9 @@
 - UI layout/styling: test behavior, not pixels.
 - Generated code: test the generator or the configuration, not the output.
 
-## DORA metrics (delivery performance)
+## Delivery metrics and flow
 
-| Metric | Elite | High | Medium | Low |
-|--------|-------|------|--------|-----|
-| Deployment frequency | On-demand (multiple/day) | Daily to weekly | Weekly to monthly | Monthly+ |
-| Lead time for changes | < 1 hour | 1 day to 1 week | 1 week to 1 month | 1-6 months |
-| Change failure rate | < 5% | 5-10% | 10-15% | > 15% |
-| Mean time to recovery | < 1 hour | < 1 day | < 1 week | > 1 week |
-
-### Improving DORA metrics
-- **Deployment frequency**: automate deployments, reduce batch size, use feature flags.
-- **Lead time**: reduce code review latency, automate testing, simplify deployment.
-- **Change failure rate**: improve testing, use canary deployments, shift-left quality.
-- **MTTR**: improve observability, automate rollback, practice incident response.
-
-> **2025 update**: DORA's 2025 research (report renamed "State of AI-assisted Software Development", from "Accelerate State of DevOps") evolved the classic four into **five** metrics by adding **deployment rework rate** (share of deployments that are unplanned rework), and renamed MTTR to **failed deployment recovery time**. The four classic metrics above remain the valid baseline. See https://dora.dev/guides/dora-metrics/.
-
-## Kanban flow optimization
-
-### WIP limits
-- Set WIP limits per column (e.g., "In Progress: 3" for a team of 5).
-- When a column hits its limit: help finish existing work before starting new work.
-- Reducing WIP typically improves throughput (counter-intuitive but well-established).
-
-### Flow metrics
-- **Cycle time** = work completed date - work started date.
-- **Lead time** = work completed date - work requested date.
-- **Throughput** = items completed per time period.
-- Track with a cumulative flow diagram: visualizes WIP, bottlenecks, and throughput.
-
-### Bottleneck resolution
-1. Identify the column with the most items waiting.
-2. Investigate: is it a capacity issue, a dependency, or a process problem?
-3. Address root cause: add capacity, remove dependency, simplify process.
-4. Measure improvement: did cycle time decrease?
+No DORA band or Kanban threshold is installed here. The definitions and current thresholds are perishable: read them at https://dora.dev/ when a concrete number is needed.
 
 ## Story splitting quick reference
 
@@ -106,4 +74,4 @@
 
 ## Definition of Done
 
-The governing repository's Definition of Done is normative. This reference explains XP practices; it establishes neither a completion checklist nor a separate completion route. Ceremony formats and metric examples above are background, not additional delivery requirements.
+The governing repository's Definition of Done is normative. This reference explains XP practices; it establishes neither a completion checklist nor a separate completion route. Ceremony formats above are background, not additional delivery requirements.

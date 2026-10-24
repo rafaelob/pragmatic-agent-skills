@@ -86,11 +86,11 @@ services:
   api:
     command: ["python", "-m", "debugpy", "--listen", "0.0.0.0:5678", "--wait-for-client", "-m", "uvicorn", "main:app", "--host", "0.0.0.0"]
     ports:
-      - "5678:5678"
+      - "127.0.0.1:5678:5678"
   web:
     command: ["node", "--inspect=0.0.0.0:9229", "server.js"]
     ports:
-      - "9229:9229"
+      - "127.0.0.1:9229:9229"
 ```
 
 ## Dev container (devcontainer.json) example

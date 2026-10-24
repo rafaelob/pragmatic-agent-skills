@@ -4,7 +4,7 @@ description: "Use for a structured security review: threat modelling, OWASP chec
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 1.2.1
+  version: 1.2.2
   category: code-quality
   subcategory: code-review
   vendor: universal

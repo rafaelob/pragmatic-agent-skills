@@ -6,7 +6,7 @@ compatibility: Any coding agent on a git repository. Uses the worktree and clean
   repository declares (AGENTS.md or README); without any, plain git.
 metadata:
   author: coding-agent
-  version: "1.4.4"
+  version: "1.4.6"
   category: ci-cd
   subcategory: build-pipelines
   vendor: universal
@@ -31,13 +31,15 @@ Read the project's concurrency policy (its AGENTS.md or README) and run `git wor
 
 Confirm owner, branch, base and intended write scope. A directory without a current owner is not disposable. Preserve unknown ownership and pending staged/unstaged work. Do not edit trunk and a slice concurrently as if they were the same workspace.
 
+When the project's agent protocol declares its own verbs to open, close, census and reap trees, use them instead of raw git. A raw `git worktree remove` needs an absolute literal path.
+
 ## Integrate with appropriate evidence
 Run fast affected checks within the working slice, then commit through the project's declared commit path (plain `git commit` of explicit paths if none).
 Do not create a worktree, dependency environment and service stack per micro-task. Do not build a new lifecycle daemon or lock registry. If git or native tooling refuses, investigate the specific owner/state conflict rather than bypassing it.
 
 After integration or explicit abandonment, remove only resources whose ownership and preservation are established: commit what is yours, `git worktree remove <path>` without `--force`, then `git branch -d <branch>`. A tree that holds a junction or symlink (a linked `node_modules`, a shared venv) goes through the repository's reaping verb, which unlinks links first: a raw `git worktree remove` can descend through a junction and delete its target. Age or absence of a visible process is not deletion authority. Stop after the requested lifecycle transition is complete and its readback is confirmed, not after a cleanup sweep across the machine.
 
-**Hard rule:** never remove, move or reset a tree you do not own, never discard uncommitted work, and never force a removal: git refuses an unmerged branch or a dirty tree on purpose. Which destructive commands are refused is the guard's call and the project's agent protocol, not this skill's. A junction or symlink inside a tree is unlinked by the reaping verb, as above. With no supported tool for a leftover, delete it file by file naming each path, and never bypass a guard that refuses.
+**Hard rule:** never touch a tree you do not own, discard uncommitted work or force a removal (operating rules §7): git refuses an unmerged branch or a dirty tree on purpose. Which destructive commands are refused is the guard's call and the project's agent protocol, not this skill's. A junction or symlink inside a tree is unlinked by the reaping verb, as above. With no supported tool for a leftover, delete it file by file naming each path, and never bypass a guard that refuses.
 
 When the integration itself conflicts, use a merge-conflict skill if one is installed.
 

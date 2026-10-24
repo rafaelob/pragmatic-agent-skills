@@ -42,6 +42,7 @@ Source: Martin Fowler, *Refactoring* (2nd ed.), ch. 3; adopted via `mattpocock/s
 ## Readability
 
 - [ ] Names reveal intent: variables, functions, classes, modules
+- [ ] No versioned sibling of a live file, function or doc (`x_v2`, `-new`, `-final`); it was changed in place, unless the version is part of an external contract (API path, schema, migration, model ID, release)
 - [ ] Functions have single responsibility
 - [ ] Comments explain "why" not "what"; no noise comments
 - [ ] Complex logic has explanatory comments or is extracted to named functions

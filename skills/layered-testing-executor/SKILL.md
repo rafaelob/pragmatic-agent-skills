@@ -1,12 +1,12 @@
 ---
 name: layered-testing-executor
-description: "Use when a changed capability is ready to verify: tests to pick and run, seams to prove reachable, genuine zero vs unknown. Narrowest layer first. Not first failing test -> tdd. Not story Done gate -> xp-agile-delivery."
+description: "Use when a changed capability is ready to verify: tests to pick and run, seams to prove reachable, genuine zero vs unknown. Narrowest layer first. Not first failing test -> tdd."
 license: Apache-2.0
 compatibility: Any AI coding agent (Claude Code, Codex CLI, Cursor, Windsurf, Gemini CLI). Requires git
   diff or change description; collect mode also requires a runnable test toolchain.
 metadata:
   author: rafael
-  version: "1.7.2"
+  version: "1.7.3"
   category: process-automation
   subcategory: sop-workflows
   vendor: universal
@@ -48,7 +48,7 @@ A copy-only UI edit does not by itself require UI→API→database. Verify its r
 Use the project's existing runner, lock and environment. Preserve exit status and runner summaries. A deliberately empty lint result may be valid; an empty test suite proves no behavior.
 
 ## Prove the seam, and keep zero distinct from unknown
-A layer passing is not the caller arriving. For a changed capability, start at the accepted entry point — UI action, public function, API, CLI, event or worker — and name only the real seams on that path and which of them one real run proves; add a separate command and verdict only for a seam that run does not reach or cannot distinguish; code invoked solely in tests is not evidence of application wiring, and a health endpoint is not a registered route. Inspect both trigger and effect, and observe a persistence claim through the real read path. A UI→API→persistence run happens only when the acceptance crosses API, persistence or auth — an untouched surface creates no obligation.
+A layer passing is not the caller arriving. For a changed capability, start at the accepted entry point — UI action, public function, API, CLI, event or worker — and name only the real seams on that path and which of them one real run proves; add a separate command and verdict only for a seam that run does not reach or cannot distinguish; code invoked solely in tests is not evidence of application wiring, and a health endpoint is not a registered route. Inspect both trigger and effect, and observe a persistence claim through the real read path. When a UI→API→persistence run is owed is the global testing rule's call.
 
 Then keep the outcome's meaning: zero collection, timeout, failure, xfail, deselection, skip and an unreadable result are not interchangeable with a pass, and a fallback of zero, an empty list or a success badge must not erase a failure. The counterexample is the cheapest proof — the same empty payload after a completed run and after a failed run must produce different consumer behaviour.
 

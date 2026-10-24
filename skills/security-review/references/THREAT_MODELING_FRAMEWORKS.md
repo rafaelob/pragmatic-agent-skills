@@ -47,7 +47,7 @@ A 7-stage risk-centric methodology that aligns security with business objectives
 
 ### When to use PASTA vs STRIDE
 
-- **STRIDE**: faster, developer-friendly, good for per-feature or per-sprint threat analysis.
+- **STRIDE**: faster, developer-friendly, good for per-feature or per-slice threat analysis.
 - **PASTA**: more thorough, business-aligned, good for quarterly or major-release security assessments.
 
 ## Attack trees
@@ -82,9 +82,9 @@ Root: Steal user credentials
 
 ## Lightweight threat modeling for agile teams
 
-For teams integrating threat modeling into sprints:
+For teams integrating threat modeling into each feature or slice:
 
-1. **Scope**: focus on new features, changed data flows, and new external integrations (not the entire system every sprint).
+1. **Scope**: focus on new features, changed data flows, and new external integrations (not the entire system every slice).
 2. **Time-box**: 30-60 minutes per feature using STRIDE.
 3. **Participants**: developer, security champion, and product owner (optional).
 4. **Artifacts**: lightweight DFD (whiteboard/Miro), threat table, and linked tickets for mitigations.

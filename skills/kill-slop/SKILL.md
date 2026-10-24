@@ -1,11 +1,11 @@
 ---
 name: kill-slop
-description: "Use to remove unneeded files, dependencies, abstractions or dead code from code or a diff, with proof; keep behavior. Module shape -> codebase-design. Trade-off -> pragmatic-engineering. PR review -> code-review."
+description: "Use to remove unneeded code, dependencies, abstractions or dead code, with proof; keep behavior. Not repo junk files. Module shape -> codebase-design. Trade-off -> pragmatic-engineering. PR review -> code-review."
 license: Apache-2.0
 compatibility: Python 3.13+ and git. Windows-safe checker is scripts/check_diff.py.
 metadata:
   author: coding-agent
-  version: "1.6.0"
+  version: "1.6.2"
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -38,7 +38,7 @@ metadata:
 
 # Kill slop
 
-Force a minimal, merge-ready diff. Prefer the smallest change that fully solves the stated task.
+Force a minimal, merge-ready diff. Prefer the smallest change that fully solves the stated task. Junk files in the repo (logs, scratch, stale artifacts) are out of scope: that is `exhaustive-repo-cleanup-audit`.
 
 ## Dead-code finders
 
@@ -49,6 +49,7 @@ Run the finders on the diff's files; go repo-wide only on an explicit "remove de
 - Run the finder from the project's declared dev dependencies and manager (`uv run`, `npm run`/`pnpm exec`); never a `uvx`/`npx`/`dlx` stand-in — propose adding a missing one.
 - Check before deleting: dynamic dispatch/reflection (`getattr`, registries, plugin entry points), CLI/HTTP route registration, pytest fixtures/conftest, `__all__`/public re-exports, framework hooks/templates/serialization/ORM fields, and any installed or vendored payload that a generator or installer owns.
 - Delete in small commits, each carrying the finder output plus the tests as evidence.
+- A versioned sibling of a live file, function or doc (`x_v2`, `-new`, `-final`, `PLANO_V3`) is merged into one and the rest deleted; git keeps the history. Keep a version only when it is part of an external contract (API path, schema, migration, model ID, release).
 - Removing a path takes what only it used: its flags, modes, aliases, fallbacks, state, permissions and config. Verify the surviving flow, including what the deleted path assumed about navigation, permissions or persisted data.
 
 ## Boundary with `codebase-design`

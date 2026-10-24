@@ -64,6 +64,7 @@ Stop exploring once a step settles the choice, but always price the undo (step 2
   - SQL: `snake_case`.
   - File names follow the framework's convention.
 - **Names state intent:** verbs for functions (`load_invoice`), nouns for values, `is_`/`has_` for booleans, units in the name (`timeout_s`), and no abbreviations beyond the domain's own.
+- **Comments earn their place:** write one only for what the code cannot say — why, a constraint, a non-obvious invariant, a link to the issue or spec. Never restate the code, never narrate history, and delete a comment the change made stale.
 - **Code already written in another language:** new and touched code is English. Do not bulk-rename untouched code.
 
 ## "Is this over-engineered?"

@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Codex CLI with [features.multi_agent] and <home>/agents/*.toml
 metadata:
   author: rafael
-  version: "3.3.5"
+  version: "3.3.6"
   category: ai-agents
   subcategory: orchestration
   vendor: openai-codex
@@ -94,6 +94,10 @@ One or two lines per field:
 
 - **Goal** — the concrete outcome, with one action verb.
 - **Scope** — what it may read, create or change, and what it must leave alone.
+  When something is off-limits (evaluation sets, secrets), grant literal paths to
+  read, never a recursive root that contains it: a recursive search prints the
+  match before a textual "don't read X" can stop it. The repository's own read
+  deny-list stays the enforcement; the brief never replaces it.
 - **Constraints** — what not to do, safety limits, the checks to run.
 - **Acceptance** — the observable result that means done, and the check that proves it (test, log, script).
 - **Delivery** — what to return, in what shape and how long.

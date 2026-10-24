@@ -4,7 +4,7 @@ description: "Use when a change must run against the repo's own Compose project 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: "2.4.3"
+  version: "2.4.4"
   category: infrastructure
   subcategory: cloud-ops
   vendor: universal
