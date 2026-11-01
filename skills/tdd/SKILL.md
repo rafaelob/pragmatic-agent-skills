@@ -11,7 +11,7 @@ metadata:
   - mocking
   - tracer-bullet
   - pytest
-  version: "1.6.0"
+  version: "1.6.1"
   author: coding-agent
   category: code-quality
   subcategory: quality-validation
@@ -24,8 +24,8 @@ metadata:
   freshness: 2026-06
   upstream: https://github.com/mattpocock/skills
   upstream_mode: adapted
-  upstream_baseline_commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
-  upstream_baseline_date: 2026-08-21
+  upstream_baseline_commit: 3f599139104dfceabc7754eeb91319802f85e042
+  upstream_baseline_date: 2026-10-24
   upstream_author: Matt Pocock
   upstream_path: skills/engineering/tdd/SKILL.md
   upstream_not_adopted:

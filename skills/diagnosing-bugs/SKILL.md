@@ -11,7 +11,7 @@ metadata:
   - regression
   - code-quality
   - user_level:intermediate
-  version: "1.5.3"
+  version: "1.5.4"
   author: coding-agent
   category: code-quality
   subcategory: analysis
@@ -24,8 +24,8 @@ metadata:
   freshness: 2026-08
   upstream: https://github.com/mattpocock/skills
   upstream_mode: adapted
-  upstream_baseline_commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
-  upstream_baseline_date: 2026-08-21
+  upstream_baseline_commit: f3fc5632f401156837ee3872f14fe33ccf1024ea
+  upstream_baseline_date: 2026-10-24
   upstream_author: Matt Pocock
   upstream_path: skills/engineering/diagnosing-bugs/SKILL.md
   adaptation_summary: 'Adopted 1dab982: Phase 6 no longer hands off to a

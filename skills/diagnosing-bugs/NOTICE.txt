@@ -4,7 +4,7 @@ This skill (`diagnosing-bugs`) is adapted from the `diagnosing-bugs` skill of Ma
 (https://github.com/mattpocock/skills, path `skills/engineering/diagnosing-bugs/SKILL.md`),
 licensed under the MIT License, `Copyright (c) 2026 Matt Pocock`. The upstream license is kept
 verbatim in LICENSE-mattpocock-skills.txt. Baseline commit:
-5b15a47f2d7150f545fbcacbfe381787fc0230dc (2026-08-21).
+f3fc5632f401156837ee3872f14fe33ccf1024ea (2026-10-24).
 
 Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
 (LICENSE in this directory).

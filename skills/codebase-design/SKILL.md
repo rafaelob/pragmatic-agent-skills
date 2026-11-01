@@ -12,7 +12,7 @@ metadata:
   - seam
   - testability
   - interface-design
-  version: "1.5.0"
+  version: "1.5.1"
   author: coding-agent
   category: domain-expertise
   subcategory: frameworks
@@ -25,8 +25,8 @@ metadata:
   freshness: 2026-08
   upstream: https://github.com/mattpocock/skills
   upstream_mode: adapted
-  upstream_baseline_commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
-  upstream_baseline_date: 2026-08-21
+  upstream_baseline_commit: d80fa0f4ebe0c5714af0adf8670336065233ecc6
+  upstream_baseline_date: 2026-10-24
   upstream_author: Matt Pocock
   upstream_path: skills/engineering/codebase-design/SKILL.md
   adaptation_summary: 'Harness-neutral subagent dispatch (14bfbbd). Glossary

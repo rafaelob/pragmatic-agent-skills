@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Antigravity (Gemini family) with invoke_subagent
 metadata:
   author: rafael
-  version: "1.3.3"
+  version: "1.3.4"
   category: ai-agents
   subcategory: orchestration
   vendor: gemini-cli
@@ -47,9 +47,9 @@ This skill keeps the identifier `gemini-cli-orchestrator`. The body is Antigravi
 | `invoke_subagent` | Spawn a concurrent child (asynchronous). Parent keeps working |
 | `define_subagent` | Transient custom child for this session (`name`, `description`, `system_prompt`) |
 | Child types | The built-in types and the agent files the runtime lists at spawn are the catalogue; each type's own description says what it is for. Read them live |
-| Workspace | `inherit` \| `branch` \| `share`. `branch` is an isolated git worktree made by this runtime |
+| Workspace | `inherit` only: the child works in your checkout. The schema also lists `branch` (a git worktree made by this runtime) and `share`; pass neither, because a subagent gets no tree. A second writer needing its own checkout takes a linked git worktree itself |
 | Agent files | `~/.gemini/config/agents/<n>.md` (or `.../agents/<n>/agent.md`); `.agents/agents/`; `plugins/*/agents/` |
-| Model | Set per child from the options the spawn schema exposes, by tier and cost-benefit; never write a model id |
+| Model | Lives in the role's metadata (its agent file). The parent sets no model on a spawn call and writes no model id; `inherit` follows the session's model |
 | Concurrency and depth | Children run concurrently in the background; the docs publish no parallel cap, and nesting depth is capped. Read both live |
 | States | `/agents` lists each child as running, done, error or killed (antigravity.google/docs/cli/commands/agents, 2026-09-26); a child re-awakens on a message |
 | Skills | `~/.gemini/config/skills`, `.agents/skills` |
@@ -57,7 +57,7 @@ This skill keeps the identifier `gemini-cli-orchestrator`. The body is Antigravi
 
 ## When to delegate
 - Look for parallelism at every plan and phase change: split independent investigations, implementations, tests and reviews into children with disjoint ownership when each gains speed, coverage or quality worth its brief and review, up to the concurrency limit only for work that is actually independent — never by routine, never as a quota. N children cost roughly N× the tokens, and children editing the same code at once conflict. Keep simple, sequential or interactive work yourself.
-- Pick the child the runtime lists by task type and complexity, at the best cost-benefit; a tier too weak pays twice. The most expensive tier is the exception: only after the default tier demonstrably failed, with that attempt named in the brief. Use a clone of yourself only when no listed specialist fits.
+- Pick the child the runtime lists by task type and complexity, at the best cost-benefit; a tier too weak pays twice. The model is fixed by the child's role metadata, so a child that failed is re-briefed or replaced by another listed specialist: never escalated to a stronger model such as `pro`. Use a clone of yourself only when no listed specialist fits.
 
 ## The brief is the mission
 One or two lines per field:
@@ -80,7 +80,8 @@ For an independent review the brief says "report findings; don't fix": a reviewe
 
 ## Do not
 - Route Antigravity children through another runtime's spawn surface
-- Invent model ids in role files; the options the spawn schema exposes are the catalogue
+- Set a model per child, escalate to `pro`, or write a model id in a role file; the role's metadata decides the model
+- Pass `Workspace: branch` or `share`
 - Infer this spawn surface on the separate Gemini CLI
 
 ## Validation

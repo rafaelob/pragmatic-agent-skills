@@ -4,7 +4,7 @@ description: "Use when a change must run against the repo's own Compose project 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: "2.4.4"
+  version: "2.4.5"
   category: infrastructure
   subcategory: cloud-ops
   vendor: universal
@@ -26,13 +26,13 @@ metadata:
 # Use the project's existing Compose workflow
 
 ## Reuse, don't recreate
-1. **One Compose project per repo.** Everything the agent needs — dependencies, test runners, one-off tools — runs inside the repo's own `compose.yaml`/`docker-compose.yml` and project name. Never a loose `docker run`, never a second `-p <name>`, never a parallel compose file for the same stack, unless the repo already declares it as an override that the base file merges.
-2. **Look before you create.** Run `docker compose ps` (and `docker compose ps -a` for stopped containers).
-   - A running service is reused with `docker compose exec <service> <cmd>`.
-   - A stopped one is restarted with `docker compose start <service>`.
-   - Only a missing service is started, with `docker compose up -d <service>`, without `--force-recreate`, and `--build` only when the image inputs changed.
-   - Recreate only a service you own whose inputs (image, build context, config) changed, with `docker compose up -d --build <service>`, keeping its volumes; never recreate or duplicate a service that is merely running, nor one another writer owns.
-3. **One-offs:** use `docker compose run --rm <service> <cmd>` in the SAME project, so nothing is left behind. For a long test step, give the command its own deadline (for example `timeout <s> pytest …`) shorter than any outer lock wall, so the container dies with it.
+1. **One Compose project per repo.** Everything the agent needs — dependencies, test runners, one-off tools — runs inside the repo's own `compose.yaml`/`docker-compose.yml` and project name. Never a loose `docker run`, never a second `-p <name>`, never a parallel compose file for the same stack, unless the repo already declares it as an override that the base file merges. Every example below names the project: `<project>` is the name the repo already declares (`name:` in its compose file, `COMPOSE_PROJECT_NAME` in its env, or its wrapper), and `-p` repeats it. Precedence is `-p`, then `COMPOSE_PROJECT_NAME`, then `name:`, then the project directory's base name (https://docs.docker.com/compose/how-tos/project-name/, read 2026-10-24), so a bare `docker compose` run where none of the first three is set can address a different project.
+2. **Look before you create.** Run `docker compose -p <project> ps` (and `docker compose -p <project> ps -a` for stopped containers).
+   - A running service is reused with `docker compose -p <project> exec <service> <cmd>`.
+   - A stopped one is restarted with `docker compose -p <project> start <service>`.
+   - Only a missing service is started, with `docker compose -p <project> up -d --no-recreate <service>`: plain `up` stops and recreates an existing container whose configuration or image changed (https://docs.docker.com/reference/cli/docker/compose/up/, read 2026-10-24), and `--no-recreate` rules that out. Add `--build` only when the image inputs changed, and never `--force-recreate`.
+   - Recreate only a service you own whose inputs (image, build context, config) changed, with `docker compose -p <project> up -d --build <service>`, keeping its volumes; never recreate or duplicate a service that is merely running, nor one another writer owns.
+3. **One-offs:** use `docker compose -p <project> run --rm <service> <cmd>` in the SAME project, so nothing is left behind. For a long test step, give the command its own deadline (for example `timeout <s> pytest …`) shorter than any outer lock wall, so the container dies with it.
 4. **A tool the stack lacks** becomes a service in the repo's compose (with a profile such as `profiles: [tools]` when it should not start by default), never an ad-hoc `docker run`.
 5. **Cleanup:** stop and remove only what you created (`run --rm` does it for one-offs). Never `docker compose down -v` or `docker system prune` on a shared stack. Check `docker system df` before adding images or volumes.
 

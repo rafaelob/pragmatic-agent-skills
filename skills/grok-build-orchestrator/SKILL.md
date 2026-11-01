@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Grok Build TUI with spawn_subagent
 metadata:
   author: rafael
-  version: "1.4.3"
+  version: "1.4.4"
   category: ai-agents
   subcategory: orchestration
   vendor: grok
@@ -44,11 +44,11 @@ Source for this table: github.com/xai-org/grok-build docs, subagents and config 
 
 | Primitive | What it is |
 |---|---|
-| `spawn_subagent` | Child of this turn: `prompt` (the brief), a short `description`, `run_in_background`, `isolation`, `resume_from`, `cwd`. `subagent_type` is a role from the live schema, not an identity. The live schema is the authority for the arguments it accepts — pass nothing it does not list |
+| `spawn_subagent` | Child of this turn: `prompt` (the brief), a short `description`, `run_in_background`, `resume_from`, `cwd`. `subagent_type` is a role from the live schema, not an identity. The live schema is the authority for the arguments it accepts — pass nothing it does not list |
 | Concurrency | `[subagents]` in config: `max_concurrent` (the docs state no default), `limit_behavior` (`queue` or `fail` when full), `max_depth`. Read the values live |
 | `resume_from` | Continues a prior child with its transcript, tool state and model: every resume re-reads that history at your cost |
 | Child output | The runtime's bounded wait or snapshot on a child. Do not poll in a loop |
-| `isolation: worktree` | Optional Grok sandbox so child edits stay off the parent tree until you merge. **It writes a full CLONE, not a linked worktree**: each child copies the whole `.git` instead of sharing the object store, so N children cost N × the repo's `.git`. Read the `.git` size and multiply by the number of children before passing the flag. A second writer needing its own checkout takes a linked git worktree (`git worktree add`), never this flag |
+| `isolation: worktree` | Never passed to a child. **It writes a full CLONE, not a linked worktree** (each child copies the whole `.git`), and a subagent gets no tree and no clone: it works in your checkout. Serialize children whose files overlap. A second writer needing its own checkout takes a linked git worktree (`git worktree add`) itself, never this flag |
 | Child identity | None of its own, and an identity variable inherited from the parent's environment is not one. Whatever the brief grants it does as you |
 
 ## When to delegate
@@ -77,7 +77,7 @@ For an independent review the brief says "report findings; don't fix": a reviewe
 ## Do not
 - Use another runtime's spawn surface or agent definitions as the spawn API. Definitions Grok reads from another product's home are compatibility, never the spawn: spawn remains `spawn_subagent`, and custom agents live in `.grok/agents/` and `~/.grok/agents/`
 - Give a child an identity of its own because the parent has one
-- Treat `isolation: worktree` as the way to coordinate writers
+- Pass `isolation: worktree` to a child, or use it to coordinate writers
 - Invent model ids on Grok
 
 ## Validation

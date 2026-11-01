@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: "2.10.7"
+  version: "2.10.8"
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -152,18 +152,17 @@ short summary in the reply, so your context stays small.
 
 ## Closing a dispatch
 
-The child's scratch, branch and tree are yours to dispose of, with the cleanup
-tooling you use for your own work (the repository's declared tooling, else
-plain git), and only what the child created. Before integrating, check that `git status` and
+The child's scratch, and any branch or tree it created against the rule below, are
+yours to dispose of, with the cleanup tooling you use for your own work (the
+repository's declared tooling, else plain git), and only what the child created. Before integrating, check that `git status` and
 `git diff --cached` show only what the child was allowed to touch. For a fan-out of
 two or more children, consolidate the checked reports into one table: child,
 outcome, evidence, acceptance decision and reason. An unsupported claim is not
 accepted, and a pending verification stays explicit.
 
-- A child that needed a tree of its own is a defect to report, not a tree to
-  keep. Subagents share your checkout by design; a full clone per child pays the
-  repository's whole history each time; measure `.git` times the number of
-  children against free disk before any child gets a clone.
+- A subagent gets no tree and no clone: it works in your checkout (operating
+  rules §7), so no isolation option is passed to a child. A child that created
+  a tree anyway is a defect to report, not a tree to keep.
 
 ## Gotchas
 

@@ -4,7 +4,7 @@ description: "Use for UnicodeEncodeError, console mojibake (cp1252), PowerShell 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: "1.6.1"
+  version: "1.7.0"
   category: infrastructure
   subcategory: developer-environment
   vendor: universal
@@ -49,6 +49,7 @@ Preserve the actual child exit code before formatting output. Catch only an expe
 - Git Bash (MSYS) rewrites an argument that starts with `/` into a Windows path: `tasklist /FI ...` and a value like `/root/x` arrive as `C:/Program Files/Git/...`, and the command fails or writes the wrong value quietly. Run Windows tools from PowerShell, or prefix that one command with `MSYS_NO_PATHCONV=1`, and read the result back.
 - Stopping a shell (a tool timeout, a task stop, `timeout N` in Git Bash) does not stop the processes it started: a dev server keeps its port. Record the PID of what you launched, confirm it is still yours (same process start time), stop its tree (`taskkill /PID <pid> /T /F`), then confirm the port is free (`Get-NetTCPConnection -LocalPort <n>`). Never kill by port or name alone: that process may belong to someone else.
 - Text with backslash escapes or non-ASCII goes into a file through the runtime's file-writing tool, not a heredoc or `echo`: the shell layer may rewrite both.
+- `gcloud storage rsync --exclude=<regex>` matches the local relative path with `\` separators, so an exclude written with `/` excludes nothing, silently, and a count check using the same regex agrees with the miss. Write the separator as `[\\/]`, and trust an upload that must leave files out only after its `--dry-run` prints no `Would copy` line for any of them; better still, move the excluded files out of the source first.
 
 Read `references/encoding_fix_ladder.md` when a `UnicodeEncodeError` or mojibake needs the cheapest robust fix, ordered by cost; read `references/shell_equivalents_cheatsheet.md` when the same operation needs an equivalent PowerShell, Git Bash and Python-file spelling.
 

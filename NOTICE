@@ -20,7 +20,7 @@ Adapted upstreams:
   Author: Matt Pocock
   Skill license: Apache-2.0
   Upstream license: MIT (skills/codebase-design/LICENSE-mattpocock-skills.txt)
-  Baseline commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
+  Baseline commit: d80fa0f4ebe0c5714af0adf8670336065233ecc6
   Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
   License file: skills/codebase-design/LICENSE, skills/codebase-design/LICENSE-mattpocock-skills.txt
 - diagnosing-bugs
@@ -28,7 +28,7 @@ Adapted upstreams:
   Author: Matt Pocock
   Skill license: Apache-2.0
   Upstream license: MIT (skills/diagnosing-bugs/LICENSE-mattpocock-skills.txt)
-  Baseline commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
+  Baseline commit: f3fc5632f401156837ee3872f14fe33ccf1024ea
   Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
   License file: skills/diagnosing-bugs/LICENSE, skills/diagnosing-bugs/LICENSE-mattpocock-skills.txt
 - kill-slop
@@ -44,7 +44,7 @@ Adapted upstreams:
   Author: Matt Pocock
   Skill license: Apache-2.0
   Upstream license: MIT (skills/tdd/LICENSE-mattpocock-skills.txt)
-  Baseline commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
+  Baseline commit: 3f599139104dfceabc7754eeb91319802f85e042
   Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
   License file: skills/tdd/LICENSE, skills/tdd/LICENSE-mattpocock-skills.txt
 
