@@ -4,7 +4,7 @@ description: "Use for UnicodeEncodeError, console mojibake (cp1252), PowerShell 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: "1.7.0"
+  version: "1.8.0"
   category: infrastructure
   subcategory: developer-environment
   vendor: universal
@@ -50,6 +50,7 @@ Preserve the actual child exit code before formatting output. Catch only an expe
 - Stopping a shell (a tool timeout, a task stop, `timeout N` in Git Bash) does not stop the processes it started: a dev server keeps its port. Record the PID of what you launched, confirm it is still yours (same process start time), stop its tree (`taskkill /PID <pid> /T /F`), then confirm the port is free (`Get-NetTCPConnection -LocalPort <n>`). Never kill by port or name alone: that process may belong to someone else.
 - Text with backslash escapes or non-ASCII goes into a file through the runtime's file-writing tool, not a heredoc or `echo`: the shell layer may rewrite both.
 - `gcloud storage rsync --exclude=<regex>` matches the local relative path with `\` separators, so an exclude written with `/` excludes nothing, silently, and a count check using the same regex agrees with the miss. Write the separator as `[\\/]`, and trust an upload that must leave files out only after its `--dry-run` prints no `Would copy` line for any of them; better still, move the excluded files out of the source first.
+- A folder with an explicit Low mandatory integrity label makes every `.exe` under it start at LOW, because Windows takes the lower of the parent's level and the file's label: a `.venv\Scripts\python.exe` there cannot write `.git`, `%TEMP%` or the checkout (`No usable temporary directory found`, PermissionError 13) while `gh` and a system Python outside it work. `icacls` prints the label in the system language (pt-BR: `Rótulo Obrigatório\Nível Obrigatório Baixo`), so search its output for `(NW)`, never for `Mandatory`. Removing a stray label is a security-descriptor change: it needs the owner's order.
 
 Read `references/encoding_fix_ladder.md` when a `UnicodeEncodeError` or mojibake needs the cheapest robust fix, ordered by cost; read `references/shell_equivalents_cheatsheet.md` when the same operation needs an equivalent PowerShell, Git Bash and Python-file spelling.
 
