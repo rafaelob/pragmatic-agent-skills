@@ -14,7 +14,7 @@ metadata:
   - architecture-review
   - commit-hygiene
   - user_level:advanced
-  version: "2.4.6"
+  version: "2.4.7"
   author: rafael
   category: code-quality
   subcategory: quality-validation
@@ -50,3 +50,9 @@ Report the material findings and limits. A read-only review does not authorize e
 See [an optional finding example](assets/finding-example.md) when a substantive defect needs a structured explanation. Read `references/CODE_REVIEW_CHECKLIST.md` for an optional Fowler smell baseline, consulted only when the change at hand suggests one.
 
 Write the finding in the shape of `assets/finding-example.md`, or of `assets/pr_review_template.md` when the project wants a fixed review write-up. For a defect whose cause the review can only suspect, use `diagnosing-bugs`; for proving the change is reachable end to end, use `layered-testing-executor`.
+
+For a change whose safety depends on concurrent ordering, inspect any existing
+project-local verification and its code mapping, bounds and negative control.
+A stale model, sampled schedule or unreadable result is not a proof. Propose a
+new bounded check only for a concrete uncovered risk and explicit scope; do not
+make formal verification a requirement of routine review.

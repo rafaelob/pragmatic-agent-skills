@@ -6,7 +6,7 @@ compatibility: Any AI coding agent (Claude Code, Codex CLI, Cursor, Windsurf, Ge
   diff or change description; collect mode also requires a runnable test toolchain.
 metadata:
   author: rafael
-  version: "1.7.3"
+  version: "1.7.4"
   category: process-automation
   subcategory: sop-workflows
   vendor: universal
@@ -62,3 +62,10 @@ Read [selection examples](references/test-selection.md) for ambiguous cases, evi
 Use [the optional evidence note](assets/evidence-note.md) only for a nontrivial result that lacks an existing project format.
 
 For the red-green loop of one behavior, use `tdd`; when a browser journey is the only honest boundary, use `testing-e2e-playwright`.
+
+For a costly invariant over cancellation, retries or response ordering, inspect
+an existing project-local verification skill. If none covers the risk, propose
+an explicitly scoped bounded check rather than installing a global verifier.
+Keep model/code correspondence, bounds and a failing real-code mutation with the
+result. Generated sequential cases alone do not prove interleavings; a budget
+limit is UNKNOWN and an unavailable checker is BLOCKED, never a stronger pass.

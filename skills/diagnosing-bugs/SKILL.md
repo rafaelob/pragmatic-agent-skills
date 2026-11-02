@@ -11,7 +11,7 @@ metadata:
   - regression
   - code-quality
   - user_level:intermediate
-  version: "1.5.4"
+  version: "1.5.5"
   author: coding-agent
   category: code-quality
   subcategory: analysis
@@ -56,3 +56,9 @@ If reproduction is unavailable, continue useful permitted static investigation a
 After the correction, check the original scenario and directly related risk, then run applicable project gates. Search for siblings only when the same causal mechanism plausibly applies. Remove owned temporary instrumentation; retain the regression and a brief explanation in the current work item. Do not turn every bug into a whole-repository audit.
 
 When the cause is already established and the fix needs its failing test first, use `tdd`; for a Windows-only path, quoting or encoding failure, use `windows-shell-interop`.
+
+If a costly ordering defect survives a controlled reproduction, an explicitly
+scoped bounded model can expose schedules the current tests miss. Use the
+project's existing verifier when available; replay its counterexample against
+actual code before calling it a product bug. A sequential stateful test does not
+enumerate concurrent interleavings, and a blocked replay is not runtime proof.
