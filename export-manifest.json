@@ -69,7 +69,7 @@
     "skills/testing-e2e-playwright/SKILL.md": "0aff65f402e045efc64d183375a18d39201c2987c2e855422f1c9d24952a7a5e",
     "skills/testing-e2e-playwright/references/DOC_LINKS.md": "e01550edef496d94569fae54df0dc30b2833fdea3572f03da3c05d1d083c6723",
     "skills/testing-e2e-playwright/references/PLAYWRIGHT_PATTERNS.md": "6808a17cdc555391cb7003505aac42d6eaec58ca3325c5a9d28a6d879ce9fa54",
-    "skills/windows-shell-interop/SKILL.md": "68c58782a26b90c3f36ae6640c8a57a761bcfb81cc4260ff4ef863f2d2d6fbc2",
+    "skills/windows-shell-interop/SKILL.md": "4a109dd73429c228c6cba3c3b916252ced8662fa01942a1e9fa6da2bf4a9ae3f",
     "skills/windows-shell-interop/references/encoding_fix_ladder.md": "50068dec18cd95891fb1ca474337365e5a7ab86b5633025ed33a2649399ec737",
     "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "cee2a3df165e13499b0503c0669c275121a1a0545a4a09835155e78e50b1cbfa",
     "skills/worktree-lifecycle/SKILL.md": "b740c3b01697e3b61753bc312bdca4bca28c27d4fd145469e745378859df1a78",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "a49867c6a56c51b59985494670b942fc72b0ca3f"
+  "source_commit": "ed355a4b2e47e7c3b4b2c83e1b1bac8e08811fed"
 }
