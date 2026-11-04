@@ -4,7 +4,7 @@ description: "Use when writing, fixing or de-flaking a Playwright/e2e browser te
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: 1.3.2
+  version: 1.3.3
   category: code-quality
   subcategory: quality-validation
   vendor: universal

@@ -14,7 +14,7 @@ metadata:
   - rector
   - debt-quadrant
   - user_level:intermediate
-  version: "1.4.0"
+  version: "1.4.1"
   author: coding-agent
   category: code-quality
   subcategory: quality-validation

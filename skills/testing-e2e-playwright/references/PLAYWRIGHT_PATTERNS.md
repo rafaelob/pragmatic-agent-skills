@@ -157,11 +157,13 @@ npm install -D @axe-core/playwright
 ```typescript
 import AxeBuilder from '@axe-core/playwright';
 
-test('page meets WCAG 2.1 AA', async ({ page }) => {
+test('page meets WCAG 2.2 AA', async ({ page }) => {
   await page.goto('/dashboard');
+  // Tags are not cumulative: wcag2a/wcag2aa alone cover only WCAG 2.0, and the
+  // Playwright page lists only up to wcag21aa. wcag22aa is a valid axe-core tag
+  // (axe-core doc/API.md, checked 2026-11-03).
   const results = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])  // wcag2a/wcag2aa alone cover only WCAG 2.0 (https://playwright.dev/docs/accessibility-testing, 2026-10-12)
-    .exclude('.third-party-widget')  // known third-party violations
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
     .analyze();
   expect(results.violations).toEqual([]);
 });
@@ -172,11 +174,13 @@ test('page meets WCAG 2.1 AA', async ({ page }) => {
 // Shared fixture
 async function checkAccessibility(page: Page) {
   const { violations } = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
     .analyze();
   expect(violations).toEqual([]);
 }
 ```
+
+`.exclude('<selector>')` is an exception, not a default: it stops every rule from running on that element and its descendants (Playwright accessibility-testing page, checked 2026-11-03). Use it only for a third-party widget you cannot change, comment the owner and reason, and verify the widget's keyboard and label behavior separately.
 
 ## Official Documentation Links
 - Playwright docs: https://playwright.dev/docs/

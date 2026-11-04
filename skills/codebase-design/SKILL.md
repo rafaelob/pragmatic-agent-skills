@@ -12,7 +12,7 @@ metadata:
   - seam
   - testability
   - interface-design
-  version: "1.5.1"
+  version: "1.5.2"
   author: coding-agent
   category: domain-expertise
   subcategory: frameworks

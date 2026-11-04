@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Python 3.13+ and git. Windows-safe checker is scripts/check_diff.py.
 metadata:
   author: coding-agent
-  version: "1.6.2"
+  version: "1.6.3"
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -38,7 +38,7 @@ metadata:
 
 # Kill slop
 
-Force a minimal, merge-ready diff. Prefer the smallest change that fully solves the stated task. Junk files in the repo (logs, scratch, stale artifacts) are out of scope: that is `exhaustive-repo-cleanup-audit`.
+Force a minimal, merge-ready diff. Prefer the smallest change that fully solves the stated task. Junk files in the repo (logs, scratch, stale artifacts) are out of scope: that is the owner's command `/exhaustive-repo-cleanup-audit`, which you cannot load, so ask the owner to run it.
 
 ## Dead-code finders
 
@@ -82,7 +82,7 @@ Before writing, name the goal (one sentence), the touch list (files the asked re
 
 ### Checker (diagnostic, no veto)
 
-The bundled checker is optional diagnosis, never a gate. Read `scripts/check_diff.py` for flags. `OVER_BUDGET` is information; it does not forbid finishing. `SKIP` / `EMPTY_SCAN` means the scan failed — report that, do not treat unknown as clean.
+The bundled checker is optional diagnosis, never a gate. Read `scripts/check_diff.py` for flags. `OVER_BUDGET` is information and exits 0; it does not forbid finishing. `SKIP` / `EMPTY_SCAN` means the scan failed and exits 1 — report that, do not treat unknown as clean.
 
 ```text
 python -X utf8 <path-to-this-skill>/scripts/check_diff.py

@@ -4,7 +4,7 @@ description: "Use for UnicodeEncodeError, console mojibake (cp1252), PowerShell 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: "1.9.0"
+  version: "1.9.1"
   category: infrastructure
   subcategory: developer-environment
   vendor: universal

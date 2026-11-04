@@ -12,7 +12,7 @@ Pure computation, in-memory state, no I/O. Always deepenable — merge the modul
 
 ### 2. Local-substitutable
 
-Dependencies that have local test stand-ins (PGLite for Postgres, in-memory filesystem, SQLite for relational stores). Deepenable if a stand-in exists. The deepened module is tested with the stand-in running in the test suite. The seam is internal; no port at the module's external interface.
+Dependencies you can run locally in the test suite: a disposable instance of the production database engine, an in-memory filesystem. Deepenable if one exists. The seam is internal; no port at the module's external interface. A claim about persistence, locking, migrations or query behaviour needs the real engine: SQLite or PGLite standing in for Postgres does not prove it.
 
 ### 3. Remote but Owned (Ports & Adapters)
 
@@ -26,13 +26,13 @@ Third-party services (Stripe, Twilio, SendGrid, etc.) you do not control. The de
 
 ## Seam Discipline
 
-**One adapter = hypothetical seam. Two adapters = real seam.** Do not introduce a port unless at least two adapters are justified (typically production + test). A single-adapter seam is indirection without leverage.
+**Justify the seam before introducing a port.** Use the criteria under "Two adapters are evidence of a real seam, not a requirement for one" in `SKILL.md`: a second adapter is one sufficient reason, and independent volatility, an external contract or a security boundary are the others. A seam for a variation that might appear someday is indirection without leverage.
 
 **Internal seams vs external seams.** A deep module can have internal seams (private to its implementation, used by its own unit tests) as well as the external seam at its interface. Do not expose internal seams through the external interface just because tests use them.
 
 ## Testing Strategy: Replace, Don't Layer
 
-- Old unit tests on shallow modules become waste once tests at the deepened module's interface exist — delete them.
+- Delete an old unit test on a shallow module only when you can name the test at the deepened module's interface that now proves its behavior. With no surviving proof, keep it or port the behavior first.
 - Write new tests at the deepened module's interface. The **interface is the test surface**.
 - Tests assert on observable outcomes through the interface, not on internal state.
 - Tests should survive internal refactors. If a test must change when the implementation changes, it is testing past the interface — fix the seam placement, not the test.

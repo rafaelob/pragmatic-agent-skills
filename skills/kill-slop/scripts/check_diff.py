@@ -4,8 +4,8 @@
 Never modifies the working tree, index, or git config.
 
 Exit codes:
-  0  STATUS: OK (measured a real zero or in-budget diff)
-  1  STATUS: OVER_BUDGET, SKIP or EMPTY_SCAN (cannot treat unknown as pass)
+  0  STATUS: OK or OVER_BUDGET (the scan was measured; the budget is information, not a gate)
+  1  STATUS: SKIP or EMPTY_SCAN (the scan failed; unknown is not a pass)
   2  usage error
 """
 from __future__ import annotations
@@ -152,10 +152,10 @@ def main(argv: list[str] | None = None) -> int:
     if file_count > args.max_files:
         print("STATUS: OVER_BUDGET")
         print(
-            "Action: shrink the plan — prefer editing existing files; "
-            "drop drive-bys; do not add files that can be inlined."
+            "Information only: more files than the soft budget. Check each against the asked "
+            "result, drop drive-bys and inline what can be; a slice that needs them all is fine."
         )
-        return 1
+        return 0
 
     print("STATUS: OK")
     print(

@@ -25,8 +25,8 @@ except Exception:
 | Read a file | `Get-Content f` | `cat f` | `Path("f").read_text(encoding="utf-8")` |
 | First N lines | `Get-Content f -TotalCount N` | `head -n N f` | `f.read_text(encoding="utf-8").splitlines()[:N]` |
 | Last N lines | `Get-Content f -Tail N` | `tail -n N f` | `...splitlines()[-N:]` |
-| Write a file | `Set-Content f v -Encoding utf8` | `printf '%s' v > f` | `Path("f").write_text(v, encoding="utf-8")` |
-| Append | `Add-Content f v` | `printf '%s' v >> f` | `open("f","a",encoding="utf-8").write(v)` |
+| Write a file | Runtime's file tool (inside a `.ps1`: `Set-Content f v -Encoding utf8`) | Runtime's file tool | `Path("f").write_text(v, encoding="utf-8")` |
+| Append | Runtime's file tool (inside a `.ps1`: `Add-Content f v`) | Runtime's file tool | `open("f","a",encoding="utf-8").write(v)` |
 | Create empty file | `if (-not (Test-Path f)) { New-Item -ItemType File f }` | `touch f` | `Path("f").touch()` |
 | Make dirs (parents) | `New-Item -ItemType Directory -Force p` | `mkdir -p p` | `Path("p").mkdir(parents=True, exist_ok=True)` |
 | Delete recursively | `Remove-Item -Recurse -Force p` | `rm -rf p` | `shutil.rmtree("p", ignore_errors=True)` |
@@ -219,7 +219,7 @@ which is why it is the default and these two are the exceptions.
 
 | Unix idiom | Why it fails on Windows shells | Do instead |
 |---|---|---|
-| `2>/dev/null` | Creates a literal file named `null` | `2>$null` (PowerShell), `NUL` (cmd) |
+| `2>/dev/null` | PowerShell resolves it to `\dev\null` on the current drive: it writes a real file if that folder exists and throws `DirectoryNotFoundException` if not | `2>$null` (PowerShell), `NUL` (cmd) |
 | `chmod` / `chown` | No POSIX permission model | `icacls` only if ACLs are genuinely required |
 | `if [ -f x ]` | Not PowerShell syntax — parse error | `if (Test-Path x)` |
 | `for x in *` | Not PowerShell syntax — parse error | `foreach ($x in Get-ChildItem)` |

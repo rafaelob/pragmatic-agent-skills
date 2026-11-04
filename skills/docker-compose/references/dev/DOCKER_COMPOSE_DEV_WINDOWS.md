@@ -16,11 +16,16 @@ Source code location determines I/O performance:
 
 | Location | Path example | Performance | Notes |
 |----------|-------------|-------------|-------|
-| WSL2 native | `/home/user/project` | Native Linux speed | Recommended for dev |
-| Windows via WSL | `/mnt/c/Users/.../project` | 3-10x slower | 9P filesystem bridge |
+| WSL2 native | `/home/user/project` | Native Linux speed | Source leaves the Windows drive |
+| Windows via WSL | `/mnt/c/Users/.../project` | Slower; measure it | 9P filesystem bridge |
 | Windows native | `C:\Users\...\project` | N/A for containers | Must go through WSL |
 
-Rule: keep source inside the WSL2 distro filesystem for fast file watches and builds.
+This is a trade-off to measure, not a rule. Start with the source where the project already lives, and keep dependencies and build output in named volumes (see "Volume patterns for Windows"). For reloads, choose one per path:
+
+- Compose Watch `sync`, with no bind mount on that path. The service needs `build`. Compose does not monitor a `sync` path that a bind mount also covers: it warns "this path won't be monitored" (https://github.com/docker/compose/blob/main/pkg/compose/watch.go, read 2026-11-03).
+- A bind mount, with the application's own file watcher set to polling, because no file change events reach the container for a source on the Windows drive.
+
+Edit a source file and check that the running application changed. Move the source into the distro only if a measured reload or build is still too slow. Docker recommends the Linux filesystem for bind mounts, because performance is much higher there and Linux containers receive file change events only for files stored there (https://docs.docker.com/desktop/features/wsl/best-practices/, read 2026-11-03). The cost is that the working copy leaves the Windows drive and the native tools that work on it.
 
 ## Compose Watch configuration
 
@@ -49,7 +54,7 @@ Start with: `docker compose watch` (or `docker compose up --watch`).
 services:
   web:
     volumes:
-      - ./src:/app/src                    # Bind mount: source only
+      - ./src:/app/src                    # Bind mount: source only; drop it if Watch syncs ./src
       - node_modules:/app/node_modules    # Named volume: deps
       - build_cache:/app/.next            # Named volume: build output
 
@@ -115,7 +120,7 @@ services:
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
-| Slow hot reload (>5s) | Source on NTFS via /mnt/c | Move source to WSL2 native FS |
+| Slow hot reload (>5s) | Source on NTFS via /mnt/c | Named volumes for dependencies and build output, Compose Watch for source; if a measurement still shows it too slow, weigh moving source to WSL2 native FS |
 | `\r: not found` in shell scripts | Windows CRLF line endings | Add `.gitattributes` with `eol=lf` |
 | Permission denied on bind mount | Windows 777 permissions | Use `chmod` in Dockerfile, run as specific UID |
 | Container can't reach host DB | Using `localhost` | Use `host.docker.internal` |
@@ -129,6 +134,10 @@ Every quote below was read at the vendor's own documentation on **2026-07-29**. 
 ladder and stop at the first rung that brings the engine back; each rung is cheaper to undo than
 the next.
 
+Only rung 1, the local gather in rung 2 and the free-space check in rung 5 are yours to run. Every
+step marked **STOP** sends data off the machine, stops work that is not yours or destroys data: report
+the evidence, say what the step would stop, and wait for the USER's order.
+
 ### 1. Localise the fault
 
 ```powershell
@@ -141,28 +150,39 @@ immediately that the engine, not the CLI or one command, is the problem.
 ### 2. Gather diagnostics BEFORE restarting
 
 A restart destroys the evidence. Docker documents the diagnostics binary at these exact paths
-(source: [Docker Desktop troubleshooting](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/)):
+(source: [Docker Desktop troubleshooting](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/)).
+Without `-upload` the bundle stays local: the tool's own help says "Generate a local diagnostics
+bundle to upload later" (`com.docker.diagnose.exe -help`, Docker 29.9.2, read 2026-11-03).
 
 ```powershell
 # All-user install
-& "C:\Program Files\Docker\Docker\resources\com.docker.diagnose.exe" gather -upload
+& "C:\Program Files\Docker\Docker\resources\com.docker.diagnose.exe" gather
 
 # Per-user install
-& "$env:LOCALAPPDATA\Programs\DockerDesktop\resources\com.docker.diagnose.exe" gather -upload
+& "$env:LOCALAPPDATA\Programs\DockerDesktop\resources\com.docker.diagnose.exe" gather
 ```
 
-The Docker Desktop CLI equivalent documented on the same page:
+The Docker Desktop CLI equivalent documented on the same page (`--upload` is opt-in in
+`docker desktop diagnose --help`, read 2026-11-03):
 
 ```powershell
 docker desktop diagnose
 ```
 
+**STOP before uploading.** `gather -upload`, `upload -id <ID>` and `docker desktop diagnose --upload`
+send the bundle to Docker. Docker's page does not state what the bundle contains.
+
 ### 3. Restart Docker Desktop
+
+**STOP.** A restart stops every running container on the machine, including other projects' stacks.
 
 The first remedy listed in Docker's own troubleshooting menu, alongside "Reset Kubernetes
 cluster", "Clean / Purge data" and "Reset to factory defaults".
 
 ### 4. Restart the WSL 2 backend
+
+**STOP.** This kills every WSL distribution and everything running in it, not only Docker. Run the
+list command, which is read-only, and put what it shows in your request.
 
 ```powershell
 wsl --list --verbose      # check what else is running FIRST -- all of it will die
@@ -183,7 +203,7 @@ attributed to Microsoft's WSL documentation, not to Docker.
 A full disk presents as a hung engine. Check free space on the drive holding the WSL virtual disks.
 
 Microsoft documents the WSL VHD's default maximum size and how to **expand** it
-([WSL disk space](https://learn.microsoft.com/en-us/windows/wsl/disk-space)):
+([WSL disk space](https://learn.microsoft.com/en-us/windows/wsl/disk-space)). **STOP** before resizing:
 
 ```powershell
 wsl --manage <distribution name> --resize <size>
@@ -197,6 +217,8 @@ created** VHDs, so it is a preventative setting rather than a fix for a disk tha
 Treat freeing space as a deliberate, planned operation.
 
 ### 6. Destructive options -- last, and in Docker's own order
+
+**STOP** before either.
 
 - **Clean / Purge data** -- "This option resets all Docker data without a reset to factory
   defaults." Warning on the same page: "Selecting this option results in the loss of existing

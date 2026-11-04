@@ -56,9 +56,10 @@ module.exports = function(fileInfo, api) {
 ```
 
 ```bash
-npx jscodeshift -t transform.js src/
-npx jscodeshift -t transform.js --dry src/   # preview
-npx jscodeshift -t transform.ts --parser tsx src/  # TypeScript
+# jscodeshift declared as a devDependency; use the project's manager (npm: npm exec --no -- jscodeshift ...)
+pnpm exec jscodeshift -t transform.js src/
+pnpm exec jscodeshift -t transform.js --dry src/   # preview
+pnpm exec jscodeshift -t transform.ts --parser tsx src/  # TypeScript
 ```
 
 ## Rector (PHP)
@@ -118,14 +119,16 @@ comby 'assertEqual(:[a], :[b])' 'assert :[a] == :[b]' .py -d tests/ -in-place
 
 ### Pre-commit Hook
 
+Hooks only check; a person or an agent applies a fix and reviews it.
+
 ```yaml
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.x.x
     hooks:
-      - id: ruff
-        args: [--fix]
+      - id: ruff-check
       - id: ruff-format
+        args: [--check]
 ```
 
 ### GitHub Actions
