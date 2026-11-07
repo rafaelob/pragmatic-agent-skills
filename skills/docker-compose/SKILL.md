@@ -4,7 +4,7 @@ description: "Use when a change must run against the repo's own Compose project 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: "2.4.6"
+  version: "2.4.7"
   category: infrastructure
   subcategory: cloud-ops
   vendor: universal
@@ -29,7 +29,8 @@ metadata:
 1. **One Compose project per repo.** Everything the agent needs — dependencies, test runners, one-off tools — runs inside the repo's own `compose.yaml`/`docker-compose.yml` and project name. Never a loose `docker run`, never a second `-p <name>`, never a parallel compose file for the same stack, unless the repo already declares it as an override that the base file merges. Every example below names the project: `<project>` is the name the repo already declares (`name:` in its compose file, `COMPOSE_PROJECT_NAME` in its env, or its wrapper), and `-p` repeats it. Precedence is `-p`, then `COMPOSE_PROJECT_NAME`, then `name:`, then the project directory's base name (https://docs.docker.com/compose/how-tos/project-name/, read 2026-10-24), so a bare `docker compose` run where none of the first three is set can address a different project.
 2. **Look before you create.** Run `docker compose -p <project> ps` (and `docker compose -p <project> ps -a` for stopped containers).
    - A running service is reused with `docker compose -p <project> exec <service> <cmd>`.
-   - A stopped one is restarted with `docker compose -p <project> start <service>`.
+   - A stopped one is restarted alone with `docker compose -p <project> up -d --no-deps --no-recreate <service>`, which starts that existing container and none of its dependencies. `start <service>` and `up` without `--no-deps` also start what it depends on, in dependency order (https://github.com/docker/compose/blob/v5.6.1/pkg/compose/start.go, read 2026-11-05), so a one-shot dependency that already completed, such as a migrator, runs again: use them only to start that whole set on purpose.
+   - After a start whose result is uncertain (a timeout, a non-zero exit), reconcile before retrying: compare every service's state and start time (`docker inspect -f '{{.State.StartedAt}}' <container>`) with what you recorded before. An unchanged container ID does not prove the container did not restart, and a graceful stop may exit non-zero by the service's own contract (143 after SIGTERM).
    - Only a missing service is started, with `docker compose -p <project> up -d --no-recreate <service>`: plain `up` stops and recreates an existing container whose configuration or image changed (https://docs.docker.com/reference/cli/docker/compose/up/, read 2026-10-24), and `--no-recreate` rules that out. Add `--build` only when the image inputs changed, and never `--force-recreate`.
    - Recreate only a service you own whose inputs (image, build context, config) changed, with `docker compose -p <project> up -d --build <service>`, keeping its volumes; never recreate or duplicate a service that is merely running, nor one another writer owns.
 3. **One-offs:** use `docker compose -p <project> run --rm <service> <cmd>` in the SAME project, so nothing is left behind. For a long test step, give the command its own deadline (for example `timeout <s> pytest …`) shorter than any outer lock wall, so the container dies with it.

@@ -25,7 +25,7 @@
     "skills/diagnosing-bugs/SKILL.md": "88cc5962fdf3f5c3010fd941057d92d9094cf51b7e63e7ae8ab0f0fc0f0f790f",
     "skills/diagnosing-bugs/references/LOOP_TAXONOMY.md": "839a78d69b61fc3091366326364ceb4d711c02684241332ca8bc61fa9a7fab5b",
     "skills/diagnosing-bugs/scripts/hitl_loop_template.py": "31be8e1d1c4640728b240812a40c2b4d5a0b67c4ccc9406045eb2c1edc418b1c",
-    "skills/docker-compose/SKILL.md": "b64b9b5fbd5c016ab7e7f29dbcb07b30dd50edf93da90ab3063f1a2860130d37",
+    "skills/docker-compose/SKILL.md": "af836cf0855c35d71a1e4f6179eeb4138d699147598c4eb3d68048e01e63adac",
     "skills/docker-compose/assets/Dockerfile.node": "abf1413e36dcf036ef5ed486ff3c630a1020ecc6ce622d3988da8337595cc306",
     "skills/docker-compose/assets/Dockerfile.python": "0ca9a8839f5fc578511a7c5b1c2c781a03ffac16fcb3c7dbd4de07807719776d",
     "skills/docker-compose/assets/dev/compose.dev.override.yml": "799db1780152bf4253e5d3837e2d198e9d5395093192b3b230837dabfcc9e3d0",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "b928358a7affaf9efaff2bc2b346b4d9e808a732"
+  "source_commit": "f5741f6a337d1a4ac62e9dcb15d2e70460511d41"
 }
