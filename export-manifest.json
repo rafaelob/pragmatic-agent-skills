@@ -7,7 +7,7 @@
     "skills/code-review/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/code-review/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
     "skills/code-review/NOTICE.txt": "f9fc44a874aaea252ab4cfe91bfc725a020899f3a8149836c4cb42d2cb759baa",
-    "skills/code-review/SKILL.md": "861d605e2158dd754a4eb57235f722dd67954c32ce6e3ffcf6cebd066b8b33ca",
+    "skills/code-review/SKILL.md": "466241ba2ada5c1b9fe74577d248599f6e7e7d8a2de8f782bebf3c52ec39beaf",
     "skills/code-review/assets/finding-example.md": "c7ec20716a3d3738209ec86de05232b9a5986006ded2c366700675dc0c7d1fe1",
     "skills/code-review/assets/pr_review_template.md": "36f401c486d0d50006f010c26683557ad9a1398225dd380575c38d9ba2dd84ea",
     "skills/code-review/references/CODE_REVIEW_CHECKLIST.md": "1b0fe767a0f4d6aa9a7b1f548070e5dea86d72628052f58aea61b44da18b7f9e",
@@ -36,7 +36,7 @@
     "skills/docker-compose/references/freshness-sources.md": "019a1efd927fc83bf84a3a513d9fc10247cb6b26d9edfcc72d827fcde03a03c1",
     "skills/docker-compose/references/production/COMPOSE_HARDENING_CHECKLIST.md": "418fcdaae7fb8c155042ae49a0999ed95e651b1b5f1e51ec6463412da63dedcf",
     "skills/exhaustive-repo-cleanup-audit/SKILL.md": "cd3057621ca206639de6ca609628947abbd67e2c12fd4a0fed25195e47ce3faf",
-    "skills/gemini-cli-orchestrator/SKILL.md": "49a6356ba39f94b2cbc8351e451a50e964e83593133d4c638b0e717528d7528b",
+    "skills/gemini-cli-orchestrator/SKILL.md": "c0eca2e6c2432aa03e8edb39f1ec2fff34748f6e2eb50e45cc8fd07adedc6092",
     "skills/grok-build-orchestrator/SKILL.md": "c67dce0dae09cc845cfbc487709b18e2f802577978e13b7a507927c7cb453367",
     "skills/kill-slop/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/kill-slop/LICENSE-icodecraft-anti-slop.txt": "317f16d49c7571f1c3b77736ba51a55339142bbc564efd67f7bd3eefc367d6e3",
@@ -69,7 +69,7 @@
     "skills/testing-e2e-playwright/SKILL.md": "b94e5bc39f4da3b10be2f40a9da45a2ace5a3f48b1a8d5b37a338a1a301b1ad2",
     "skills/testing-e2e-playwright/references/DOC_LINKS.md": "e01550edef496d94569fae54df0dc30b2833fdea3572f03da3c05d1d083c6723",
     "skills/testing-e2e-playwright/references/PLAYWRIGHT_PATTERNS.md": "d8e304eee30ad9524264e8f0e7bd9353ff075f75aa51dbf54b1e272a07ae5280",
-    "skills/windows-shell-interop/SKILL.md": "addbd28d5a422c0a6a1658cd4df5f71612558812cfcee41c76323eca40b7ed19",
+    "skills/windows-shell-interop/SKILL.md": "832c1b204bfe13a24ebd72831d51c3510b8f098a316f96d2a200aff521c5697e",
     "skills/windows-shell-interop/references/encoding_fix_ladder.md": "50068dec18cd95891fb1ca474337365e5a7ab86b5633025ed33a2649399ec737",
     "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "5a7378075740303457bdecc241942192118728058540a6b7f89931b3ae4b5b26",
     "skills/worktree-lifecycle/SKILL.md": "b740c3b01697e3b61753bc312bdca4bca28c27d4fd145469e745378859df1a78",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "f5741f6a337d1a4ac62e9dcb15d2e70460511d41"
+  "source_commit": "8b77a653e3b7b8db3d996fd91eb65bc425336808"
 }

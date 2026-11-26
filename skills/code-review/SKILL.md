@@ -14,7 +14,7 @@ metadata:
   - architecture-review
   - commit-hygiene
   - user_level:advanced
-  version: "2.4.7"
+  version: "2.4.8"
   author: rafael
   category: code-quality
   subcategory: quality-validation
@@ -55,4 +55,7 @@ For a change whose safety depends on concurrent ordering, inspect any existing
 project-local verification and its code mapping, bounds and negative control.
 A stale model, sampled schedule or unreadable result is not a proof. Propose a
 new bounded check only for a concrete uncovered risk and explicit scope; do not
-make formal verification a requirement of routine review.
+make formal verification a requirement of routine review. When a change moves
+a check or proof out of a lock or transaction, look for each precondition it
+relied on being re-verified under that lock: a path, link, copy or claim can
+change in the gap.
