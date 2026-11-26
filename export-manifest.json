@@ -65,13 +65,13 @@
     "skills/tdd/references/refactoring.md": "83900a59258e7d0675a0031e80fa36b1438926566a6e4550606a9297ec508e7d",
     "skills/tdd/references/tests.md": "c6110bf085ec7eb774f38bc3014267aabfcb0e6f5cb18449f74387d2ed2c8e15",
     "skills/tdd/references/useful-test-examples.md": "8430b43f0f31bbd57e6ef447c842c0c0ea6815771d51a09f30372288554a0114",
-    "skills/test-audit/SKILL.md": "23013375d064ee10371eea442ea4beef410d1c141d540a167a060f524eb8a98a",
+    "skills/test-audit/SKILL.md": "5d22c1a524b9d3d193505cd583370141b7f9f49de1c5b879755ad14cf21f04ce",
     "skills/testing-e2e-playwright/SKILL.md": "b94e5bc39f4da3b10be2f40a9da45a2ace5a3f48b1a8d5b37a338a1a301b1ad2",
     "skills/testing-e2e-playwright/references/DOC_LINKS.md": "e01550edef496d94569fae54df0dc30b2833fdea3572f03da3c05d1d083c6723",
     "skills/testing-e2e-playwright/references/PLAYWRIGHT_PATTERNS.md": "d8e304eee30ad9524264e8f0e7bd9353ff075f75aa51dbf54b1e272a07ae5280",
-    "skills/windows-shell-interop/SKILL.md": "f54acd05bfd371f62c3b9faa462631e92672e26a8d14c8c78156427d5cad82d9",
+    "skills/windows-shell-interop/SKILL.md": "65f3eb353b19ef037d9e9eb8449a48394c6a6c36dd1182a87ab00a55c036a2c1",
     "skills/windows-shell-interop/references/encoding_fix_ladder.md": "50068dec18cd95891fb1ca474337365e5a7ab86b5633025ed33a2649399ec737",
-    "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "5a7378075740303457bdecc241942192118728058540a6b7f89931b3ae4b5b26",
+    "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "2596e2db7c453692eb49c179067c880ac43d200506f5ae784c9b01521eba74bc",
     "skills/worktree-lifecycle/SKILL.md": "3ba565c9b0afa1ab81b504ca397ff6f18409078bba7ae7f500e7c10957a081d7",
     "skills/xp-agile-delivery/SKILL.md": "e7e13583f0b50cebbecbde186fda091134894bce22e1f59da2cd167b79bdbeaa",
     "skills/xp-agile-delivery/assets/slice-note.md": "4a34e70c255cbe96551691d65a774c6a2456c748ca867ff2a8eac25cbc7c51fb",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "fb08007bae904c9344b69f319d7071717bbafd30"
+  "source_commit": "fcd521ff3274b05a54e579231c61f957c07a5340"
 }

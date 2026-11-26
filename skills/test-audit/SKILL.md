@@ -4,7 +4,7 @@ description: "Use when a test's value is in doubt or to audit and prune low-valu
 license: Apache-2.0
 metadata:
   author: rafael
-  version: "1.2.0"
+  version: "1.2.1"
   category: code-quality
   subcategory: quality-validation
   vendor: universal
@@ -64,6 +64,13 @@ Keep a test that independently enforces a public API, protocol, config, migratio
 - a retained test that fails on the baseline. Treat it as a possible product bug: reproduce it and repair the owner, never delete it.
 
 Static or slow is not a deletion reason. A test that resembles the implementation may be the independent contract; prove otherwise before removing it.
+
+## Fallback proofs
+
+- **Trigger:** a mechanism answers from a primary proof and falls back to a second one only when the primary cannot answer (a history lookup, then a hand-kept table).
+- **Wrong move:** trust the fallback because its test passes. A test in the normal environment never reaches it, so it can be dead since the day it was written: one such table listed 67 paths where the history listed 68 and answered nothing on every lookup, until a test environment without the history exposed it.
+- **Right move:** keep a test that disables the primary and forces the fallback. Regenerate any table derived from another source with the producer's own function, never by typing it or patching it by hand. Before rewriting a stored digest, recompute it: an identical digest over different contents means the entry is wrong and the seal is right, and the two cases have opposite repairs. Check a computed digest against an independent source (bytes on a real target), not against the source that produced it, which only proves determinism.
+- **Detect:** a retained fallback whose only coverage runs with the primary working. A fallback with no forcing test is decoration that looks like a control.
 
 ## Discovery
 

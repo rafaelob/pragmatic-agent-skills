@@ -230,6 +230,16 @@ which is why it is the default and these two are the exceptions.
 
 ---
 
+## Scheduled tasks that run PowerShell 7
+
+- **Trigger:** registering a Windows scheduled task whose action runs `pwsh`.
+- **Wrong move:** `-Execute 'pwsh.exe'`. Task Scheduler does not inherit the user's `PATH`, so the first run ends with `LastTaskResult` 2147942402 (0x80070002, file not found). The other obvious fix, `(Get-Command pwsh.exe).Source`, resolves a Store install to a path under `C:\Program Files\WindowsApps\` whose folder name carries the package version, and the task breaks on the next PowerShell update.
+- **Right move:** use the stable app-execution alias, `%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.exe`, as the `-Execute` value (expand the variable to the user's real path when registering). Measured 2026-09-18: a task registered this way returned 0.
+- **Also:** right after `Start-ScheduledTask`, `LastTaskResult` 267009 (0x41301) means "still running", not a failure. Poll until it changes, with a timeout, then read the final value.
+- **Detect:** `(Get-ScheduledTaskInfo -TaskName <name>).LastTaskResult` is 2147942402, or the action's executable has no directory part or sits under a versioned `WindowsApps` folder.
+
+---
+
 ## Choosing quickly
 
 ```text
