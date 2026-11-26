@@ -3,7 +3,8 @@
   "files": {
     "NOTICE": "f803b9dcdb14b663f9ebf41d83ff085967ea130f98bb4675f90fd27bf28c372b",
     "README.md": "dba8fe2ee0543d7ddb60a0a9f02ba7e8409d68736680ac4e780f3f348c313c59",
-    "skills/claude-code-orchestrator/SKILL.md": "4fac8757e5e169d884f26af787a94383e0b62c2d6fa6e2859d3d0a2524b6bfab",
+    "skills/claude-code-orchestrator/SKILL.md": "9c990f090dee7b162135260e9b5d8fe2a6c3cf961aeb524b851c1e319c6d1207",
+    "skills/claude-code-orchestrator/references/child-brief-checklist.md": "83cdbeae31df1699774d977c7d0a3e3e614eb365b9f52ba88b6e80bcbf376707",
     "skills/code-review/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/code-review/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
     "skills/code-review/NOTICE.txt": "f9fc44a874aaea252ab4cfe91bfc725a020899f3a8149836c4cb42d2cb759baa",
@@ -17,7 +18,7 @@
     "skills/codebase-design/SKILL.md": "ff6c4b2d5577cb75b81fde33a57e25884a3f76d8bda2273b6a3d2002047dec14",
     "skills/codebase-design/references/deepening.md": "3acc59de546144696240dc5f9bf06edba78fb33733e132e0a602269769acbaf5",
     "skills/codebase-design/references/design-it-twice.md": "e31c27e841f5313c11417ae48fb8cbc9cf852350fd314f74396d5d2d4eee2d03",
-    "skills/codex-subagent-routing/SKILL.md": "6ccd66da6a4e731045c40a628e540bdbaa71e9ab006bc2fae18c94feef9cc653",
+    "skills/codex-subagent-routing/SKILL.md": "c4d68d3a99566aea9fdca7afe6c9348bfc20f4ddd40ac5f6b1b54da0ba459d97",
     "skills/codex-subagent-routing/references/codex-agents-config.md": "1eb6b7733c85b03216a8d57ec6c1b224faf2093839218ce6f45acd74291ef4fb",
     "skills/diagnosing-bugs/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/diagnosing-bugs/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
@@ -44,7 +45,7 @@
     "skills/kill-slop/SKILL.md": "02856f36655995589de2f6a5d168af88f7ec93a791daaf95a217d83810858bd0",
     "skills/kill-slop/scripts/check_diff.py": "cd49492e1e7784eb3dffd9f91a2ae3977ccbaa551ed7217ebd2b203c95c8eddd",
     "skills/kimi-cli-orchestrator/SKILL.md": "ccf17073d6e0cabb491bc8ce8e22ca101c1ce6b924a2a4db2e57f5634353c784",
-    "skills/layered-testing-executor/SKILL.md": "4f0d02b76dd8f44d8b5755cdfcca6015b4c3e28521035f0a2cb0663b4218455f",
+    "skills/layered-testing-executor/SKILL.md": "2d8d91cefbd851f72f005476755c7d05309ada1810840b290afbc97cad88876a",
     "skills/layered-testing-executor/assets/evidence-note.md": "93759f9d4219c4646b123eddc96c0115228d1d1aa1959ca3e09fd8cbeebcc294",
     "skills/layered-testing-executor/references/test-selection.md": "27aa6d1d38e6fde78819e5d4957cb44a2c1ec111680ed755bd8e143ac4c593af",
     "skills/legacy-code-change/SKILL.md": "6f4d17b349107baef79688479c74f7360c6386a657b69d5105bf933e0bd4e56c",
@@ -69,10 +70,10 @@
     "skills/testing-e2e-playwright/SKILL.md": "b94e5bc39f4da3b10be2f40a9da45a2ace5a3f48b1a8d5b37a338a1a301b1ad2",
     "skills/testing-e2e-playwright/references/DOC_LINKS.md": "e01550edef496d94569fae54df0dc30b2833fdea3572f03da3c05d1d083c6723",
     "skills/testing-e2e-playwright/references/PLAYWRIGHT_PATTERNS.md": "d8e304eee30ad9524264e8f0e7bd9353ff075f75aa51dbf54b1e272a07ae5280",
-    "skills/windows-shell-interop/SKILL.md": "65f3eb353b19ef037d9e9eb8449a48394c6a6c36dd1182a87ab00a55c036a2c1",
+    "skills/windows-shell-interop/SKILL.md": "058622c62d141c05040db571a2445d95b4e62a918fa62831e71aa01a554fc442",
     "skills/windows-shell-interop/references/encoding_fix_ladder.md": "50068dec18cd95891fb1ca474337365e5a7ab86b5633025ed33a2649399ec737",
-    "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "2596e2db7c453692eb49c179067c880ac43d200506f5ae784c9b01521eba74bc",
-    "skills/worktree-lifecycle/SKILL.md": "3ba565c9b0afa1ab81b504ca397ff6f18409078bba7ae7f500e7c10957a081d7",
+    "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "daee16b54fa22966213af2615c2cc090c74c95b45181c25cb50d30dd47106548",
+    "skills/worktree-lifecycle/SKILL.md": "096c9b7c3ddfa264224f3ce153c2d379a9be21a87e82ddb8c1224d54876fc923",
     "skills/xp-agile-delivery/SKILL.md": "e7e13583f0b50cebbecbde186fda091134894bce22e1f59da2cd167b79bdbeaa",
     "skills/xp-agile-delivery/assets/slice-note.md": "4a34e70c255cbe96551691d65a774c6a2456c748ca867ff2a8eac25cbc7c51fb",
     "skills/xp-agile-delivery/references/XP_AGILE_GUIDE.md": "d19f996044ce29a15eb2f7cc12a0938bac8b13021cd886a9ee864eb6c604ab31",
@@ -109,5 +110,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "fcd521ff3274b05a54e579231c61f957c07a5340"
+  "source_commit": "2570082d7ddad614f186568175c9aed57ff433aa"
 }

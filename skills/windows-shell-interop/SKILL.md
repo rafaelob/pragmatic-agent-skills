@@ -4,7 +4,7 @@ description: "Use for UnicodeEncodeError, console mojibake (cp1252), PowerShell 
 license: Apache-2.0
 metadata:
   author: coding-agent
-  version: "1.9.4"
+  version: "1.9.5"
   category: infrastructure
   subcategory: developer-environment
   vendor: universal
@@ -50,6 +50,7 @@ Preserve the actual child exit code before formatting output. Catch only an expe
 - Stopping a shell (a tool timeout, a task stop, `timeout N` in Git Bash) does not stop the processes it started: a dev server keeps its port. Record the PID of what you launched, confirm it is still yours (same process start time), stop its tree (`taskkill /PID <pid> /T /F`), then confirm the port is free (`Get-NetTCPConnection -LocalPort <n>`). Never kill by port or name alone: that process may belong to someone else.
 - Text with backslash escapes or non-ASCII goes into a file through the runtime's file-writing tool, not a heredoc or `echo`: the shell layer may rewrite both.
 - A commit message or PR body that quotes code or spans lines breaks differently in each shell: Git Bash runs backticks, PowerShell eats them, and a PowerShell here-string sent through Git Bash is mangled. Pass it as a file (`git commit -F <file>`, `gh … --body-file <file>`); the measured cases are in `references/shell_equivalents_cheatsheet.md`.
+- Posting a body to `gh` (file, `-F body=@<f>` not `-f`, read the stored length back) and three PowerShell traps (an array or hashtable as the body argument; `[ordered]` integer keys index by position; `$Body` and `$body` are one variable): "Post a multi-line body to gh" in `references/shell_equivalents_cheatsheet.md`.
 - Python text I/O on Windows writes LF as CRLF: pass `newline='\n'` to `open()` or `Path.write_text()` when the bytes must be deterministic, and compare hashes or fixtures with `read_bytes()`, since `read_text()` hides the drift.
 - `gcloud storage rsync --exclude=<regex>` matches the local relative path with `\` separators, so an exclude written with `/` excludes nothing, silently, and a count check using the same regex agrees with the miss. Write the separator as `[\\/]`, and trust an upload that must leave files out only after its `--dry-run` prints no `Would copy` line for any of them; better still, move the excluded files out of the source first.
 - In pwsh, `gcloud` resolves to `gcloud.ps1` before `gcloud.cmd`. An array variable passed to it (`gcloud storage cp $files $dst`) arrives as ONE space-joined argument, because the wrapper forwards `$args` to python, so nothing is copied. Splat it (`gcloud storage cp @files $dst`), pipe it (`$files | gcloud storage cp -I $dst`), or call `gcloud.cmd`. Then read `$LASTEXITCODE` and the remote object count back; never trust the last output line alone. Detect: `matched no objects or files:` lists several paths on one line.

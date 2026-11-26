@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Codex CLI with [features.multi_agent] and <home>/agents/*.toml
 metadata:
   author: rafael
-  version: "3.3.7"
+  version: "3.3.8"
   category: ai-agents
   subcategory: orchestration
   vendor: openai-codex
@@ -94,10 +94,6 @@ One or two lines per field:
 
 - **Goal** — the concrete outcome, with one action verb.
 - **Scope** — what it may read, create or change, and what it must leave alone.
-  When something is off-limits (evaluation sets, secrets), grant literal paths to
-  read, never a recursive root that contains it: a recursive search prints the
-  match before a textual "don't read X" can stop it. The repository's own read
-  deny-list stays the enforcement; the brief never replaces it.
 - **Constraints** — what not to do, safety limits, the checks to run.
 - **Acceptance** — the observable result that means done, and the check that proves it (test, log, script).
 - **Delivery** — what to return, in what shape and how long.
@@ -105,7 +101,8 @@ One or two lines per field:
 For an independent review the brief says "report findings; don't fix": a
 reviewer who edits the change is no longer independent. A brief for deletion or
 cleanup names the keep-set, the paths the child must leave, beside what it may
-remove.
+remove. Check the brief against the child-brief checklist in
+`claude-code-orchestrator`, `references/child-brief-checklist.md`.
 
 **Brief in a file when it pays.** This is a working practice, not a vendor rule. A
 short brief goes inline. A long or reused brief goes in a file, and the prompt

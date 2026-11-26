@@ -1,0 +1,11 @@
+# Child-brief checklist
+
+Items a delegation brief states outright, for any runtime that spawns children. Each item is a failure that a child produced on a shared machine; the child cannot infer it from the Goal, Scope and Constraints fields alone. Check the brief against this list before sending it.
+
+1. **Forbidden objects named.** The brief names each object the child must not open, print or search (credentials, settings, session or transcript files, evaluation data) by literal path. When something is off-limits, grant literal paths to read and never a recursive root that contains it: a recursive search prints the match before a textual "don't read X" can stop it. The repository's own read deny-list stays the enforcement; the brief never replaces it.
+2. **Search roots bounded.** Every search names an explicit root inside the work area. A search never starts at a profile, a drive or the home directory.
+3. **Test-lock agent flag passed.** When the project runs tests behind a lock or queue wrapper, the brief carries the exact wrapper command, including the flag that identifies the calling agent, and the child runs tests only through it. A bare test runner bypasses the queue and its attribution.
+4. **No marker-based narrowing of tests.** The child selects tests by explicit file and, inside a file, by a name expression. It never narrows a run with a marker or tag, because a run narrowed that way can report a pass for tests it never ran.
+5. **No wide regex over very large JSONL files.** A search over line-delimited logs or transcripts uses a fixed string or a bounded slice (first or last N lines), never a wide regex over the whole file: it runs for minutes and floods the reply.
+6. **Kill only by exact PID.** A child that starts a server, browser or other process records each PID it starts and stops exactly those PIDs, never by image name or command-line pattern: on a shared machine a pattern kill hits peers' runs.
+7. **No grandchild left alive.** Before it reports, the child takes a census of live processes (image names and PIDs only) and confirms none that it started, or that its commands started, is still running. On Windows a shell that exits or is killed does not end its children, so a stopped shell is not proof.

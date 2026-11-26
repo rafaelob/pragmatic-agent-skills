@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: "2.10.9"
+  version: "2.10.10"
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -117,7 +117,7 @@ and give each run's script a fresh name, since a reused name can execute an
 older copy. A brief for deletion or cleanup names the keep-set, the paths the
 child must leave, beside what it may remove.
 
-A child that starts a server, browser or other process records each PID it starts and stops exactly those PIDs, never by image name or command-line pattern: on a shared machine a pattern kill hits peers' runs.
+Check the brief against [the child-brief checklist](references/child-brief-checklist.md) before sending it.
 
 **The parent owns the index.** Children share your checkout, so the brief lists
 the files each child may edit and says it never stages, commits, merges,

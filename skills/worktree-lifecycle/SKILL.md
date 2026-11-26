@@ -6,7 +6,7 @@ compatibility: Any coding agent on a git repository. Uses the worktree and clean
   repository declares (AGENTS.md or README); without any, plain git.
 metadata:
   author: coding-agent
-  version: "1.4.8"
+  version: "1.4.9"
   category: ci-cd
   subcategory: build-pipelines
   vendor: universal
@@ -42,6 +42,12 @@ After integration or explicit abandonment, remove only resources whose ownership
 **Hard rule:** never touch a tree you do not own, discard uncommitted work or force a removal (operating rules §7): git refuses an unmerged branch or a dirty tree on purpose. Which destructive commands are refused is the guard's call and the project's agent protocol, not this skill's. A junction or symlink inside a tree is unlinked by the reaping verb, as above. With no supported tool for a leftover, first check that no path in it is a junction or symlink (`Get-ChildItem -Force -Recurse -Attributes ReparsePoint` on Windows, `find -type l` elsewhere), since a recursive delete through one removes its target; then delete it file by file naming each path. If a link is present, the inspection is incomplete or the repository's tool refuses, preserve the tree and report it; never bypass a guard that refuses.
 
 When the integration itself conflicts, use a merge-conflict skill if one is installed.
+
+## What the tooling cannot decide: a shallow root and a shared git directory
+- On a shallow root checkout, `git log` stops at the shallow boundary and cannot show whether an older merge landed. Ask the forge's compare API (base and head SHAs) instead.
+- Resolve a SHA with `git ls-remote <remote> <ref>`. `FETCH_HEAD` is overwritten by any fetch in the same git directory, so a SHA read from it may belong to another writer's fetch.
+- After an unclean shutdown, check the shared git config (`<git-common-dir>/config`) for NUL bytes before any write to it, a worktree add included. Report a corrupted file to its owner; never repair it in place.
+- Before removing `index.lock`, take a census of live git processes (image names and PIDs only). Remove the lock only when no git process can own it, and name the lock path literally.
 
 ## Price the tree before you open it
 A linked worktree shares the object store and costs the checkout alone. A CLONE costs the checkout plus a full copy of `.git` — and a runtime's `isolation` flag may write a clone while calling it a worktree, so read what it produced rather than what it is named. Measure `.git`, multiply by the number of trees you are about to open, and compare against free disk. When the product does not fit, serialize the writes in one tree instead — do not open them and plan to clean up after, because a full disk fails writes silently, including the commit that would have preserved the work.

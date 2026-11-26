@@ -215,6 +215,35 @@ which is why it is the default and these two are the exceptions.
 
 ---
 
+## Post a multi-line body to gh
+
+1. Write the body with the runtime's file-writing tool, as UTF-8 with no BOM and LF line ends.
+2. Pass the file, never the text: `gh issue comment N --body-file <f>`, `gh pr create --body-file <f>`, or `gh api ... -F body=@<f>`.
+3. Read the stored body back and compare its length with the file's: `gh api repos/O/R/issues/comments/ID --jq '.body|length'`. `jq` counts code points; `(Get-Content f -Raw).Length` counts UTF-16 units, so a body with characters outside the BMP (an emoji) reads one higher per such character (`'a😀'.Length` is 3, two code points; pwsh 7.7.0). Count code points with `.EnumerateRunes()` when the body has any.
+
+### Traps around that recipe
+
+Each was run in pwsh 7.7.0 or read from `gh api --help` / `gh help api` (gh 2.98.0), checked 2026-11-26.
+
+- **Field flag that does not read a file**
+  - Trigger: `gh api <endpoint> -f body=@note.md`.
+  - Wrong: `-f/--raw-field` adds a "static string" parameter, so the request carries the text `@note.md`, not the file's content.
+  - Right: `-F body=@note.md`. Only `-F/--field` treats a leading `@` as a file to read (`@-` reads stdin). Read the stored body back, as in step 3. The help text was read; no request was sent to prove the literal.
+- **Array or hashtable as the body argument**
+  - Trigger: `$lines = @('line 1','line 2'); gh issue comment N --body $lines`, or a hashtable in the same place.
+  - Wrong: pwsh passes each array element as its own argument (`--body`, `line 1`, `line 2`), so the body is only the first line and the rest becomes stray arguments; a hashtable arrives as the text `System.Collections.Hashtable`.
+  - Right: write the text to a file and pass `--body-file <f>`, as in step 1.
+- **Integer keys in an ordered hashtable**
+  - Trigger: `$h = [ordered]@{1='a'; 2='b'}` then `$h[1]`.
+  - Wrong: `$h[1]` indexes by position and returns `b`. With keys 5 and 9, `$h[1]` returns the value of 9.
+  - Right: string keys (`@{'1'='a'}` then `$h['1']`), or `$h.Item([object]1)`, which looks up the key and returns `a`.
+- **Variable names ignore case**
+  - Trigger: a script that sets `$Body` for the title text and `$body` for the comment text.
+  - Wrong: they are one variable; after `$Body = 'upper'; $body = 'lower'`, both read `lower`, so the first value is lost without an error.
+  - Right: give each value a name that differs by more than case (`$titleText`, `$commentText`).
+
+---
+
 ## Operations that do NOT translate
 
 | Unix idiom | Why it fails on Windows shells | Do instead |
