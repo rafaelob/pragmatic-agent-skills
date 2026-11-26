@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Claude Code CLI with subagents
 metadata:
   author: rafael
-  version: "2.10.8"
+  version: "2.10.9"
   category: ai-agents
   subcategory: orchestration
   vendor: claude-code
@@ -89,6 +89,8 @@ routing mechanics; authority and accountability are in the operating rules (§7)
   attempt named in the brief: never first, never for an idle slot.
 - Pass `subagent_type` on every spawn, naming the specialized card whose
   description fits the task type; omitting it falls back to the catch-all.
+  Pass no `model` or effort: the card's tier is the routing decision, and an
+  override silently replaces it.
 
 ## The brief is the mission
 
@@ -109,6 +111,11 @@ reviewer who edits the change is no longer independent. Put long material first
 and the instruction last. Require the child to delete its own scratch before it
 reports, keeping deliverables and evidence; give it a scratch subfolder named
 for it, so it never clears a sibling's. Where the project declares a scratch root and its disposal verb, use them.
+The session's scratch directory is shared with every child and another session
+may clear it: keep evidence you will need later in the project's scratch root,
+and give each run's script a fresh name, since a reused name can execute an
+older copy. A brief for deletion or cleanup names the keep-set, the paths the
+child must leave, beside what it may remove.
 
 A child that starts a server, browser or other process records each PID it starts and stops exactly those PIDs, never by image name or command-line pattern: on a shared machine a pattern kill hits peers' runs.
 

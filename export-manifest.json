@@ -3,7 +3,7 @@
   "files": {
     "NOTICE": "f803b9dcdb14b663f9ebf41d83ff085967ea130f98bb4675f90fd27bf28c372b",
     "README.md": "dba8fe2ee0543d7ddb60a0a9f02ba7e8409d68736680ac4e780f3f348c313c59",
-    "skills/claude-code-orchestrator/SKILL.md": "6e856f116252ac6950977ac279cf199d90cdd75e9cec73150322873b1f59184c",
+    "skills/claude-code-orchestrator/SKILL.md": "4fac8757e5e169d884f26af787a94383e0b62c2d6fa6e2859d3d0a2524b6bfab",
     "skills/code-review/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/code-review/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
     "skills/code-review/NOTICE.txt": "f9fc44a874aaea252ab4cfe91bfc725a020899f3a8149836c4cb42d2cb759baa",
@@ -17,7 +17,7 @@
     "skills/codebase-design/SKILL.md": "ff6c4b2d5577cb75b81fde33a57e25884a3f76d8bda2273b6a3d2002047dec14",
     "skills/codebase-design/references/deepening.md": "3acc59de546144696240dc5f9bf06edba78fb33733e132e0a602269769acbaf5",
     "skills/codebase-design/references/design-it-twice.md": "e31c27e841f5313c11417ae48fb8cbc9cf852350fd314f74396d5d2d4eee2d03",
-    "skills/codex-subagent-routing/SKILL.md": "31b492d5fa11fe70bc3b8777acc918d96a37dfabe25521338b5604645633ee61",
+    "skills/codex-subagent-routing/SKILL.md": "6ccd66da6a4e731045c40a628e540bdbaa71e9ab006bc2fae18c94feef9cc653",
     "skills/codex-subagent-routing/references/codex-agents-config.md": "1eb6b7733c85b03216a8d57ec6c1b224faf2093839218ce6f45acd74291ef4fb",
     "skills/diagnosing-bugs/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/diagnosing-bugs/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
@@ -36,7 +36,7 @@
     "skills/docker-compose/references/freshness-sources.md": "019a1efd927fc83bf84a3a513d9fc10247cb6b26d9edfcc72d827fcde03a03c1",
     "skills/docker-compose/references/production/COMPOSE_HARDENING_CHECKLIST.md": "418fcdaae7fb8c155042ae49a0999ed95e651b1b5f1e51ec6463412da63dedcf",
     "skills/exhaustive-repo-cleanup-audit/SKILL.md": "cd3057621ca206639de6ca609628947abbd67e2c12fd4a0fed25195e47ce3faf",
-    "skills/gemini-cli-orchestrator/SKILL.md": "c0eca2e6c2432aa03e8edb39f1ec2fff34748f6e2eb50e45cc8fd07adedc6092",
+    "skills/gemini-cli-orchestrator/SKILL.md": "1d40c7c8aaec6957e455037d869b2930323440294284dbbd5c590ed05d64cd34",
     "skills/grok-build-orchestrator/SKILL.md": "c67dce0dae09cc845cfbc487709b18e2f802577978e13b7a507927c7cb453367",
     "skills/kill-slop/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/kill-slop/LICENSE-icodecraft-anti-slop.txt": "317f16d49c7571f1c3b77736ba51a55339142bbc564efd67f7bd3eefc367d6e3",
@@ -69,10 +69,10 @@
     "skills/testing-e2e-playwright/SKILL.md": "b94e5bc39f4da3b10be2f40a9da45a2ace5a3f48b1a8d5b37a338a1a301b1ad2",
     "skills/testing-e2e-playwright/references/DOC_LINKS.md": "e01550edef496d94569fae54df0dc30b2833fdea3572f03da3c05d1d083c6723",
     "skills/testing-e2e-playwright/references/PLAYWRIGHT_PATTERNS.md": "d8e304eee30ad9524264e8f0e7bd9353ff075f75aa51dbf54b1e272a07ae5280",
-    "skills/windows-shell-interop/SKILL.md": "832c1b204bfe13a24ebd72831d51c3510b8f098a316f96d2a200aff521c5697e",
+    "skills/windows-shell-interop/SKILL.md": "f54acd05bfd371f62c3b9faa462631e92672e26a8d14c8c78156427d5cad82d9",
     "skills/windows-shell-interop/references/encoding_fix_ladder.md": "50068dec18cd95891fb1ca474337365e5a7ab86b5633025ed33a2649399ec737",
     "skills/windows-shell-interop/references/shell_equivalents_cheatsheet.md": "5a7378075740303457bdecc241942192118728058540a6b7f89931b3ae4b5b26",
-    "skills/worktree-lifecycle/SKILL.md": "b740c3b01697e3b61753bc312bdca4bca28c27d4fd145469e745378859df1a78",
+    "skills/worktree-lifecycle/SKILL.md": "3ba565c9b0afa1ab81b504ca397ff6f18409078bba7ae7f500e7c10957a081d7",
     "skills/xp-agile-delivery/SKILL.md": "e7e13583f0b50cebbecbde186fda091134894bce22e1f59da2cd167b79bdbeaa",
     "skills/xp-agile-delivery/assets/slice-note.md": "4a34e70c255cbe96551691d65a774c6a2456c748ca867ff2a8eac25cbc7c51fb",
     "skills/xp-agile-delivery/references/XP_AGILE_GUIDE.md": "d19f996044ce29a15eb2f7cc12a0938bac8b13021cd886a9ee864eb6c604ab31",
@@ -109,5 +109,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "8b77a653e3b7b8db3d996fd91eb65bc425336808"
+  "source_commit": "fb08007bae904c9344b69f319d7071717bbafd30"
 }

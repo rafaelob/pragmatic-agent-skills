@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Antigravity (Gemini family) with invoke_subagent
 metadata:
   author: rafael
-  version: "1.3.6"
+  version: "1.3.7"
   category: ai-agents
   subcategory: orchestration
   vendor: gemini-cli
@@ -49,7 +49,7 @@ This skill keeps the identifier `gemini-cli-orchestrator`. The body is Antigravi
 | Child types | The built-in types and the agent files the runtime lists at spawn are the catalogue; each type's own description says what it is for. Read them live |
 | Workspace | `inherit` only: the child works in your checkout. The schema also lists `branch` (a git worktree made by this runtime) and `share`; pass neither, because a subagent gets no tree. A second writer needing its own checkout takes a linked git worktree itself |
 | Agent files | `~/.gemini/config/agents/<n>.md` (or `.../agents/<n>/agent.md`); `.agents/agents/`; `plugins/*/agents/` |
-| Model | `invoke_subagent` takes no model. A card's `model` is `inherit`, so the child runs on the session's model; never write a tier word or model id in a card (see "Model routing") |
+| Model | `invoke_subagent` takes no model. A card's `model` is a tier word: `inherit` (the session's model) or `flash`; never a model id (see "Model routing") |
 | Concurrency and depth | Children run concurrently in the background; the docs publish no parallel cap, and nesting depth is capped. Read both live |
 | States | `/agents` lists each child as running, done, error or killed (antigravity.google/docs/cli/commands/agents, 2026-09-26); a child re-awakens on a message |
 | Skills | `~/.gemini/config/skills`, `.agents/skills` |
@@ -57,11 +57,11 @@ This skill keeps the identifier `gemini-cli-orchestrator`. The body is Antigravi
 
 ## When to delegate
 - Look for parallelism at every plan and phase change: split independent investigations, implementations, tests and reviews into children with disjoint ownership when each gains speed, coverage or quality worth its brief and review, up to the concurrency limit only for work that is actually independent — never by routine, never as a quota. N children cost roughly N× the tokens, and children editing the same code at once conflict. Keep simple, sequential or interactive work yourself.
-- Pick the child the runtime lists by task type, at the best cost-benefit. Every child runs on the session's model, so the role picks the specialization and never the model. A child that failed is re-briefed or replaced by another listed specialist: never escalated by writing `pro` or another tier into a card. Use a clone of yourself only when no listed specialist fits.
+- Pick the child the runtime lists by task type, at the best cost-benefit. A child runs on the tier its card names, so choosing the role chooses both the specialization and the tier. A child that failed is re-briefed or replaced by another listed specialist: never escalated by writing `pro` or another tier into a card. Use a clone of yourself only when no listed specialist fits.
 
 ## Model routing
 Measured on agy 1.5.7 on 2026-11-12; model ids and tier tables are perishable, re-measure before relying on them after an agy upgrade.
-- **Cards name no tier.** A card's `model` accepts only tier words, resolved by a server-side table: `flash` calls `gemini-3.8-flash`, `flash_lite` calls `gemini-3.5-flash-lite`, `pro` calls `gemini-3.1-pro-preview`. `hydrogen`, `flash-4`, `gemini-4-hydrogen` and `gemini-4-hydrogen-high` make the card vanish ("unknown agent"). The official docs (antigravity.google/docs/subagents, read 2026-11-12) document only `inherit|flash|pro` and no setting, flag or env var that remaps a tier. So a child cannot be put on Gemini 4 Hydrogen through a card, and a `flash` child is not the volume tier. Every card for agy here is `model: inherit` (owner decision, 2026-11-12).
+- **Cards name a tier word, never a model id.** A card's `model` accepts only tier words, resolved by a server-side table: `flash` calls `gemini-3.8-flash`, `flash_lite` calls `gemini-3.5-flash-lite`, `pro` calls `gemini-3.1-pro-preview`. `hydrogen`, `flash-4`, `gemini-4-hydrogen` and `gemini-4-hydrogen-high` make the card vanish ("unknown agent"). The official docs (antigravity.google/docs/subagents, read 2026-11-12) document only `inherit|flash|pro` and no setting, flag or env var that remaps a tier. So a child cannot be put on Gemini 4 Hydrogen through a card, and a `flash` child is not the volume tier. Owner decision (2026-11-19; on agy 1.5.12 a `flash` or `pro` card loads and answers): the support roles (explorer, light-worker, frontend-worker-light, docs-writer, browser-verifier) are `model: flash`, and every other card is `model: inherit`.
 - **The session picks the model**, with `--model`; on agy 1.5.17 (2026-11-26) `agy models` lists `gemini-4-hydrogen-*`, `gemini-4-neon-*`, `gemini-4-carbon-*` and `gemini-4-argon-*` with `-low|-medium|-high`, plus `-xhigh` for Hydrogen and Neon, and a session started with `--model gemini-4-hydrogen-high` calls `gemini-4-hydrogen`. Owner decisions: `gemini-4-carbon-high` to decide and implement (2026-11-12); `gemini-4-neon-xhigh` for an independent review or a debate (2026-11-25); `gemini-4-hydrogen-high` for recon, docs, tests and other volume work. Effort is session-wide (`--effort`).
 - **Cheap volume work is a separate agy session** started on `gemini-4-hydrogen-high`, not a `flash` child; hand it the brief like any delegated mission and treat its result as evidence. Children spawned from a Carbon session run on Carbon.
 - Hydrogen is the Gemini 4 Flash tier (GA 2026-11-12) and `gemini-3.8-flash` stays available. Over the API Hydrogen takes `thinking_level` `low|medium|high|xhigh` (default `high`); agy exposes the session ids above. API facts live in the official Gemini API docs.
@@ -74,7 +74,7 @@ One or two lines per field:
 - **Acceptance** — the observable result that means done, and the check that proves it (test, log, script).
 - **Delivery** — what to return, in what shape and how long.
 
-For an independent review the brief says "report findings; don't fix": a reviewer who edits the change is no longer independent.
+For an independent review the brief says "report findings; don't fix": a reviewer who edits the change is no longer independent. A brief for deletion or cleanup names the keep-set, the paths the child must leave, beside what it may remove.
 
 **Brief in a file when it pays.** This is a working practice, not a vendor rule. A short brief goes inline. A long or reused brief goes in a file, and the prompt names its absolute path. A large result goes to a named output file, with a short summary in the reply, so your context stays small.
 
@@ -87,7 +87,7 @@ For an independent review the brief says "report findings; don't fix": a reviewe
 
 ## Do not
 - Route Antigravity children through another runtime's spawn surface
-- Write a tier word or model id in a card, or escalate a child to `pro`; every card is `model: inherit` and the session decides the model
+- Write a model id in a card, or escalate a child to `pro`; the support roles are `model: flash` and every other card is `model: inherit`
 - Pass `Workspace: branch` or `share`
 - Infer this spawn surface on the separate Gemini CLI
 

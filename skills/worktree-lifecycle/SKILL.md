@@ -6,7 +6,7 @@ compatibility: Any coding agent on a git repository. Uses the worktree and clean
   repository declares (AGENTS.md or README); without any, plain git.
 metadata:
   author: coding-agent
-  version: "1.4.7"
+  version: "1.4.8"
   category: ci-cd
   subcategory: build-pipelines
   vendor: universal
@@ -39,7 +39,7 @@ Do not create a worktree, dependency environment and service stack per micro-tas
 
 After integration or explicit abandonment, remove only resources whose ownership and preservation are established: commit what is yours, `git worktree remove <path>` without `--force`, then `git branch -d <branch>`. A tree that holds a junction or symlink (a linked `node_modules`, a shared venv) goes through the repository's reaping verb, which unlinks links first: a raw `git worktree remove` can descend through a junction and delete its target. At close, dispose of your own scratch and temporary runs through the repository's declared cleanup tooling; never another agent's, and never by age alone (age or absence of a visible process is not deletion authority). Stop after the requested lifecycle transition is complete and its readback is confirmed, not after a cleanup sweep across the machine.
 
-**Hard rule:** never touch a tree you do not own, discard uncommitted work or force a removal (operating rules §7): git refuses an unmerged branch or a dirty tree on purpose. Which destructive commands are refused is the guard's call and the project's agent protocol, not this skill's. A junction or symlink inside a tree is unlinked by the reaping verb, as above. With no supported tool for a leftover, delete it file by file naming each path, and never bypass a guard that refuses.
+**Hard rule:** never touch a tree you do not own, discard uncommitted work or force a removal (operating rules §7): git refuses an unmerged branch or a dirty tree on purpose. Which destructive commands are refused is the guard's call and the project's agent protocol, not this skill's. A junction or symlink inside a tree is unlinked by the reaping verb, as above. With no supported tool for a leftover, first check that no path in it is a junction or symlink (`Get-ChildItem -Force -Recurse -Attributes ReparsePoint` on Windows, `find -type l` elsewhere), since a recursive delete through one removes its target; then delete it file by file naming each path. If a link is present, the inspection is incomplete or the repository's tool refuses, preserve the tree and report it; never bypass a guard that refuses.
 
 When the integration itself conflicts, use a merge-conflict skill if one is installed.
 

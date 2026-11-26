@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Codex CLI with [features.multi_agent] and <home>/agents/*.toml
 metadata:
   author: rafael
-  version: "3.3.6"
+  version: "3.3.7"
   category: ai-agents
   subcategory: orchestration
   vendor: openai-codex
@@ -103,7 +103,9 @@ One or two lines per field:
 - **Delivery** — what to return, in what shape and how long.
 
 For an independent review the brief says "report findings; don't fix": a
-reviewer who edits the change is no longer independent.
+reviewer who edits the change is no longer independent. A brief for deletion or
+cleanup names the keep-set, the paths the child must leave, beside what it may
+remove.
 
 **Brief in a file when it pays.** This is a working practice, not a vendor rule. A
 short brief goes inline. A long or reused brief goes in a file, and the prompt
