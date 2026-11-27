@@ -1,7 +1,7 @@
 {
   "exporter_version": "1",
   "files": {
-    "NOTICE": "f803b9dcdb14b663f9ebf41d83ff085967ea130f98bb4675f90fd27bf28c372b",
+    "NOTICE": "f569f433002248a9a4273e2ce52db85da0a83e19f18db5560ad500e65730905c",
     "README.md": "dba8fe2ee0543d7ddb60a0a9f02ba7e8409d68736680ac4e780f3f348c313c59",
     "skills/claude-code-orchestrator/SKILL.md": "9c990f090dee7b162135260e9b5d8fe2a6c3cf961aeb524b851c1e319c6d1207",
     "skills/claude-code-orchestrator/references/child-brief-checklist.md": "83cdbeae31df1699774d977c7d0a3e3e614eb365b9f52ba88b6e80bcbf376707",
@@ -14,10 +14,10 @@
     "skills/code-review/references/CODE_REVIEW_CHECKLIST.md": "1b0fe767a0f4d6aa9a7b1f548070e5dea86d72628052f58aea61b44da18b7f9e",
     "skills/codebase-design/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
     "skills/codebase-design/LICENSE-mattpocock-skills.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-    "skills/codebase-design/NOTICE.txt": "d9213d29c275028cb8eb9d88c567043ec230fef3008f171f6fb70dce80fed942",
-    "skills/codebase-design/SKILL.md": "ff6c4b2d5577cb75b81fde33a57e25884a3f76d8bda2273b6a3d2002047dec14",
+    "skills/codebase-design/NOTICE.txt": "68203ecb790b7f0ee4f28fd43f07ea845d4c0998d36787e8d8bf6d4e60110a30",
+    "skills/codebase-design/SKILL.md": "c08879a8c07d31fb4a1136fb39ac9298ac6c0e04168853f3e76dccddc1f156c7",
     "skills/codebase-design/references/deepening.md": "3acc59de546144696240dc5f9bf06edba78fb33733e132e0a602269769acbaf5",
-    "skills/codebase-design/references/design-it-twice.md": "e31c27e841f5313c11417ae48fb8cbc9cf852350fd314f74396d5d2d4eee2d03",
+    "skills/codebase-design/references/design-it-twice.md": "01cff95339e3fec211aae3c77b4b96ee1313d099e02662c7cef086e08a6841b4",
     "skills/codex-subagent-routing/SKILL.md": "c4d68d3a99566aea9fdca7afe6c9348bfc20f4ddd40ac5f6b1b54da0ba459d97",
     "skills/codex-subagent-routing/references/codex-agents-config.md": "1eb6b7733c85b03216a8d57ec6c1b224faf2093839218ce6f45acd74291ef4fb",
     "skills/diagnosing-bugs/LICENSE": "27d5a571915eec5f6a580f5e178a67d58d6e674740678e1bcf8df6a63dce4bdf",
@@ -110,5 +110,5 @@
     "worktree-lifecycle",
     "xp-agile-delivery"
   ],
-  "source_commit": "2570082d7ddad614f186568175c9aed57ff433aa"
+  "source_commit": "47f10fdd93d5b8fd4a46c6fb8da713cbb926b90b"
 }

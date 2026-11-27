@@ -18,7 +18,7 @@ Show this to the user, then immediately proceed to Step 2. The user reads while 
 
 ### 2. Spawn Sub-agents
 
-Spawn at least two sub-agents in parallel, one per genuinely different design pressure worth comparing for this seam; add a third or fourth only when another candidate constraint actually applies here, never to hit a headcount. Each must produce a **radically different** interface for the deepened module. Use this runtime's own spawn path — never a Cursor-only Agent tool.
+Spawn at least two sub-agents in parallel, one per genuinely different design pressure worth comparing for this seam; add a third or fourth only when another candidate constraint actually applies here, never to hit a headcount. Each must produce a **radically different** interface for the deepened module. Use this runtime's own spawn path — never a Cursor-only Agent tool. Start each one with a fresh context window, not a fork of this conversation: a fork inherits your framing and pulls the candidates toward the same design, so everything a sub-agent needs goes in its brief.
 
 Give each agent a distinct design constraint, drawn from whichever of these apply:
 

@@ -20,7 +20,7 @@ Adapted upstreams:
   Author: Matt Pocock
   Skill license: Apache-2.0
   Upstream license: MIT (skills/codebase-design/LICENSE-mattpocock-skills.txt)
-  Baseline commit: d80fa0f4ebe0c5714af0adf8670336065233ecc6
+  Baseline commit: 7739eaed7f8f3915437a8def198a6d0d7206dbc7
   Modified by Rafael Bittencourt, 2026; modifications licensed under Apache-2.0
   License file: skills/codebase-design/LICENSE, skills/codebase-design/LICENSE-mattpocock-skills.txt
 - diagnosing-bugs
